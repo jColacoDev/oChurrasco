@@ -1,0 +1,38 @@
+{
+  "name": "server",
+  "version": "2.0.1",
+  "description": "Node Express server working with REST API over HTTPS and WSS subscriptions powered by Apollo GraphQL API over a mongoDB database",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "ftp-deploy": "node deploy.js",
+    "start-gql": "nodemon gql-server.js"
+  },
+  "keywords": [],
+  "author": "João Colaço",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.3.2",
+    "@graphql-tools/load-files": "^6.6.1",
+    "@graphql-tools/merge": "^8.3.15",
+    "@graphql-tools/schema": "^9.0.14",
+    "apollo-server-core": "^3.11.1",
+    "cloudinary": "^1.33.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.5.0",
+    "ftp": "^0.3.10",
+    "glob": "^8.1.0",
+    "graphql": "^16.6.0",
+    "graphql-scalars": "^1.20.1",
+    "graphql-subscriptions": "^2.0.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-tools": "^8.3.15",
+    "graphql-ws": "^5.11.2",
+    "mongoose": "^6.8.4",
+    "node-fetch": "^2.6.9",
+    "nodemon": "^2.0.20",
+    "shortid": "^2.2.16",
+    "ws": "^8.12.0"
+  }
+}
