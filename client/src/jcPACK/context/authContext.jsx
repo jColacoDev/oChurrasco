@@ -1,5 +1,5 @@
 import React, {useReducer, createContext, useEffect} from 'react'
-import { auth } from '../utils/firebase';
+import { auth } from '../firebase/firebase';
 
 // reducer
 const firebaseReducer = (state, action) => {
