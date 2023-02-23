@@ -5,6 +5,7 @@
 firebaseConfig.js
 fbServiceAccountKey.json
 
+products_data/
 # Logs
 logs
 *.log

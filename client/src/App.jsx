@@ -18,6 +18,8 @@ import Footer from './jcPACK/components/footer/footer';
 import LoadingToRedirect from './jcPACK/components/LoadingToRedirect';
 import Header from './jcPACK/components/Header/Header';
 
+import QualityBadges from './jcPACK/components/QualityBadges/QualityBadges';
+
 export const AppsData = [
   appData,
 ]
@@ -96,6 +98,8 @@ const App = () => {
           </Routes>
         </main>
       </div>
+      
+      <QualityBadges />
       <Footer />
   </ApolloProvider>
   </>

@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     gap: 2em;
     padding: 2.5em 2em;
     background-color: var(--footer-bg-color);
@@ -17,7 +17,7 @@
         gap: .6em;
         margin: .6em 0;
     }
-    figure{
+    figure.ergologo{
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -46,8 +46,18 @@
         &:first-child{
             align-items: flex-start;
 
+            figure{
+                filter: invert(1);
+                width: 2em;
+                height: 2em;
+            }
+            a,span{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: .5em;
+            }
             a{
-                text-align: left;
                 padding: 0;
             }
             p{

@@ -1,0 +1,31 @@
+.QualityBadges{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em;
+    gap: 1em;
+    justify-content: space-around;
+
+    article{
+        width: 10em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+        figure{
+            width: 6em;
+            height: 5em;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            filter: hue-rotate(60deg);
+        }
+
+        p{
+            font-size: .8em;
+            margin-top: .2em;
+            color: #4e4e4e;
+        }
+    }
+}

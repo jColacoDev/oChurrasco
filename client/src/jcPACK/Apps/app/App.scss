@@ -5,6 +5,30 @@ h2{
     margin: 1em;
 }
 
+hr{
+    border-top: 1px dotted var(--ergoface-green);
+}
+
+section.pdfViewer{
+
+    width: 20em;
+
+    .react-pdf__Page{
+        min-width: auto !important;
+        min-height: auto !important;
+
+        .react-pdf__Page__canvas{
+            width: 100% !important;
+            height: auto !important;
+        }
+    }
+
+    .react-pdf__Page__textContent,
+    .react-pdf__Page__annotations{
+        display: none;
+    }
+}
+
 section.breadcrumbs{
     width: 100%;
     margin: 1em;
