@@ -14,7 +14,9 @@ import { routerSetup } from './jcPACK/router/router';
 import { setAppPath } from './jcPACK/reduxStore/appSlice';
 import { appData } from './jcPACK/Apps/app/App';
 
+import Footer from './jcPACK/components/footer/footer';
 import LoadingToRedirect from './jcPACK/components/LoadingToRedirect';
+import Header from './jcPACK/components/Header/Header';
 
 export const AppsData = [
   appData,
@@ -81,7 +83,7 @@ const App = () => {
       <ScrollToTop />
       <span ref={topRef} id="top" />
       
-      <nav>header</nav>
+      <Header />
 
       <div id="appContainer" ref={topAppRef}>
         <main className='appRoutes'>
@@ -94,7 +96,7 @@ const App = () => {
           </Routes>
         </main>
       </div>
-      <footer>Footer</footer>
+      <Footer />
   </ApolloProvider>
   </>
   );

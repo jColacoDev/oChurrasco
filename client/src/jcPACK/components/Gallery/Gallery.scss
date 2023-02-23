@@ -1,0 +1,32 @@
+nav.Gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin: 1em auto;
+    max-width: 60em;
+    
+    a{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;            
+        gap: 1em;
+        width: 12em;
+        height: 12em;
+
+        &:hover{
+            color: var(--ergoface-green);
+        }
+        
+        figure{
+            width: 100%;
+            height: 100%;
+            background-color: tomato;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+}

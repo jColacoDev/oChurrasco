@@ -1,3 +1,29 @@
-#App{
-   
+ 
+h2{
+    width: 100%;
+    text-align: center;
+    margin: 1em;
+}
+
+section.breadcrumbs{
+    width: 100%;
+    margin: 1em;
+    margin-top: .4em;
+    gap: 0.3em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    a{
+
+        &:hover{
+            color: #aea033;
+        }
+    }
+
+    span{
+        &:last-child{
+            font-weight: bold;
+        }
+    }
 }

@@ -1,0 +1,61 @@
+header.Header{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 0.5em;
+
+    a{
+        &.active,
+        &:active,
+        &:hover{
+            color: var(--ergoface-green);
+        }
+        &.active,
+        &:active{
+            font-weight: bold;
+        }
+    }
+
+    section.welcome{
+        background-color: #DBDBDC;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5em 1em;
+
+        article{
+            display: flex;
+            gap: 1em;
+        }
+    }
+
+    main{
+        margin: 1em 0;
+        
+        figure.logo{
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url('../../../images/ergofaceLogo.png');
+            height: 3em;
+            position: relative;
+            width: 20em;
+
+            &::after{
+                content: "Mobiliário de Escritório e projectos, lda";
+                position: absolute;
+                bottom: -0.15em;
+                left: 7.2em;
+                font-size: 0.75em;
+            }
+        }
+    }
+
+    nav{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        padding: 0.1em 0.5em;
+    }
+}

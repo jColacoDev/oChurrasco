@@ -2,6 +2,12 @@ import '../Apps.scss'
 import './App.scss'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Home from './routes/Home'
+import { productsData } from './Products'
+import Gallery from '../../components/Gallery/Gallery'
+import SubProducts from './routes/SubProducts'
+import Products from './routes/Products'
+import Pcategory from './routes/Pcategory'
 
 export const appData = {
     id: "App",
@@ -13,11 +19,7 @@ export const appData = {
             path: "/home",
             type: "",
             title: "Home",
-            element: <>
-                <h1>Home</h1>
-                <Link to="/app/contacts">contacts</Link>
-                <Link to="/app/products">products</Link>
-            </> ,
+            element:  <Home /> ,
             navLinks: []
         },
         {
@@ -27,20 +29,30 @@ export const appData = {
             element: <>
                 <h1>Contacts</h1>
                 <Link to="/app/home">Home</Link>
-                <Link to="/app/products">products</Link>
+                <Link to="/app/produtos">products</Link>
             </> ,            
             navLinks: []
         },
         {
-            path: "/products",
+            path: "/produtos",
             type: "",
-            title: "Products",
-            element: <>
-                <h1>Products</h1>
-                <Link to="/app/home">Home</Link>
-                <Link to="/app/contacts">Contacts</Link>
-            </> ,            
+            title: "Produtos",
+            element: <Products /> ,            
             navLinks: []
-        }
+        },
+        {
+            path: "/produtos/*",
+            type: "",
+            title: "Produtos",
+            element: <Pcategory /> ,            
+            navLinks: []
+        },
+        // {
+        //     path: "/produtos/:category/:final_category",
+        //     type: "",
+        //     title: "Subprodutos",
+        //     element: <SubProducts /> ,            
+        //     navLinks: []
+        // }
     ]
 }
