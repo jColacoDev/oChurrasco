@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { productsData } from '../../Apps/app/Products'
 import { removeAccents } from '../../utils/utils'
+import Searchbar from '../Searchbar/Searchbar'
 
 export default function Header() {
     const [category, setCategory] = useState([]);
@@ -19,19 +20,11 @@ export default function Header() {
 
   return (
     <header className='Header'>
-        <section className='welcome'>
-            <p>Bem-vindo à <strong>Ergoface</strong></p>
-            <article>
-                <a href = "mailto:geral@ergoface-lda.com?subject = webMail&body = Message"><figure className='email'/>geral@ergoface-lda.com
-                </a>
-                <a href="tel:+351217540421"><figure className='phone'/>21 754 04 21</a>
-                <a href="tel:+351919224090"><figure className='mobile'/>91 922 40 90</a>
-            </article>
-        </section>
         <main>
-            <Link to="/app/home">
+            <Link to="/app">
                 <figure className='logo'></figure>
             </Link>
+            <Searchbar />
         </main>
         <hr />
         <nav>

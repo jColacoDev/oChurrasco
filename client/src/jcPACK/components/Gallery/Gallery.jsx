@@ -10,10 +10,12 @@ export default function Gallery({url = "", data}) {
   return (
     <nav className='Gallery'>
         {data.map((item, i)=>
-            <Link key={i} to={`${url !== "" ? url : window.location.pathname}/${removeAccents(item.label.replace(/\s+/g, '-').toLowerCase())}`}>
-                <figure style={{backgroundImage:`url(${item.thumbnail})`}}
-                ></figure>
-                <p>{item.label}</p>
+            <Link key={i} to={`${url !== "" ? url : window.location.pathname}/${removeAccents(item.ref.replace(/\s+/g, '-').toLowerCase())}`}>
+              <div>
+                  <figure style={{backgroundImage:`url(${item.image})`}}
+                  ></figure>
+                  <span>{item.label}</span>
+              </div>
             </Link>
         )}
     </nav>

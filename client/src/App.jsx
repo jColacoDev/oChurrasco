@@ -84,21 +84,28 @@ const App = () => {
       <ToastContainer />
       <ScrollToTop />
       <span ref={topRef} id="top" />
-      
-      <Header />
 
+      <section className='welcome'>
+            <p>Bem-vindo à <strong>Ergoface</strong></p>
+            <article>
+                <a href="tel:+351217540421"><figure className='phone'/>21 754 04 21</a>
+                <a href="tel:+351919224090"><figure className='mobile'/>91 922 40 90</a>
+                <a href = "mailto:geral@ergoface-lda.com?subject = webMail&body = Message"><figure className='email'/>geral@ergoface-lda.com
+                </a>
+            </article>
+        </section>
+      <Header />
       <div id="appContainer" ref={topAppRef}>
-        <main className='appRoutes'>
-          <Routes>
-            {AppsData.map((appData)=>routerSetup(appData))}
-            <Route path='*' 
-              element={<LoadingToRedirect 
-                path={`${AppsData[0].path}`} />} 
-                />
-          </Routes>
-        </main>
-      </div>
-      
+          <main className='appRoutes'>
+            <Routes>
+              {AppsData.map((appData)=>routerSetup(appData))}
+              <Route path='*' 
+                element={<LoadingToRedirect 
+                  path={`${AppsData[0].path}`} />} 
+                  />
+            </Routes>
+          </main>
+        </div>
       <QualityBadges />
       <Footer />
   </ApolloProvider>

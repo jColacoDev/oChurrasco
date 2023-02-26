@@ -1,0 +1,47 @@
+.ContactsSection{
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 26em;
+
+    h3{
+        display: inline-flex;
+        span{
+            word-spacing: -2px;
+            font-size: .8em;
+        }
+    }
+
+    figure{
+        width: 2em;
+        height: 2em;
+    }
+    a,span{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: .5em;
+    }
+    a{
+        padding: 0;
+    }
+    p{
+        margin-bottom: 1em;
+        margin-top: .5em;
+        line-height: 1.3;
+    }
+    a{
+        font-size: 1.1em;
+        line-height: 1.3;
+        padding: .5em 0;
+        width: 100%;
+        text-align: center;
+
+        &:hover,
+        &:hover figcaption{
+            color: var(--ergoface-green);
+        }
+    }
+}

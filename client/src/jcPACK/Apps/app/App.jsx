@@ -3,11 +3,12 @@ import './App.scss'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Home from './routes/Home'
-import { productsData } from './Products'
-import Gallery from '../../components/Gallery/Gallery'
-import SubProducts from './routes/SubProducts'
-import Products from './routes/Products'
-import Pcategory from './routes/Pcategory'
+import Products from './routes/ProductPage'
+import ProductsPage from './routes/ProductsPage'
+import Contacts from './routes/Contacts'
+import AboutUs from './routes/AboutUs'
+import Faq from './routes/Faq'
+import ProductPage from './routes/ProductPage'
 
 export const appData = {
     id: "App",
@@ -23,36 +24,46 @@ export const appData = {
             navLinks: []
         },
         {
-            path: "/contacts",
+            path: "/contactos",
             type: "",
-            title: "Contacts",
-            element: <>
-                <h1>Contacts</h1>
-                <Link to="/app/home">Home</Link>
-                <Link to="/app/produtos">products</Link>
-            </> ,            
+            title: "Contactos",
+            element: <Contacts /> ,            
             navLinks: []
         },
         {
             path: "/produtos",
             type: "",
             title: "Produtos",
-            element: <Products /> ,            
+            element: <ProductsPage /> ,            
             navLinks: []
         },
         {
             path: "/produtos/*",
             type: "",
             title: "Produtos",
-            element: <Pcategory /> ,            
+            element: <ProductsPage /> ,            
             navLinks: []
         },
-        // {
-        //     path: "/produtos/:category/:final_category",
-        //     type: "",
-        //     title: "Subprodutos",
-        //     element: <SubProducts /> ,            
-        //     navLinks: []
-        // }
+        {
+            path: "/sobre-nos/*",
+            type: "",
+            title: "Sobre nós",
+            element: <AboutUs /> ,            
+            navLinks: []
+        },
+        {
+            path: "/faq/*",
+            type: "",
+            title: "Perguntas frequentes",
+            element: <Faq /> ,            
+            navLinks: []
+        },
+        {
+            path: "/produto/*",
+            type: "",
+            title: "Produto",
+            element: <ProductPage /> ,            
+            navLinks: []
+        }
     ]
 }

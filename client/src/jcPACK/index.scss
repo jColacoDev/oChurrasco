@@ -7,10 +7,12 @@ html {
     // scroll-padding-top: var(--topNav-height);
 }
 
+*{
+    font-family: 'Product Sans', sans-serif;
+}
 #root{
     min-height: 100vh;
     width: 100vw;
-    overflow: hidden;
 }
 
 figure{
@@ -75,4 +77,41 @@ main.appRoutes{
 
 .activePagination {
     background-color: green;
+}
+
+#appContainer{
+    h3{
+        width: 100%;
+        text-align: left;
+        margin: 1em;
+        font-size: 1.4em;  
+    }
+}
+
+section.welcome{
+    background-color: #DBDBDC;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 1em;
+
+    article{
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        a{
+            display: flex;
+            align-items: center;
+            gap: .3em;
+
+            figure{
+                width: 2em;
+                height: 2em;
+            }
+        }
+    }
 }

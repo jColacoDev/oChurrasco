@@ -4,6 +4,14 @@ export function validateEmail(mail){
     else 
         return (false)
 }
+export function validatePhone(phone){
+    const pattern = /^(9[1236]\d{7}|2\d{8})$/;
+
+    if (phone.match(pattern))
+        return (true)
+    else 
+        return (false)
+}
 
 export function returnInitials(name){
     if(!name || name === "") return "NN"
@@ -32,5 +40,11 @@ String.prototype.capitalize = function(){
 };
 
 export function removeAccents(str) {
+    if(!str) return "";
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+export function stringToUrl(str) {
+    if(!str) return "";
+    return removeAccents(str.replace(/\s+/g, '-').toLowerCase())
 }

@@ -4,10 +4,11 @@ import {NodeGlobalsPolyfillPlugin} from '@esbuild-plugins/node-globals-polyfill'
 import {NodeModulesPolyfillPlugin} from '@esbuild-plugins/node-modules-polyfill'
 // You don't need to add this to deps, it's included by @esbuild-plugins/node-modules-polyfill
 import rollupNodePolyFill from 'rollup-plugin-node-polyfills'
+import {viteCommonjs, esbuildCommonjs} from '@originjs/vite-plugin-commonjs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [viteCommonjs(), react()],
   resolve: {
     alias: {
         // This Rollup aliases are extracted from @esbuild-plugins/node-modules-polyfill,
@@ -57,6 +58,7 @@ optimizeDeps: {
         },
         // Enable esbuild polyfill plugins
         plugins: [
+            esbuildCommonjs(['react-s3']),
             NodeGlobalsPolyfillPlugin({
                 process: true,
                 buffer: true
@@ -66,6 +68,7 @@ optimizeDeps: {
     }
 },
   build: {
+    outDir: 'build',
     sourcemap: true,
     rollupOptions: {
         plugins: [

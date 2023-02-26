@@ -2,13 +2,27 @@ import React from 'react'
 import Gallery from '../../../components/Gallery/Gallery'
 import { productsData } from '../Products'
 import ContactForm from '../../../components/ContactForm/ContactForm'
+import GalleryCaroussel from '../../../components/GalleryCaroussel/GalleryCaroussel'
 
 export default function Home() {
   return (
     <div className='Home'>
-        <h2>Produtos</h2>
+        <span className='heading'>
+            <h3>Produtos</h3>
+            <hr />
+        </span>
         <Gallery url="/app/produtos" data={productsData.categories} />
-        <h2>Contactos</h2>
+        
+        <span className='heading'>
+            <h3>Destaques</h3>
+            <hr />
+        </span>
+        <GalleryCaroussel url="/app/produtos" data={productsData.categories} />
+        
+        <span className='heading'>
+            <h3>Contactos</h3>
+            <hr />
+        </span>
         <ContactForm />   
     </div>
   )

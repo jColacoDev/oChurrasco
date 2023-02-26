@@ -1,198 +1,176 @@
-import thumbnail_recepccao from '../../../images/thumbnails/mobiliario/recepccao.jpg'
-import thumbnail_callcenter from '../../../images/thumbnails/mobiliario/callcenter.jpg'
-import thumbnail_escolar from '../../../images/thumbnails/mobiliario/escolar.jpg'
-import thumbnail_gabinete from '../../../images/thumbnails/mobiliario/gabinete.jpg'
-import thumbnail_hotelaria from '../../../images/thumbnails/mobiliario/hotelaria.jpg'
-import thumbnail_openspace from '../../../images/thumbnails/mobiliario/openspace.jpg'
+import { products_data } from '../../../products_data/Products_data'
 
-import thumbnail_auditorio from '../../../images/thumbnails/cadeiras/auditorio.jpg'
-import thumbnail_bancadas from '../../../images/thumbnails/cadeiras/bancadas.jpg'
-import thumbnail_direccao from '../../../images/thumbnails/cadeiras/direccao.jpg'
-import thumbnail_fixas from '../../../images/thumbnails/cadeiras/fixas.jpg'
-import thumbnail_operativas from '../../../images/thumbnails/cadeiras/operativas.jpg'
-
-import thumbnail_armarios from '../../../images/thumbnails/armarios.jpg'
-import thumbnail_biombos from '../../../images/thumbnails/biombos.jpg'
-import thumbnail_complementos from '../../../images/thumbnails/complementos.jpg'
-import thumbnail_estantes from '../../../images/thumbnails/estantes.jpg'
-import thumbnail_mesas_de_reuniao from '../../../images/thumbnails/mesas_de_reuniao.jpg'
-import thumbnail_sofas from '../../../images/thumbnails/sofas.jpg'
-
-
+const {
+    armarios,
+    mobiliario,
+    mesas,
+    maples,
+    estantes,
+    complementos,
+    biombos,
+    cadeiras
+} = products_data;
 
 export const productsData = {
+    ref: "produtos",
     label: "Produtos",
-    thumbnail: "",
+    image: "",
     products: [],
     catalogs: [],
     categories:[
         {
+            ref: "mobiliario",
             label: "Mobiliário",
-            thumbnail: thumbnail_recepccao,
-            products: [],
-            catalogs: [],
+            image: mobiliario?.products[0]?.image,
+            products: mobiliario.products,
+            catalogs: mobiliario.catalogs,
             categories: [
                 {
-                    label: "Recepcção",
-                    thumbnail: thumbnail_recepccao,
-                    products: [
-                        {
-                            label: "Mob1",
-                            url: ""
-                        },
-                        {
-                            label: "Mob2",
-                            url: ""
-                        },
-                        {
-                            label: "Mob3",
-                            url: ""
-                        },
-                        {
-                            label: "Mob4",
-                            url: ""
-                        },
-                        {
-                            label: "Mob5",
-                            url: ""
-                        },
-                    ],
-                    catalogs: [],
+                    ref: "recepcao",
+                    label: "Recepção",
+                    image: mobiliario.recepcao?.products[0]?.image,
+                    products: mobiliario.recepcao.products,
+                    catalogs: mobiliario.recepcao.catalogs,
                     categories: []
                 },
                 {
+                    ref: "gabinetes",
                     label: "Gabinetes",
-                    thumbnail: thumbnail_gabinete,
-                    products: [],
-                    catalogs: [],
+                    image: mobiliario.gabinete?.products[0]?.image,
+                    products: mobiliario.gabinete.products,
+                    catalogs: mobiliario.gabinete.catalogs,
                     categories: []
                 },
                 {
+                    ref: "openspace",
                     label: "Openspace",
-                    thumbnail: thumbnail_openspace,
-                    products: [],
-                    catalogs: [],
+                    image: mobiliario.openspace?.products[0]?.image,
+                    products: mobiliario.openspace.products,
+                    catalogs: mobiliario.openspace.catalogs,
                     categories: []
                 },
                 {
+                    ref: "escolar",
                     label: "Escolar",
-                    thumbnail: thumbnail_escolar,
-                    products: [],
-                    catalogs: [],
+                    image: mobiliario.escolar?.products[0]?.image,
+                    products: mobiliario.escolar.products,
+                    catalogs: mobiliario.escolar.catalogs,
                     categories: []
                 },
                 {
+                    ref: "call-center",
                     label: "Call-center",
-                    thumbnail: thumbnail_callcenter,
-                    products: [],
-                    catalogs: [],
+                    image: mobiliario.callcenter?.products[0]?.image,
+                    products: mobiliario.callcenter.products,
+                    catalogs: mobiliario.callcenter.catalogs,
                     categories: []
                 },
                 {
+                    ref: "hotelaria",
                     label: "Hotelaria",
-                    thumbnail: thumbnail_hotelaria,
-                    products: [],
-                    catalogs: [],
+                    image: mobiliario.hotelaria?.products[0]?.image,
+                    products: mobiliario.hotelaria.products,
+                    catalogs: mobiliario.hotelaria.catalogs,
                     categories: []
                 },
             ]
         },
         {
+            ref: "mesas-de-reuniao",
             label: "Mesas de Reunião",
-            thumbnail: thumbnail_mesas_de_reuniao,
-            products: [],
-            catalogs: [],
-            categories: [
-
-            ]
+            image: mesas?.products[0]?.image,
+            products: mesas.products,
+            catalogs: mesas.catalogs,
+            categories: []
         },
         {
+            ref: "cadeiras",
             label: "Cadeiras",
-            thumbnail: thumbnail_direccao,
-            products: [],
-            catalogs: [],
+            image: cadeiras?.products[0]?.image,
+            products: cadeiras.products,
+            catalogs: cadeiras.catalogs,
             categories: [
                 {
+                    ref: "direccao",
                     label: "Direcção",
-                    thumbnail: thumbnail_direccao,
-                    products: [],
-                    catalogs: [],
+                    image: cadeiras.direccao?.products[0]?.image,
+                    products: cadeiras.direccao.products,
+                    catalogs: cadeiras.direccao.catalogs,
                     categories: []
                 },
                 {
+                    ref: "operativas",
                     label: "Operativas",
-                    thumbnail: thumbnail_operativas,
-                    products: [],
-                    catalogs: [],
+                    image: cadeiras.operativa?.products[0]?.image,
+                    products: cadeiras.operativa.products,
+                    catalogs: cadeiras.operativa.catalogs,
                     categories: []
                 },
                 {
+                    ref: "fixas",
                     label: "Fixas",
-                    thumbnail: thumbnail_fixas,
-                    products: [],
-                    catalogs: [],
+                    image: cadeiras.fixa?.products[0]?.image,
+                    products: cadeiras.fixa.products,
+                    catalogs: cadeiras.fixa.catalogs,
                     categories: []
                 },
                 {
+                    ref: "bancadas",
                     label: "Bancadas",
-                    thumbnail: thumbnail_bancadas,
-                    products: [],
-                    catalogs: [],
+                    image: cadeiras.bancada?.products[0]?.image,
+                    products: cadeiras.bancada.products,
+                    catalogs: cadeiras.bancada.catalogs,
                     categories: []
                 },
                 {
+                    ref: "auditorio",
                     label: "Auditório",
-                    thumbnail: thumbnail_auditorio,
-                    products: [],
-                    catalogs: [],
+                    image: cadeiras.auditorio?.products[0]?.image,
+                    products: cadeiras.auditorio.products,
+                    catalogs: cadeiras.auditorio.catalogs,
                     categories: []
                 },
             ]
         },
         {
+            ref: "maples-e-sofas",
             label: "Maples e sofás",
-            thumbnail: thumbnail_sofas,
-            products: [],
-            catalogs: [],
-            categories: [
-
-            ]
+            image: maples?.products[0]?.image,
+            products: maples.products,
+            catalogs: maples.catalogs,
+            categories: []
         },
         {
+            ref: "armarios-e-cacifos",
             label: "Armários e cacifos",
-            thumbnail: thumbnail_armarios,
-            products: [],
-            catalogs: [],
-            categories: [
-
-            ]
+            image: armarios?.products[0]?.image,
+            products: armarios.products,
+            catalogs: armarios.catalogs,
+            categories: []
         },
         {
+            ref: "estantes",
             label: "Estantes",
-            thumbnail: thumbnail_estantes,
-            products: [],
-            catalogs: [],
-            categories: [
-
-            ]
+            image: estantes?.products[0]?.image,
+            products: estantes.products,
+            catalogs: estantes.catalogs,
+            categories: []
         },
         {
+            ref: "biombos-e-divisorias",
             label: "Biombos e divisórias",
-            thumbnail: thumbnail_biombos,
-            products: [],
-            catalogs: [],
-            categories: [
-
-            ]
+            image: biombos?.products[0]?.image,
+            products: biombos.products,
+            catalogs: biombos.catalogs,
+            categories: []
         },
         {
+            ref: "complementos",
             label: "Complementos",
-            thumbnail: thumbnail_complementos,
-            products: [],
-            catalogs: [],
-            categories: [
-
-            ]
+            image: complementos?.products[0]?.image,
+            products: complementos.products,
+            catalogs: complementos.catalogs,
+            categories: []
         },
     ]
 }

@@ -1,0 +1,18 @@
+.PdfView{
+    width: 15em;
+
+    .react-pdf__Page{
+        min-width: auto !important;
+        min-height: auto !important;
+
+        .react-pdf__Page__canvas{
+            width: 100% !important;
+            height: auto !important;
+        }
+    }
+
+    .react-pdf__Page__textContent,
+    .react-pdf__Page__annotations{
+        display: none;
+    }
+}

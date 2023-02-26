@@ -4,7 +4,15 @@ header.Header{
     background-color: white;
     gap: 0.5em;
 
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 999;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
     a{
+        text-underline-offset: .3em;
+
         &.active,
         &:active,
         &:hover{
@@ -13,40 +21,19 @@ header.Header{
         &.active,
         &:active{
             font-weight: bold;
-        }
-    }
-
-    section.welcome{
-        background-color: #DBDBDC;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5em 1em;
-
-        article{
-            display: flex;
-            gap: 1em;
-            flex-wrap: wrap;
-            justify-content: center;
-
-            a{
-                display: flex;
-                align-items: center;
-                gap: .3em;
-
-                figure{
-                    width: 2em;
-                    height: 2em;
-                }
-            }
+            text-decoration: underline;
         }
     }
 
     main{
-        margin: 1em 0;
-        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1em;
+        flex-wrap: wrap;
+        gap: 1em;
+        padding-right: 5em;
+
         figure.logo{
             background-size: contain;
             background-repeat: no-repeat;
