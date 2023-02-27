@@ -1,4 +1,4 @@
-import { products_data } from '../../../products_data/Products_data'
+import { products_data } from './Products_data'
 
 const {
     armarios,

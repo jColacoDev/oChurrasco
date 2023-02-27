@@ -86,10 +86,12 @@ const App = () => {
       <span ref={topRef} id="top" />
 
       <section className='welcome'>
-            <p>Bem-vindo à <strong>Ergoface</strong></p>
+            <article>
+                <p>Bem-vindo à <strong>Ergoface</strong></p>
+                <a href="tel:+351919224090"><figure className='mobile'/>91 922 40 90</a>
+            </article>
             <article>
                 <a href="tel:+351217540421"><figure className='phone'/>21 754 04 21</a>
-                <a href="tel:+351919224090"><figure className='mobile'/>91 922 40 90</a>
                 <a href = "mailto:geral@ergoface-lda.com?subject = webMail&body = Message"><figure className='email'/>geral@ergoface-lda.com
                 </a>
             </article>

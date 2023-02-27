@@ -7,7 +7,12 @@
     max-width: 26em;
 
     h3{
-        display: inline-flex;
+        display: flex;
+        gap: .5em;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        justify-content: center;
+
         span{
             word-spacing: -2px;
             font-size: .8em;

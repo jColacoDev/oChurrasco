@@ -88,7 +88,7 @@ export default function ProductsPage() {
                 <section className='catalogs'>
                     {currentSelection.catalogs.map((catalog, i)=>
                     <article key={i}>
-                        <PdfView file={catalog.catalog} linkPdf={true} />
+                        {/* <PdfView file={catalog.catalog} linkPdf={true} /> */}
                         <span>{catalog.label}</span>
                     </article>
                     )}

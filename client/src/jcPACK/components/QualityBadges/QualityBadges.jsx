@@ -1,12 +1,12 @@
 import './QualityBadges.scss'
 import React from 'react'
 
-import selo_entrega from '../../../images/ergoSelos/entrega.png'
-import selo_garantia from '../../../images/ergoSelos/garantia.png'
-import selo_montagem from '../../../images/ergoSelos/montagem.png'
-import selo_orcamento from '../../../images/ergoSelos/orcamento.png'
-import selo_preco from '../../../images/ergoSelos/preco.png'
-import selo_suporte from '../../../images/ergoSelos/suporte.png'
+import selo_entrega from './../../../assets/images/ergoSelos/entrega.png'
+import selo_garantia from './../../../assets/images/ergoSelos/garantia.png'
+import selo_montagem from './../../../assets/images/ergoSelos/montagem.png'
+import selo_orcamento from './../../../assets/images/ergoSelos/orcamento.png'
+import selo_preco from './../../../assets/images/ergoSelos/preco.png'
+import selo_suporte from './../../../assets/images/ergoSelos/suporte.png'
 
 export default function QualityBadges() {
   return (

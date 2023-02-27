@@ -19,7 +19,11 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            filter: hue-rotate(110deg);
+            filter: grayscale(1);
+
+            &:hover{
+                filter: hue-rotate(110deg);
+            }
         }
 
         p{

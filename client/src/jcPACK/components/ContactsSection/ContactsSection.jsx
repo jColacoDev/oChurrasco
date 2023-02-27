@@ -4,7 +4,7 @@ import React from 'react'
 export default function ContactsSection() {
   return (
     <div className='ContactsSection'>
-        <h3>Ergoface -<span>Mobiliário de Escritório, Lda.</span></h3>
+        <h3><span>Ergoface-</span><span>Mobiliário de Escritório, Lda.</span></h3>
         <section className='links'>
             <a href="tel:+351217540421"><figure className='phone'/>Tel: 21 754 04 21</a>
             <a href="tel:+351919224090"><figure className='mobile'/>Tlm: 91 922 40 90</a>

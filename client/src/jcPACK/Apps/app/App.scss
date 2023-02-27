@@ -110,7 +110,7 @@ hr{
     }
 
     figure{
-        background-image: url('./../../../images/officeProPics/9.jpg');
+        background-image: url('./../../../assets/images/officeProPics/9.jpg');
         width: 100%;
         min-height: 50vh;
         background-position: bottom 168px right 0px;
@@ -135,7 +135,7 @@ hr{
         flex-wrap: wrap;
 
         figure{
-            background-image: url('./../../../images/officeProPics/1.jpg');
+            background-image: url('./../../../assets/images//officeProPics/1.jpg');
             width: 100%;
             min-height: 50vh;
         }
@@ -177,7 +177,7 @@ hr{
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        padding: 3em;
+        padding: 3em 0;
         padding-top: 1.5em;
         gap: 3em;
         justify-content: space-around;

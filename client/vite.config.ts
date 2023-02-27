@@ -68,7 +68,6 @@ optimizeDeps: {
     }
 },
   build: {
-    outDir: 'build',
     sourcemap: true,
     rollupOptions: {
         plugins: [
