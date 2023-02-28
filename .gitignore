@@ -1,6 +1,6 @@
 # secret
-.env
-.env.production
+# .env
+# .env.production
 # config
 firebaseConfig.js
 fbServiceAccountKey.json
