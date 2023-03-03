@@ -49,10 +49,10 @@ export default function Faq() {
 </details>
 <details>
     <summary>
-    A Ergoface mobiliário de escritório, lda tem lojas físicas onde os clientes podem visitar?
+    A Ergoface mobiliário de escritório, lda tem loja física onde os clientes podem visitar?
     </summary>
     <p>
-    Sim, a Ergoface mobiliário de escritório, lda tem lojas físicas onde os clientes podem visitar, experimentar os produtos e receber aconselhamento especializado.
+    Sim, a Ergoface mobiliário de escritório, lda tem loja física onde os clientes podem visitar, experimentar os produtos e receber aconselhamento especializado.
     </p>
 </details>
 <details>
@@ -60,7 +60,7 @@ export default function Faq() {
     Qual é o processo de encomenda na Ergoface mobiliário de escritório, lda?
     </summary>
     <p>
-    O processo de encomenda na Ergoface mobiliário de escritório, lda é simples. Os clientes podem encomendar através do website da empresa, lojas físicas ou através de um representante comercial. Após a encomenda, a Ergoface mobiliário de escritório, lda fará a entrega e, se necessário, a instalação do produto.
+    O processo de encomenda na Ergoface mobiliário de escritório, lda é simples. Os clientes podem encomendar através do website da empresa, loja física ou através de um representante comercial. Após a encomenda, a Ergoface mobiliário de escritório, lda fará a entrega e, se necessário, a instalação do produto.
     </p>
 </details>
             </section>
