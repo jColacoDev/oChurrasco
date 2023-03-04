@@ -52,8 +52,8 @@ const fetch = require('node-fetch');
     const pubsub = new PubSub();
 
     const graphqlPath = '/graphql';
-    const typeDefs = mergeTypeDefs(loadFilesSync(path.join(__dirname, './typeDefs')));
-    const resolvers = mergeResolvers(loadFilesSync(path.join(__dirname, './resolvers')));
+    const typeDefs = mergeTypeDefs(loadFilesSync(path.join(__dirname, './graphql/typeDefs')));
+    const resolvers = mergeResolvers(loadFilesSync(path.join(__dirname, './graphql/resolvers')));
     const schema = makeExecutableSchema({ typeDefs, resolvers });
     const apolloServer = new ApolloServer({
         schema,
@@ -105,7 +105,7 @@ const fetch = require('node-fetch');
             const success = await mongoose.connect(db, {})
             
             console.log(`DB Connected:`)
-            if(cloud) console.log(` cloud graphql-react mongoDB at jColacoDev db`)
+            if(cloud) console.log(` cloud graphql-react mongoDB at Ergoface db`)
             else console.log(` local graphql-react at ${process.env.DATABASE}`)
             
         } catch (error){

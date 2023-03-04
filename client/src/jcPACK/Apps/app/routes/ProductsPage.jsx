@@ -89,7 +89,9 @@ export default function ProductsPage() {
                     {currentSelection.catalogs.map((catalog, i)=>
                     <article key={i}>
                         {/* <PdfView file={catalog.catalog} linkPdf={true} /> */}
-                        <span>{catalog.label}</span>
+                        <a href={catalog.catalog} target="_blank" rel="noopener noreferrer">
+                            {catalog.label}
+                        </a>
                     </article>
                     )}
                 </section>
