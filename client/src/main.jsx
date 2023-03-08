@@ -9,7 +9,7 @@ import {BrowserRouter} from 'react-router-dom'
 import { AuthProvider } from './jcPACK/context/authContext'
 import { Provider } from "react-redux";
 import store from "./jcPACK/reduxStore/store";
-// import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 import App from './App'
 
@@ -18,11 +18,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter basename="/">
       <AuthProvider>
         <Provider store={store}>
-          {/* <GoogleReCaptchaProvider
+          <GoogleReCaptchaProvider
             reCaptchaKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-          > */}
+          >
               <App />
-          {/* </GoogleReCaptchaProvider> */}
+          </GoogleReCaptchaProvider>
         </Provider>
       </AuthProvider>    
     </BrowserRouter>

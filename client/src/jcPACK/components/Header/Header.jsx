@@ -1,15 +1,37 @@
 import './Header.scss'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { productsData } from '../../Apps/app/Products'
 import { removeAccents } from '../../utils/utils'
 import Searchbar from '../Searchbar/Searchbar'
+import { useDispatch } from "react-redux";
+import { setHeaderHeight } from '../../reduxStore/headerHeightSlice'
 
 export default function Header() {
     const [category, setCategory] = useState([]);
-
+    const [navHeight, setNavHeight] = useState(null);
     const navigate = useNavigate();
+    const navbarRef = useRef(null);
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setHeaderHeight(navHeight));
+    }, [navHeight]);
+
+    useEffect(() => {
+        const onResize = () => {
+            setNavHeight(navbarRef.current.offsetHeight);
+        };
+
+        window.addEventListener('resize', onResize);
+        onResize(); // initialize height
+
+        return () => {
+            window.removeEventListener('resize', onResize);
+        };
+    }, []);
+        
     useEffect(()=>{
         // console.log(navigate.path)
         const category = `${location.pathname.split('/')[3] || ""}`
@@ -17,14 +39,21 @@ export default function Header() {
 
         setCategory(category);
     },[navigate])
+    
 
   return (
-    <header className='Header'>
+    <header ref={navbarRef} className='Header'>
         <main>
             <Link to="/app">
                 <figure className='logo'></figure>
             </Link>
-            <Searchbar />
+            <section className="right">
+                <Searchbar />
+                <Link className='account' to="/app/login">
+                    <figure />
+                </Link>
+            </section>
+
         </main>
         <hr />
         <nav>

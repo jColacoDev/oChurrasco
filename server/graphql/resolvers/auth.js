@@ -22,7 +22,9 @@ const userCreate = async (parent, args, {req}) => {
     const user = await User.findOne({email: currentUser.email});
 
     const {input} = args;
+    console.log("User Create")
     console.log(input)
+    console.log(currentUser)
 
     return user ? user : new User({
         email: currentUser.email,

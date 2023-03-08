@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Gallery from '../../../components/Gallery/Gallery'
 import { productsData } from '../Products'
 import ContactForm from '../../../components/ContactForm/ContactForm'
 import GalleryCaroussel from '../../../components/GalleryCaroussel/GalleryCaroussel'
 
 export default function Home() {
+  const [folders, setFolders] = useState([]);
+  
+  useEffect(()=>{
+  },[])
+
+
   return (
     <div className='Home'>
         <span className='heading'>

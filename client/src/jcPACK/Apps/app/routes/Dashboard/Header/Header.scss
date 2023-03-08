@@ -1,0 +1,41 @@
+@import './../Dashboard1.scss';
+
+.Header{
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+  
+    
+$font-small: 14px;
+$font-medium: 16px;
+$font-large: 24px;
+
+  .headerText {
+    color: var(--app-content-main-color);
+    font-size: $font-large;
+    line-height: 32px;
+    margin: 0;
+  }
+
+  .mode-switch {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: var(--app-content-main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 8px;
+    cursor: pointer;
+    
+    .moon {
+      fill: var(--app-content-main-color);
+    }
+  }
+  
+  .mode-switch.active .moon {
+    fill: none;
+  }
+  
+}

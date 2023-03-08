@@ -30,6 +30,7 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const path = require('path');
 const fetch = require('node-fetch');
+const { gDrive_authorize, gDrive_listFiles, getDriveDirectories } = require('./googleDrive/googleMethods');
 
 (async () => {
     // express app
@@ -105,14 +106,14 @@ const fetch = require('node-fetch');
             const success = await mongoose.connect(db, {})
             
             console.log(`DB Connected:`)
-            if(cloud) console.log(` cloud graphql-react mongoDB at Ergoface db`)
-            else console.log(` local graphql-react at ${process.env.DATABASE}`)
+            if(cloud) console.log(` cloud cluster0 mongoDB at Ergoface db`)
+            else console.log(` local mongoDB at ${process.env.DATABASE}`)
             
         } catch (error){
             console.log('DB connection error',error)
         }
     };
-    startMongoDb(true);
+    startMongoDb(false);
 
     /*******************************************************************/
     // Cloudinary Config
@@ -122,7 +123,13 @@ const fetch = require('node-fetch');
         api_key: process.env.CLOUDINARY_API_KEY,
         api_secret: process.env.CLOUDINARY_API_SECRET
     })
+    /*******************************************************************/
+    // Cloud data service
+    /*******************************************************************/
 
+    const auth = await gDrive_authorize();
+    const directories = await getDriveDirectories(auth, "Ergoface")
+    
     /*******************************************************************/
     // REST endpoints
     /*******************************************************************/

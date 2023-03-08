@@ -1,21 +1,21 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { 
     ApolloClient, 
     InMemoryCache, 
     split,
-    HttpLink
+    HttpLink,
+    ApolloProvider
   } from '@apollo/client';
   import { setContext } from '@apollo/client/link/context';
   import { getMainDefinition } from '@apollo/client/utilities';
   import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
   import { createClient } from 'graphql-ws';
+  import { AuthContext } from '../context/authContext';
+
+export default function ApolloClientProvider({children}) {
+  const {state : contextState} = useContext(AuthContext);
+  const {user : contextUser} = contextState;
   
-export default function ApolloClientComponent() {
-
-
-    const {contextState} = useContext(AuthContext);
-
-    
   const wsLink = new GraphQLWsLink(createClient({
     url: import.meta.env.VITE_GRAPHQL_WS_ENDPOINT,
     options: {
@@ -30,7 +30,7 @@ export default function ApolloClientComponent() {
     return {
       headers: {
         ...headers,
-        authtoken: contextState.user ? contextState.user.token : ''
+        authtoken: contextUser ? contextUser.token : ''
       }
     }
   });
@@ -43,13 +43,26 @@ export default function ApolloClientComponent() {
       definition.operation === 'subscription'
     );
   }, wsLink, httpAuthLink)   
-
+  
   const apolloClient = new ApolloClient({
     link: splitLink,
     cache: new InMemoryCache({
       addTypename: false
-    })
+    }),
+    defaultOptions : {
+      watchQuery: {
+        fetchPolicy: 'cache-and-network',
+        errorPolicy: 'all',
+      },
+      query: {
+        fetchPolicy: 'cache-and-network',
+        errorPolicy: 'all',
+      },
+      mutate: {
+        errorPolicy: 'all',
+      },
+    }
   });
 
-  return apolloClient
+  return <ApolloProvider client={apolloClient}>{children}</ApolloProvider>
 }

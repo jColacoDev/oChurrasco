@@ -30,31 +30,69 @@ header.Header{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1em;
+        padding: 1em 0.5em;
         flex-wrap: wrap;
         gap: 1em;
-        padding-right: 2em;
+        width: 100%;
     
-        @media(min-width: 650px){
-            padding-right: 5em;
+        section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            &.right{
+                gap: 1em;
+                
+            }
         }
-    
-        figure.logo{
-            font-size: .9em;
+        .account{
+            
+            figure{
+                background-image: url('../../../assets/images/icons/account.png');
+                height: 2em;
+                width: 2em;
+                border-radius: 50%;
+                position: relative;
+                margin: 0 1em;
+        
+                &:hover{
+                    filter: invert(1);
+                    background-color: white;
+                    
+                    &::after{
+                        filter: invert(1);
+                    }
+                }
+        
+                &::after{
+                    position: absolute;
+                    content: "myOffice";
+                    top: 100%;
+                    left: -50%;
+                    width: 100%;
+                    height: 0.5em;
+                }
+            }
+        }
+        figure{
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            background-image: url('../../../assets/images/ergofaceLogo.png');
-            height: 3em;
             position: relative;
-            width: 20em;
 
-            &::after{
-                content: "Mobiliário de Escritório e projectos, lda";
-                position: absolute;
-                bottom: -0.15em;
-                left: 7.2em;
-                font-size: 0.75em;
+            &.logo{
+                font-size: .8em;
+                background-image: url('../../../assets/images/ergofaceLogo.png');
+                height: 4em;
+                width: 22em;
+
+                &::after{
+                    content: "Mobiliário de Escritório e projectos, lda";
+                    position: absolute;
+                    bottom: 0em;
+                    left: 6em;
+                    font-size: .85em;
+                }
             }
         }
     }

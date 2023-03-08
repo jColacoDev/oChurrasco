@@ -1,7 +1,7 @@
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require("../config/fbServiceAccountKey.json");
+var serviceAccount = require("../firebase/fbServiceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -11,8 +11,8 @@ admin.initializeApp({
 exports.authCheck = async (req) => {
     try{
         const currentUser = await admin.auth().verifyIdToken(req.headers.authtoken);
-        // console.log('Current User:', currentUser)
-        // console.log('Current Token:', req.headers.authtoken)
+        console.log('Current User:', currentUser)
+        console.log('Current Token:', req.headers.authtoken)
         
         return currentUser;
     } catch(error){

@@ -9,6 +9,8 @@ import Contacts from './routes/Contacts'
 import AboutUs from './routes/AboutUs'
 import Faq from './routes/Faq'
 import ProductPage from './routes/ProductPage'
+import Login from './routes/Login'
+import Dashboard from './routes/Dashboard/Dashboard'
 
 export const appData = {
     id: "App",
@@ -63,6 +65,20 @@ export const appData = {
             type: "",
             title: "Produto",
             element: <ProductPage /> ,            
+            navLinks: []
+        },
+        {
+            path: "/dashboard",
+            type: "private",
+            element: <Dashboard />,
+            title: "Dashboard",
+            navLinks: []
+        },
+        {
+            path: "/login",
+            type: "public",
+            element: <Login />,
+            title: "Login",
             navLinks: []
         }
     ]

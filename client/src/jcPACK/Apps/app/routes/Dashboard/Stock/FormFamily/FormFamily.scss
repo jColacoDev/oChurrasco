@@ -1,0 +1,20 @@
+.FormFamily{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    padding: 1em;
+
+    > section{
+        padding: .5em;
+
+        background-color: var(--app-bg);
+        *{
+            border: none;
+            background-color: transparent;
+        }
+    }
+    button{
+        margin-top: 1em;
+        background-color: transparent;
+    }
+}

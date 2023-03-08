@@ -1,0 +1,47 @@
+.Stock{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    .submitForm{
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+    }
+    section{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 2em;
+
+        > * {
+            background-color: var(--app-content-secondary-color);
+            border: 1px solid var(--app-content-secondary-color);
+            color: var(--app-content-main-color);
+
+        }
+        
+        button{
+            padding: .5em 2em;
+            border: 1px solid var(--ergoface-green);
+ 
+            &:hover{
+                background-color: var(--sidebar-hover-link);
+            }
+        }
+        
+        article{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 10em;
+            height: 10em;
+            
+            &:hover{
+                background-color: var(--sidebar-hover-link);
+            }
+        }
+    }
+}

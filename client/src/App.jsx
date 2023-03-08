@@ -3,13 +3,11 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Apollo & gql
-import ApolloClientComponent from './jcPACK/graphql/ApolloClientComponent';
-import { ApolloProvider } from '@apollo/client';
+import ApolloClientProvider from './jcPACK/graphql/ApolloClientProvider';
 
 import Theme from './jcPACK/theme';
 import ScrollToTop from './jcPACK/hooks/ScrollToTop';
 import { ToastContainer } from 'react-toastify';
-import { AuthContext } from './jcPACK/context/authContext'
 import { routerSetup } from './jcPACK/router/router';
 import { setAppPath } from './jcPACK/reduxStore/appSlice';
 import { appData } from './jcPACK/Apps/app/App';
@@ -17,7 +15,6 @@ import { appData } from './jcPACK/Apps/app/App';
 import Footer from './jcPACK/components/footer/footer';
 import LoadingToRedirect from './jcPACK/components/LoadingToRedirect';
 import Header from './jcPACK/components/Header/Header';
-
 import QualityBadges from './jcPACK/components/QualityBadges/QualityBadges';
 
 export const AppsData = [
@@ -27,7 +24,6 @@ export const AppsData = [
 const App = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
-  const {contextState} = useContext(AuthContext);
   const stateTheme = useSelector((state) => state.theme);
 
   const [appData, setAppData] = useState(AppsData[0]);
@@ -79,7 +75,7 @@ const App = () => {
   }
 
   return (<>
-     <ApolloProvider client={ApolloClientComponent}>
+     <ApolloClientProvider>
       <Theme />
       <ToastContainer />
       <ScrollToTop />
@@ -110,7 +106,7 @@ const App = () => {
         </div>
       <QualityBadges />
       <Footer />
-  </ApolloProvider>
+  </ApolloClientProvider>
   </>
   );
 };

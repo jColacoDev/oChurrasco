@@ -21,10 +21,6 @@ const types = `
         username: String!
         email: String!
     }
-    type Image {
-        url: String
-        public_id: String
-    }
     type User{
         _id: ID!,
         username: String
@@ -37,10 +33,6 @@ const types = `
     }
 `
 const inputs = `
-    input ImageInput{
-        url: String
-        public_id: String
-    }
     input UserUpdateInput {
         username: String
         name: String

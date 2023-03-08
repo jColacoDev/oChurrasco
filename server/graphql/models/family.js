@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema;
 
-const productSchema = new mongoose.Schema({
+const familySchema = new mongoose.Schema({
     postedBy: {
         type: ObjectId,
-        ref: "User",
+        ref: "User"
     },
-    ref: {
+    family: {
         type: String,
+        required: 'Family is required',
         text: true
     },
     label: {
@@ -15,15 +16,11 @@ const productSchema = new mongoose.Schema({
         required: 'Label is required',
         text: true
     },
-    description: {
-        type: String,
-        text: true,
-        default: ""
-    },
-    images: {
-        type: [ObjectId],
+    image: {
+        type: ObjectId,
         ref: 'Image'
    }
+
 }, {timestamps: true});
 
-module.exports = mongoose.model('Product', productSchema)
+module.exports = mongoose.model('Family', familySchema)

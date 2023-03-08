@@ -1,8 +1,27 @@
-export const POST_DATA =`
+export const FAMILY_DATA =`
     _id
-    content
+    label
+    family
+    image {
+        url
+        label
+        description
+        public_id
+    }
+    postedBy {
+        _id
+        username
+    }
+`
+export const ARTICLE_DATA =`
+    _id
+    ref
+    label
+    description
     images {
         url
+        label
+        description
         public_id
     }
     postedBy {

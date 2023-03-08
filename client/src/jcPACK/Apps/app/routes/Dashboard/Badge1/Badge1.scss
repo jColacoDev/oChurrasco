@@ -1,0 +1,14 @@
+.Badge1{
+    .profilePic{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1em;
+        height: 1em;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        border: 1px solid var(--ergoface-green);
+        box-shadow: #aea03380 0px 0px 35px;
+    }
+}
