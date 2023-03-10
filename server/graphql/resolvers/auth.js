@@ -28,8 +28,8 @@ const userCreate = async (parent, args, {req}) => {
 
     return user ? user : new User({
         email: currentUser.email,
-        active: false,
         // email: input?.email || "",
+        active: false,
         username: input?.username || shortid.generate(),
         name: input?.name || currentUser.email.slice(0,currentUser.email.indexOf('@')),
         password: input?.password || "",

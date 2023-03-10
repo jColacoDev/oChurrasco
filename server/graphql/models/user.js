@@ -25,6 +25,8 @@ const userSchema = new mongoose.Schema({
         default: [
             {
                 url: 'https://via.placeholder.com/200?text=Profile',
+                label: "placeholder",
+                description: "this placeholder is a default",
                 public_id: Date.now()
             }
         ]

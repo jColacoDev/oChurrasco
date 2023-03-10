@@ -19,7 +19,7 @@ const singleFamily = async (parent, args, {req}) => {
     return await Family.findById({
         _id: args.familyId
     })
-    .populate('postedBy', '_id label')
+    .populate('postedBy', '_id username')
     .exec();
 }
 const totalFamilies = async (parent, args, {req}) =>
@@ -31,6 +31,50 @@ const allFamilies = async (parent, args, {req}) => {
         .sort({createdAt: -1})
         .exec();
 }
+const familiesFromFamily = async (parent, args, {req}) => {
+    console.log(args.familyId)
+    console.log(await Family.find({
+        family: args.familyId
+    })
+        .populate('postedBy', 'label _id')
+        .sort({createdAt: -1})
+        .exec())
+
+    return await Family.find({
+        family: args.familyId
+    })
+        .populate('postedBy', 'label _id')
+        .sort({createdAt: -1})
+        .exec();
+}
+const parentsFromFamily = async (parent, args, {req}) => {
+    let parents = [];
+
+    const family = await Family.find({
+        _id: args.familyId
+    })
+    .populate('postedBy', 'label _id')
+    .sort({createdAt: -1})
+    .exec();
+    
+    parents = [...family];
+
+    let familyFamily = family[0].family;
+
+    while(familyFamily && familyFamily !=="root"){
+        const parentFromFamily = await Family.find({
+            _id: familyFamily
+        })
+        .populate('postedBy', 'label _id')
+        .sort({createdAt: -1})
+        .exec();
+        parents = [...parentFromFamily, ...parents]
+
+        familyFamily = parentFromFamily[0].family;
+    }
+
+    return parents;
+}
 const familiesByUser = async (parent, args, {req}) => {
     const currentUser = await authCheck(req);
     const currentUserFromDb = await User.findOne({
@@ -40,32 +84,31 @@ const familiesByUser = async (parent, args, {req}) => {
     return await Family.find({
         postedBy: currentUserFromDb
     })
-    .populate('postedBy', '_id label')
+    .populate('postedBy', '_id username')
     .sort({createdAt: -1})
 }
 
 // mutations
 const familyCreate = async (parent, args, {req, pubsub}) => {
     const currentUser = await authCheck(req);
-
-    console.log("here")
-    console.log(args.input)
-
-    // if(args.input.content.trim() === '') throw new Error('Content is required');
-
-    // const currentUserFromDb = await User.findOne({
-    //     email: currentUser.email
-    // });
-
-    // let familyCreated = await new Family({
-    //     ...args.input,
-    //     postedBy: currentUserFromDb._id
-    // }).save()
-    // .then(family => family.populate('postedBy', '_id label'))
     
-    // pubsub.publish(FAMILY_CREATED, { familyCreated });
+    const currentUserFromDb = await User.findOne({
+        email: currentUser.email
+    });
+    
+    let familyCreated = await new Family({
+        ...args.input,
+        postedBy: currentUserFromDb._id
+    }).save()
+    .then(family => family.populate('postedBy', '_id username'))
 
-    // return familyCreated;
+    pubsub.publish(FAMILY_CREATED, { familyCreated });
+
+    console.log(args)
+    console.log(args.input.images)
+    console.log(familyCreated)
+
+    return familyCreated;
 }
 const familyUpdate = async (parent, args, {req, pubsub}) => {
     const currentUser = await authCheck(req);
@@ -82,7 +125,7 @@ const familyUpdate = async (parent, args, {req, pubsub}) => {
         {...args.input}, 
         {new: true}
     ).exec()
-    .then(family => family.populate('postedBy', '_id label'));
+    .then(family => family.populate('postedBy', '_id username'));
 
     pubsub.publish(FAMILY_UPDATED, { familyUpdated });
 
@@ -99,7 +142,7 @@ const familyDelete = async (parent, args, {req, pubsub}) => {
     ) throw new Error('Unauthorized action');
 
     let familyDeleted = await Family.findByIdAndDelete({_id: args.familyId}).exec()
-    .then(family => family.populate('postedBy', '_id label'));
+    .then(family => family.populate('postedBy', '_id username'));
 
     pubsub.publish(FAMILY_DELETED, { familyDeleted });
 
@@ -110,6 +153,8 @@ module.exports = {
     Query: {
         totalFamilies,
         allFamilies,
+        familiesFromFamily,
+        parentsFromFamily,
         familiesByUser,
         singleFamily,
         searchFamilies

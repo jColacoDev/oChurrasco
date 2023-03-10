@@ -5,6 +5,8 @@ const queries = `
         totalFamilies: Int!
         allFamilies(page: Int, perPage: Int): [Family!]!
         familiesByUser: [Family!]!
+        familiesFromFamily(familyId: String!): [Family!]
+        parentsFromFamily(familyId: String!): [Family!]
         singleFamily(familyId: String!): Family!
         searchFamilies(query: String!): [Family]
     }
@@ -30,20 +32,20 @@ const types = `
         postedBy: User!
         label: String!
         family: String!
-        image: Image
+        images: [Image]
     }
 `
 const inputs = `
     input FamilyCreateInput {
         label: String!
         family: String!
-        image: ImageInput
+        images: [ImageInput]
     }
     input FamilyUpdateInput {
         _id: String! 
         label: String!
         family: String!
-        image: ImageInput
+        images: [ImageInput]
     }
 `
 module.exports = gql`${queries}${mutations}${subscriptions}${types}${inputs}`;

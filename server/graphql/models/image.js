@@ -3,18 +3,18 @@ const mongoose = require('mongoose');
 const imageSchema = new mongoose.Schema({
     url: {
         type: String,
-        required: 'Url is required',
-        text: true
+        text: true,
+        default: "https://via.placeholder.com/200?text=placeholder"
     },
     label: {
         type: String,
-        required: 'Label is required',
-        text: true
+        text: true,
+        default: "placeholder"
     },
     description: {
         type: String,
         text: true,
-        default: ""
+        default: "this placeholder is a default"
     },
     public_id: Date.now()
 

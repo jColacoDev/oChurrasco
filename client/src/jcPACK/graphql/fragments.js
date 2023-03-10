@@ -2,7 +2,7 @@ export const FAMILY_DATA =`
     _id
     label
     family
-    image {
+    images {
         url
         label
         description

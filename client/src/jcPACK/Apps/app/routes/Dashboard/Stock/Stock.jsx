@@ -3,19 +3,22 @@ import React from 'react'
 import FormFamily from './FormFamily/FormFamily'
 import FormArticle from './FormArticle/FormArticle';
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 import { FAMILY_CREATE } from '../../../../../graphql/mutations';
+import { useEffect } from 'react';
+import { 
+    GET_FAMILIES_FROM_FAMILY, SINGLE_FAMILY, GET_PARENTS_FROM_FAMILY
+} from '../../../../../graphql/queries';
+import FamilyBreadCrumbs from '../../../../../components/FamilyBreadCrumbs/FamilyBreadCrumbs';
 
 export default function Stock() {
-
     const [loading, setLoading] = useState(false);
-    
-    const [selectedFamily, setSelectedFamily] = useState({
+    const [currentFamilyId, setCurrentFamilyId] = useState("root");
+    const [inputFamily, setInputFamily] = useState({
         label: '',
-        image: '',
-        family: ''
-      });
-  
+        family: '',
+        images: []
+    });
     const [selectedArticle, setSelectedArticle] = useState(
         {
             general: {
@@ -51,15 +54,64 @@ export default function Stock() {
             ],
         }
     );
+    const [singleFamily, {
+        data: currentFamilyData, 
+        loading: currentFamilyLoading, 
+        error: currentFamilyError,
+        refetch: singleFamilyRefetch, 
+        called: singleFamilyCalled 
+    }] = useLazyQuery(SINGLE_FAMILY,
+        {variables: {familyId: currentFamilyId}})
 
-    const [familyCreate] = useMutation(FAMILY_CREATE)
+    const [familiesFromFamilyRefetch, {
+        data: familiesFromFamilyData, 
+        loading: familiesFromFamilyLoading, 
+        error: familiesFromFamilyError
+    }] = useLazyQuery(GET_FAMILIES_FROM_FAMILY,
+        {variables: {familyId: currentFamilyId}})
+
+    const [parentsFromFamilyRefetch, {
+        data: parentsFromFamilyData, 
+        loading: parentsFromFamilyLoading, 
+        error: parentsFromFamilyError
+    }] = useLazyQuery(GET_PARENTS_FROM_FAMILY,
+        {variables: {familyId: currentFamilyId}})
+
+    const [familyCreate] = useMutation(FAMILY_CREATE,{
+        onError: (error) => {
+            console.log("error")
+            console.log(error.graphQLErrors[0].message)
+        }
+    })
+
+    useEffect(() => {
+        setInputFamily({...inputFamily, family: currentFamilyData?.singleFamily._id})
+    }, [currentFamilyData])
+    useEffect(() => {
+        console.log(familiesFromFamilyData)
+    }, [familiesFromFamilyData])
+
+    useEffect(() => {
+        singleFamilyRefetch({familyId: currentFamilyId});
+        familiesFromFamilyRefetch({familyId: currentFamilyId});
+        parentsFromFamilyRefetch({familyId: currentFamilyId});
+    }, [currentFamilyId])
 
 
     const handleFamilySubmit = (e) => {
         e.preventDefault();
         setLoading(true);
-        console.log(selectedFamily)
-        familyCreate({variables: {input: selectedFamily}});
+        
+        console.log( {...inputFamily, 
+            family: currentFamilyData ? 
+                currentFamilyData.singleFamily._id : "root"
+        })
+
+        familyCreate({variables: {input: {...inputFamily, 
+            family: currentFamilyData ? 
+                currentFamilyData.singleFamily._id : "root"
+        }}});
+
         setLoading(false);
     };
     const handleArticleSubmit = (e) => {
@@ -70,7 +122,7 @@ export default function Stock() {
     };
 
     const handleFamilyChange = (e) => {
-        setSelectedFamily({...selectedFamily, [e.target.name]: e.target.value})
+        setInputFamily({...inputFamily, [e.target.name]: e.target.value})
     };
     const handleArticleChange = (e) => {
         setSelectedArticle({...selectedArticle, [e.target.name]: e.target.value})
@@ -80,32 +132,44 @@ export default function Stock() {
         let form = e.currentTarget.parentElement.querySelector('form')
         form?.classList.toggle('displayNone')
     }
+    const handleFamilyClick = (e) =>{
+        e.preventDefault();
+        setCurrentFamilyId(e.currentTarget.dataset.id)
+    }
 
     return (
       <div className='Stock'>
-        <span>Inicio - Mobiliario - Recepção</span>
+        <FamilyBreadCrumbs 
+            handleFamilyClick={handleFamilyClick}
+            crumbs={parentsFromFamilyData?.parentsFromFamily} 
+        />
+
         <h2>Familia de Artigos</h2>
         <section className='submitForm'>
             <button onClick={handleFormDisplay}>
                 <span />
                 <p>Add Family</p>
             </button>
-            <FormFamily 
-                handleSubmit={handleFamilySubmit}
-                handleChange={handleFamilyChange}
+            <FormFamily
+                handleFamilySubmit={handleFamilySubmit}
+                handleFamilyChange={handleFamilyChange}
                 loading={loading}
-                family={selectedFamily}
+                setLoading={setLoading}
+                inputFamily={inputFamily}
+                setInputFamily={setInputFamily}
+                optionsFamily={{family:currentFamilyData ? currentFamilyData.singleFamily.label : "Início"}}
             />
         </section>
         <section>
-            <article>
-                <span />
-                <p>Fam1</p>
-            </article>
-            <article>
-                <span />
-                <p>Fam2</p>
-            </article>
+            {console.log(familiesFromFamilyData.familiesFromFamily)}
+            {familiesFromFamilyData?.familiesFromFamily && familiesFromFamilyData.familiesFromFamily.map(family=>
+                <article key={family._id} data-id={family._id}
+                    onClick={handleFamilyClick}
+                >
+                    <img src={family?.images && family.images[0].url} alt={family.label} />
+                    <p>{family.label}</p>
+                </article>
+            )}
         </section>
         <h2>Artigos</h2>
         <section className='submitForm'>
@@ -113,7 +177,7 @@ export default function Stock() {
                 <span />
                 <p>Add Article</p>
             </button>
-            <FormArticle 
+            <FormArticle
                 handleSubmit={handleArticleSubmit}
                 handleChange={handleArticleChange}
                 loading={loading}

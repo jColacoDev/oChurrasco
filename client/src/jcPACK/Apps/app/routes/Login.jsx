@@ -36,7 +36,8 @@ const Login = () => {
                     name: loggedUser.displayName,
                     images: [{
                         public_id: `google_${loggedUser.uid}`,
-                        url: loggedUser.photoURL
+                        url: loggedUser.photoURL,
+                        label: "googlePic"
                     }]
                 }
             }});

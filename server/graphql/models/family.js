@@ -16,10 +16,17 @@ const familySchema = new mongoose.Schema({
         required: 'Label is required',
         text: true
     },
-    image: {
-        type: ObjectId,
-        ref: 'Image'
-   }
+    images: {
+        type: Array,
+        default: [
+            {
+                url: 'https://via.placeholder.com/200?text=Profile',
+                label: "placeholder",
+                description: "this placeholder is a default",
+                public_id: Date.now()
+            }
+        ]
+    },
 
 }, {timestamps: true});
 

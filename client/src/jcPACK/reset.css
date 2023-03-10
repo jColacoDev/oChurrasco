@@ -29,7 +29,12 @@
   transition: 	all .2s ease-in-out;
   scroll-behavior: smooth;
 }
-
+*,
+*:hover,
+*:focus,
+*:active{
+  outline: none;
+}
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

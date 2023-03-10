@@ -37,7 +37,7 @@ export default function FormArticle({
     }
 }) {
   return (
-    <form className='FormArticle' onSubmit={handleSubmit}>
+    <form className='FormArticle displayNone' onSubmit={handleSubmit}>
         <section>
             {<section>
                 <label htmlFor="code">Code</label>

@@ -1,3 +1,4 @@
+import './FileUpload.scss'
 import React, {useState, useMemo, useContext, useEffect} from 'react'
 import Resizer from "react-image-file-resizer";
 import axios from 'axios';
@@ -45,7 +46,12 @@ export default function FileUpload({values, loading, setLoading, setValues}) {
             .then(response =>{
                 setLoading(false);
                 console.log('CLOUDINARY UPLOAD', response);
-                setValues({...values, images: [...images, response.data]})
+                setValues({...values, images: [...images, 
+                    {...response.data,
+                        label: values?.label || "", 
+                        description: values?.description || ""
+                    }
+                ]})
             })
             .catch(error =>{
                 setLoading(false);
@@ -85,16 +91,18 @@ export default function FileUpload({values, loading, setLoading, setValues}) {
 
   return (
     <div className='FileUpload'>
-        <label className='uploadButton'>
-            Upload Image
-            <input
-                hidden
-                type="file"
-                accept="image/*"
-                onChange={fileResizeAndUpload}
-                placeholder="Image"
-            />
-        </label> Or click on it to delete
+        <section>
+            <label className='uploadButton'>
+                Upload Image
+                <input
+                    hidden
+                    type="file"
+                    accept="image/*"
+                    onChange={fileResizeAndUpload}
+                    placeholder="Image"
+                />
+            </label> Or click on it to delete
+        </section>
         <section className='images'>
             {images?.map((image) => (
                 <Image key={image.public_id} 

@@ -28,6 +28,7 @@ export default function Dashboard() {
         error: profileError, 
         refetch
     } = useQuery(PROFILE);
+
     useMemo(()=>{
         refetch()
         console.log(profileData)
@@ -38,8 +39,8 @@ export default function Dashboard() {
                 username: profileData.profile.username,
                 name: profileData.profile.name,
                 email: profileData.profile.email,
-                about: profileData.profile.about,
-                images: profileData.profile.images
+                about: profileData.profile?.about,
+                images: profileData.profile?.images
             })
         }
     }, [profileData]);

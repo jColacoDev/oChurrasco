@@ -6,8 +6,15 @@
 
     > section{
         padding: .5em;
-
         background-color: var(--app-bg);
+
+        &[disabled]{
+            border: 1px solid var(--ergoface-green);
+            input {
+                color: var(--ergoface-green);
+            }
+        }
+
         *{
             border: none;
             background-color: transparent;
