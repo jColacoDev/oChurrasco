@@ -62,7 +62,7 @@ export default function Dashboard1({
       {
           icon: svg_icons.inbox,
           label: "Stock",
-          element: <Stock />
+          element: <Stock headerHeight={headerHeight} />
       },
       {
           icon: svg_icons.notifications,

@@ -3,6 +3,22 @@
     flex-direction: column;
     gap: 2em;
 
+    h2{
+        padding: .5em;
+        text-align: left;
+    }
+
+    .familySubName,
+    .familyName{
+        position: sticky;
+        z-index: 99;
+        background-color: #00000070;
+        top: 100px;
+    }
+    .familySubName{
+        top: 120px;
+        z-index: 90;
+    }
     .submitForm{
         display: flex;
         flex-direction: column;

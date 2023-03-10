@@ -10,8 +10,10 @@ import {
     GET_FAMILIES_FROM_FAMILY, SINGLE_FAMILY, GET_PARENTS_FROM_FAMILY
 } from '../../../../../graphql/queries';
 import FamilyBreadCrumbs from '../../../../../components/FamilyBreadCrumbs/FamilyBreadCrumbs';
+import { useRef } from 'react';
 
-export default function Stock() {
+export default function Stock({headerHeight}) {
+    const stockRef = useRef();
     const [loading, setLoading] = useState(false);
     const [currentFamilyId, setCurrentFamilyId] = useState("root");
     const [inputFamily, setInputFamily] = useState({
@@ -83,10 +85,19 @@ export default function Stock() {
             console.log(error.graphQLErrors[0].message)
         }
     })
+    useEffect(()=>{
+        let familyNames = Array.from(stockRef.current.querySelectorAll('.familyName'))
+        familyNames?.map((familyName)=>familyName.style.top=`${headerHeight + 2}px`)
+
+        let familySubNames = Array.from(stockRef.current.querySelectorAll('.familySubName'))
+        familySubNames?.map((familySubName)=>familySubName.style.top=`${headerHeight + 50}px`)
+
+      },[headerHeight])
 
     useEffect(() => {
         setInputFamily({...inputFamily, family: currentFamilyData?.singleFamily._id})
     }, [currentFamilyData])
+
     useEffect(() => {
         console.log(familiesFromFamilyData)
     }, [familiesFromFamilyData])
@@ -138,13 +149,15 @@ export default function Stock() {
     }
 
     return (
-      <div className='Stock'>
+      <div ref={stockRef} className='Stock'>
         <FamilyBreadCrumbs 
             handleFamilyClick={handleFamilyClick}
             crumbs={parentsFromFamilyData?.parentsFromFamily} 
         />
 
-        <h2>Familia de Artigos</h2>
+        <h2 className='familyName'>Familia de artigos: {currentFamilyData ? 
+                currentFamilyData.singleFamily.label : "Início"}
+        </h2>
         <section className='submitForm'>
             <button onClick={handleFormDisplay}>
                 <span />
@@ -161,7 +174,7 @@ export default function Stock() {
             />
         </section>
         <section>
-            {console.log(familiesFromFamilyData.familiesFromFamily)}
+            <h3 className='familySubName'>subFamilias de artigos: </h3>
             {familiesFromFamilyData?.familiesFromFamily && familiesFromFamilyData.familiesFromFamily.map(family=>
                 <article key={family._id} data-id={family._id}
                     onClick={handleFamilyClick}
@@ -171,7 +184,8 @@ export default function Stock() {
                 </article>
             )}
         </section>
-        <h2>Artigos</h2>
+
+        <h3 className='familySubName'>Artigos</h3>
         <section className='submitForm'>
             <button onClick={handleFormDisplay}>
                 <span />
