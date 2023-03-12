@@ -78,6 +78,13 @@ export const GET_FAMILIES_FROM_FAMILY = gql`
     }
   }
 `;
+export const GET_FAMILY_ID_FROM_LABELS_PATH = gql`
+  query familyIdFromLabelsPath($labelsPath: [String]!) {
+    familyIdFromLabelsPath(labelsPath: $labelsPath) {
+        ${FAMILY_DATA}
+    }
+  }
+`;
 export const GET_PARENTS_FROM_FAMILY = gql`
   query parentsFromFamily($familyId: String!) {
     parentsFromFamily(familyId: $familyId) {

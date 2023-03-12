@@ -19,6 +19,19 @@ export function returnInitials(name){
     return name.getInitials().capitalize();
 }
 
+export function groupObjectsArrayByType(arr) {
+    if(arr){ 
+     const groups = {};
+     for (let i = 0; i < arr.length; i++) {
+         const type = arr[i].type;
+         if (!groups[type]) {
+         groups[type] = [];
+         }
+         groups[type].push(arr[i]);
+     }
+     return Object.values(groups);
+     }
+ }
 String.prototype.getInitials = function(glue){
     if (typeof glue == "undefined") {
         var glue = true;

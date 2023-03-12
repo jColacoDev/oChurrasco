@@ -61,18 +61,6 @@
             }
         }
     }
-            
-    .uploadButton,
-    button{
-        padding: .5em 2em;
-        border: 1px solid var(--ergoface-green);
-
-        &:hover{
-            background-color: var(--sidebar-hover-link);
-        }
-        background-color: var(--app-content-secondary-color);
-        color: var(--app-content-main-color);
-    }
 
     section{
         display: flex;
@@ -81,7 +69,7 @@
         align-items: flex-start;
         gap: 2em;
 
-        > * {
+       &:not(&.uploadSection)> * {
             background-color: var(--app-content-secondary-color);
             border: 1px solid var(--app-content-secondary-color);
             color: var(--app-content-main-color);
@@ -131,7 +119,7 @@
                 }
             }
     
-            *{
+            &:not(&.uploadSection) *{
                 border: none;
                 background-color: transparent;
             }

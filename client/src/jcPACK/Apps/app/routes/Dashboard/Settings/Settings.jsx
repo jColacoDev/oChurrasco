@@ -3,7 +3,7 @@ import React from 'react'
 import PasswordForgot from '../../PasswordForgot'
 import PasswordUpdate from '../../PasswordUpdate'
 import FileUpload from '../../../../../components/FileUpload/FileUpload'
-import UserProfile from '../../UserProfile'
+import UserProfileForm from '../UserProfileForm/UserProfileForm'
 
 
 export default function Settings({
@@ -36,7 +36,7 @@ export default function Settings({
     />
 
     {values &&
-        <UserProfile 
+        <UserProfileForm 
             {...values}
             loading={loading}
             handleSubmit={handleSubmit}

@@ -72,6 +72,18 @@ $font-large: 24px;
   }
 }
 
+.uploadButton,
+button{
+    padding: .5em 2em;
+    border: 1px solid var(--ergoface-green);
+    background-color: var(--app-content-secondary-color);
+    color: var(--app-content-main-color);
+
+    &:hover{
+        background-color: var(--sidebar-hover-link);
+    }
+}
+
 .account-info {
   display: flex;
   align-items: center;
@@ -130,6 +142,30 @@ $font-large: 24px;
   flex-direction: column;
 }
 
+  input,
+  textarea{
+      padding: 0.2em 0.5em;
+      font-size: 1em;
+  }
 
+  section{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1em;
+  }
+
+  
+  label{
+    min-width: 5em;
+}
+
+textarea{
+    width: 100%;
+    resize: vertical;
+    outline: none;
+    min-height: 6em;
+    max-height: 10em;
+}
 
 }

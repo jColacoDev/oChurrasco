@@ -20,7 +20,6 @@ const { useServer } = require('graphql-ws/lib/use/ws');
 const { PubSub } = require('graphql-subscriptions');
 
 // custom middleware
-const { authCheck } = require('./helpers/auth');
 const { authCheckMiddleware } = require('./helpers/auth');
 //utils
 require('dotenv').config();
@@ -127,9 +126,26 @@ const { gDrive_authorize, gDrive_listFiles, getDriveDirectories } = require('./g
     // Cloud data service
     /*******************************************************************/
 
-    const auth = await gDrive_authorize();
-    const directories = await getDriveDirectories(auth, "Ergoface")
+    // const auth = await gDrive_authorize();
+    // const directories = await getDriveDirectories(auth, "Ergoface")
     
+    // gDrive_authorize()
+    // .then(
+    //     getDriveDirectories("")
+    //     .then(directories => console.log(directories))
+    //     .catch(error => console.log(error))
+    // )
+    // .catch(console.error);
+    
+
+    // app.get('/directories/:folderPath', (req, res) => {
+    //     const folderPath = req.params.folderPath;
+    //     const authClient = getAuthorizedClient(req.user.tokens);
+    //     getDriveDirectories(authClient, folderPath)
+    //       .then(directories => res.json(directories))
+    //       .catch(error => res.status(500).send(error));
+    // });
+
     /*******************************************************************/
     // REST endpoints
     /*******************************************************************/

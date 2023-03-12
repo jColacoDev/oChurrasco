@@ -213,21 +213,6 @@ a:hover{
     color: var(--ergoface-green);
 }
 
-.Products{
-    padding: 1em;
-
-    h2 span:not(:first-child){
-        margin-left: .4em;
-
-        &.artigoDe{
-            &::before{
-                content: "de";
-                margin-right: .4em;
-            }
-        }
-    }
-}
-
 section.catalogs{
     display: flex;
     flex-wrap: wrap;

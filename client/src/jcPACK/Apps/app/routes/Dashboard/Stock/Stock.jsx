@@ -14,6 +14,7 @@ import {
 } from '../../../../../graphql/queries';
 import FamilyBreadCrumbs from '../../../../../components/FamilyBreadCrumbs/FamilyBreadCrumbs';
 import { useRef } from 'react';
+import { groupObjectsArrayByType } from '../../../../../utils/utils';
 
 export default function Stock({headerHeight}) {
     const stockRef = useRef();
@@ -52,48 +53,50 @@ export default function Stock({headerHeight}) {
         error: currentFamilyError,
         refetch: singleFamilyRefetch, 
         called: singleFamilyCalled 
-    }] = useLazyQuery(SINGLE_FAMILY,
-        {variables: {familyId: currentFamilyId}})
-
-    const [familiesFromFamilyRefetch, {
-        data: familiesFromFamilyData, 
-        loading: familiesFromFamilyLoading, 
-        error: familiesFromFamilyError
-    }] = useLazyQuery(GET_FAMILIES_FROM_FAMILY,
-        {variables: {familyId: currentFamilyId}})
-
-    const [parentsFromFamilyRefetch, {
-        data: parentsFromFamilyData, 
-        loading: parentsFromFamilyLoading, 
-        error: parentsFromFamilyError
-    }] = useLazyQuery(GET_PARENTS_FROM_FAMILY,
-        {variables: {familyId: currentFamilyId}})
-
-    const [familyCreate] = useMutation(FAMILY_CREATE,{
-        onCompleted: () => {
-            console.log("Family created")
-        },
-        onError: (error) => {
-            console.error("error")
-            console.error(error.graphQLErrors[0].message)
-        }
-    })
-
-    const [articlesFromFamilyRefetch, {
-        data: articlesFromFamilyData, 
-        loading: articlesFromFamilyLoading, 
-        error: articlesFromFamilyError
-    }] = useLazyQuery(GET_ARTICLES_FROM_FAMILY,
-        {variables: {familyId: currentFamilyId}})
-
-    const [articleCreate] = useMutation(ARTICLE_CREATE,{
-        onCompleted: () => {
-            console.log("Article created")
-        },
+    }] = useLazyQuery(SINGLE_FAMILY,{
+        variables: {familyId: currentFamilyId},
         onError: (error) => {
             console.error("error: ", error)
         }
     })
+    /* ************************************************************ */
+    /* MUTATIONS   ********************************************* */
+    const [familyCreate] = useMutation(FAMILY_CREATE, {
+        onCompleted: () =>  console.log("Family created"),
+        onError: (error) => console.error("Family create error: ", error)
+    })
+    const [articleCreate] = useMutation(ARTICLE_CREATE, {
+        onCompleted: () =>  console.log("Article created"),
+        onError: (error) => console.error("Article create error: ", error)
+    })
+    /* ************************************************************ */
+    /* QUERIES   ************************************************* */
+    const [familiesFromFamilyRefetch, {
+        data: familiesFromFamilyData, 
+        loading: familiesFromFamilyLoading, 
+        error: familiesFromFamilyError
+    }] = useLazyQuery(GET_FAMILIES_FROM_FAMILY, {
+        onError: (error) => console.error("family from Family query error: ", error),
+        variables: {familyId: currentFamilyId}
+    })
+    const [parentsFromFamilyRefetch, {
+        data: parentsFromFamilyData, 
+        loading: parentsFromFamilyLoading, 
+        error: parentsFromFamilyError
+    }] = useLazyQuery(GET_PARENTS_FROM_FAMILY, {
+        onError: (error) => console.error("parents from Family query error: ", error),
+        variables: {familyId: currentFamilyId}
+    })
+    const [articlesFromFamilyRefetch, {
+        data: articlesFromFamilyData, 
+        loading: articlesFromFamilyLoading, 
+        error: articlesFromFamilyError
+    }] = useLazyQuery(GET_ARTICLES_FROM_FAMILY, {
+        onError: (error) => console.error("articles from Family query error: ", error),
+        variables: {familyId: currentFamilyId}
+    })
+    /* ************************************************************ */
+    /* useEffect   ************************************************* */
     useEffect(()=>{
         let familyNames = Array.from(stockRef.current.querySelectorAll('.familyName'))
         familyNames?.map((familyName)=>familyName.style.top=`${headerHeight + 2}px`)
@@ -104,11 +107,11 @@ export default function Stock({headerHeight}) {
       },[headerHeight])
 
     useEffect(() => {
-        console.log(groupByType(articlesFromFamilyData?.articlesFromFamily))
+        console.log(groupObjectsArrayByType(articlesFromFamilyData?.articlesFromFamily))
 
         if(articlesFromFamilyData?.articlesFromFamily && 
             articlesFromFamilyData.articlesFromFamily) 
-        setArticlesByTypes(groupByType(articlesFromFamilyData.articlesFromFamily))
+        setArticlesByTypes(groupObjectsArrayByType(articlesFromFamilyData.articlesFromFamily))
 
     }, [articlesFromFamilyData])
 
@@ -123,11 +126,19 @@ export default function Stock({headerHeight}) {
         familiesFromFamilyRefetch({familyId: currentFamilyId});
         parentsFromFamilyRefetch({familyId: currentFamilyId});
     }, [currentFamilyId])
-
+    /* ************************************************************ */
+    /* ACTION HANDLERS   ***************************************** */
+    /* form input change handlers   ********************** */
+    const handleFamilyChange = (e) => {
+        setInputFamily({...inputFamily, [e.target.name]: e.target.value})
+    };
+    const handleArticleChange = (e) => {
+        setInputArticle({...inputArticle, [e.target.name]: e.target.value})
+    };
+    /* submit form handlers   ********************** */
     const handleFamilySubmit = (e) => {
         e?.preventDefault();
         setLoading(true);
-        
         const familyToAdd = {...inputFamily, 
             family: currentFamilyData ? 
                 currentFamilyData.singleFamily._id : "root"
@@ -137,27 +148,15 @@ export default function Stock({headerHeight}) {
             flag= "a label";
         else if(!familyToAdd.family)
             flag= "a family";
+        else if(!familyToAdd?.images.length > 0)
+            flag= "an image";
         setCurrentFormInputError(flag);
-        
         if(!flag){
             familyCreate({variables: {input: familyToAdd}});
             stockRef.current.querySelector(`#FormFamily`)?.classList.add('displayNone')
         }
         setLoading(false);
     };
-
-    const handleFamilyChange = (e) => {
-        setInputFamily({...inputFamily, [e.target.name]: e.target.value})
-    };
-
-    const handleArticleChange = (e) => {
-        setInputArticle({...inputArticle, [e.target.name]: e.target.value})
-    };
-    
-    // useEffect(() => {
-    //     console.info(inputArticle)
-    // }, [inputArticle])
-
     const handleArticleSubmit = (e) => {
         e?.preventDefault();
         setLoading(true);
@@ -174,7 +173,7 @@ export default function Stock({headerHeight}) {
             flag= "a family";
         else if(!articleToAdd.type)
             flag= "a type";
-        else if(!articleToAdd.images.length > 0)
+        else if(!articleToAdd?.images.length > 0)
             flag= "an image";
         setCurrentFormInputError(flag);
 
@@ -186,12 +185,11 @@ export default function Stock({headerHeight}) {
         }
         setLoading(false);
     };
-
+    /* display form handlers   ********************** */
     const handleFormDisplayToggle = (e) =>{
         e?.preventDefault();
         let form = stockRef.current.querySelector(`#${e.currentTarget.dataset.formId}`)
         form.classList.toggle('displayNone')
-
         setInputFamily({
             label: '',
             family: '',
@@ -218,23 +216,10 @@ export default function Stock({headerHeight}) {
         })
         setCurrentFormInputError("");
     }
+    /* family routes handlers   ********************** */
     const handleFamilyClick = (e) =>{
         e?.preventDefault();
         setCurrentFamilyId(e.currentTarget.dataset.id)
-    }
-
-    function groupByType(arr) {
-       if(arr){ 
-        const groups = {};
-        for (let i = 0; i < arr.length; i++) {
-            const type = arr[i].type;
-            if (!groups[type]) {
-            groups[type] = [];
-            }
-            groups[type].push(arr[i]);
-        }
-        return Object.values(groups);
-        }
     }
 
     return (
@@ -274,7 +259,7 @@ export default function Stock({headerHeight}) {
                     <article className='family' key={family._id} data-id={family._id}
                     onClick={handleFamilyClick}
                     >
-                    <img src={family?.images && family.images[0].url} alt={family.label} />
+                    <img src={family?.images && family?.images[0]?.url} alt={family.label} />
                     <p>{family.label}</p>
                 </article>
             )}
@@ -309,7 +294,7 @@ export default function Stock({headerHeight}) {
             <section>
             {articlesByType?.map((articleByType, i) =>
                 <article className='article' key={articleByType._id} data-id={articleByType._id}>
-                    <img src={articleByType?.images && articleByType.images[0].url} alt={articleByType.label} />
+                    <img src={articleByType?.images && articleByType?.images[0]?.url} alt={articleByType.label} />
                     <p>{articleByType.label}</p>
                 </article>
             )}

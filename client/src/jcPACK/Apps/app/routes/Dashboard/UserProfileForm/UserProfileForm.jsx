@@ -1,6 +1,7 @@
+import './UserProfileForm.scss'
 import React from 'react'
 
-export default function UserProfile({
+export default function UserProfileForm({
     handleSubmit = (f)=>f,
     handleChange = (f)=>f,
     username = '',

@@ -46,17 +46,17 @@ export default function SelectionBox({
 
     const handleLiClick = (option)=>{
         setSelectedOption(option);
-        ulRef.current?.classList.remove('focus')
     }
 
   return (
     <div className='SelectionBox'
+        onClick={handleOptionsToggle}
     >
         <span
             name={name} 
             disabled={disabled}
             value={selectedOption?.value}
-            onClick={handleOptionsToggle}
+            
             onChange={(f)=>f}
         >{selectedOption.name}</span>
         <ul ref={ulRef}>
