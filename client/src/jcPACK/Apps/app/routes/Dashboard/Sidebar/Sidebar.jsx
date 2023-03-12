@@ -1,20 +1,18 @@
 import './Sidebar.scss'
-import React, { useContext, useRef } from 'react'
-import {svg_icons} from '../icons';
+import React, { useRef, useContext } from 'react'
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../../../context/authContext';
 import logoutIcon from '../../../../../../assets/images/icons/logout.png'
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../../../firebase/firebase';
+import { AuthContext } from '../../../../../context/authContext';
 
 export default function Sidebar({
     setPageIndex = (f)=>f, 
     pageIndex=0,
     accountPages = []
   }) {
-
-    const {dispatch} = useContext(AuthContext)
+    const { dispatch } = useContext(AuthContext);
     const ulRef = useRef();
     let navigate = useNavigate();
 
@@ -54,7 +52,7 @@ export default function Sidebar({
     </div>
     <ul ref={ulRef} className="sidebar-list">
       {accountPages.map((page, i)=>
-        <li key={i} data-index={i} onClick={handleListItemClick} className="sidebar-list-item">
+        <li key={i} data-index={i} onClick={handleListItemClick} className={`sidebar-list-item ${i===0 && "active"}`}>
             <span>
                 {page.icon}
                 <span>{page.label}</span>

@@ -24,10 +24,7 @@ export default function Header({
           onClick={handleModeSwitchClick} 
           className={`mode-switch ${darkMode ? 'dark' : 'light'}`} 
           title="Switch Theme"
-        >
-
-        {svg_icons.moon}
-        </button>
+        >{svg_icons.moon}</button>
         {/* <button className="headerButton">Add Product</button> */}
   </div>
   )

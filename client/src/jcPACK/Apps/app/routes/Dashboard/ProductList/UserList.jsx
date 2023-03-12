@@ -11,9 +11,16 @@ export default function UserList({
     const productsAreaWrapperRef = useRef();
   
     useEffect(()=>{
-        if(gridListStyle === "grid") onGridClick();
-        else onListClick();
+		console.log(gridListStyle)
+
+        onListViewClick();
     }, [gridListStyle])
+
+    function onListViewClick(){
+        console.log(productsAreaWrapperRef.current)
+        productsAreaWrapperRef.current.classList.toggle("tableView");
+        productsAreaWrapperRef.current.classList.toggle("gridView");
+    }
 
     function onGridClick(){
         productsAreaWrapperRef.current.classList.remove("tableView");

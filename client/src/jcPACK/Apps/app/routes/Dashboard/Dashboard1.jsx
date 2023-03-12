@@ -10,6 +10,8 @@ import Home from './Home/Home';
 import UserList from './ProductList/UserList';
 import { useSelector } from 'react-redux';
 import Stock from './Stock/Stock';
+import { AuthContext } from '../../../../context/authContext';
+import { useContext } from 'react';
 
 export default function Dashboard1({
   usersData = [],
@@ -20,6 +22,9 @@ export default function Dashboard1({
   setValues = (f)=>f,
   userUpdate = (f)=>f,
 }) {
+    const {state} = useContext(AuthContext);
+    const {user} = state;
+
     const appRef = useRef();
     const [gridListStyle, setGridListStyle] = useState("list");
     const [pageIndex, setPageIndex] = useState(0);
@@ -28,49 +33,60 @@ export default function Dashboard1({
 
     useEffect(()=>{
       appRef.current.querySelector('.sidebar-list').style.top=`${headerHeight}px`
+
+	  console.log(state)
+
     },[headerHeight])
 
     const accountPages= [
       {
-          icon: svg_icons.home,
-          label: "Office",
-          element: <Home 
-              loading = {loading}
-              values = {values}
-            />
+		type: "public",  
+		icon: svg_icons.home,
+		label: "Office",
+		element: <Home 
+			loading = {loading}
+			values = {values}
+		/>
       },
       {
-          icon: svg_icons.pieChart,
-          label: "Settings",
-          element: <Settings 
-          loading = {loading}
-              setLoading = {setLoading}
-              values = {values}
-              setValues = {setValues}
-              userUpdate = {userUpdate}
-            />
+        type: "public",  
+		icon: svg_icons.pieChart,
+		label: "Settings",
+		element: <Settings 
+          	loading = {loading}
+			setLoading = {setLoading}
+			values = {values}
+			setValues = {setValues}
+			userUpdate = {userUpdate}
+		/>
       },
       {
-          icon: svg_icons.products,
-          label: "Users",
-          element: <UserList 
-            usersLoading={usersLoading}
-            usersData={usersData} 
-            gridListStyle={gridListStyle} 
-          />
+        type: "public",  
+		icon: svg_icons.notifications,
+		label: "Notifications",
+		element: <></>
       },
       {
-          icon: svg_icons.inbox,
-          label: "Stock",
-          element: <Stock headerHeight={headerHeight} />
+		type: "admin",  
+		icon: svg_icons.products,
+		label: "Users",
+		element: <UserList 
+			usersLoading={usersLoading}
+			usersData={usersData} 
+			gridListStyle={gridListStyle} 
+		/>
       },
       {
-          icon: svg_icons.notifications,
-          label: "Notifications",
-          element: <></>
+        type: "admin",  
+		icon: svg_icons.inbox,
+		label: "Stock",
+		element: <Stock headerHeight={headerHeight} />
       },
     ]; 
     
+	const isAdmin = () =>{
+		return user.email === import.meta.env.VITE_ADMIN_EMAIL;
+	}
 
   return (
     <div className='Dashboard1'>
@@ -78,7 +94,10 @@ export default function Dashboard1({
           <Sidebar 
             pageIndex={pageIndex} 
             setPageIndex={setPageIndex} 
-            accountPages={accountPages} 
+            accountPages={ isAdmin() ?
+				accountPages :
+				accountPages.filter(accountPage => accountPage.type === "public")
+			}
           />
           <div className="app-content">
             <Header 
@@ -86,7 +105,11 @@ export default function Dashboard1({
                 darkMode={darkMode} 
                 setDarkMode={setDarkMode}
             />
-            {pageIndex == 2 &&
+			{
+			
+			}
+
+            {accountPages[pageIndex]?.label === "Users" &&
               <Actions 
                 gridListStyle={gridListStyle}  
                 setGridListStyle={setGridListStyle}

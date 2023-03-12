@@ -137,10 +137,8 @@ export default function Stock({headerHeight}) {
             flag= "a label";
         else if(!familyToAdd.family)
             flag= "a family";
-        else if(!familyToAdd.images.length > 0)
-            flag= "an image";
         setCurrentFormInputError(flag);
-
+        
         if(!flag){
             familyCreate({variables: {input: familyToAdd}});
             stockRef.current.querySelector(`#FormFamily`)?.classList.add('displayNone')
@@ -273,9 +271,9 @@ export default function Stock({headerHeight}) {
             <h3 className='familySubName'>subFamilias de artigos: </h3>
             {familiesFromFamilyData?.familiesFromFamily && 
                 familiesFromFamilyData.familiesFromFamily.map(family=>
-                <article key={family._id} data-id={family._id}
+                    <article className='family' key={family._id} data-id={family._id}
                     onClick={handleFamilyClick}
-                >
+                    >
                     <img src={family?.images && family.images[0].url} alt={family.label} />
                     <p>{family.label}</p>
                 </article>
@@ -305,17 +303,19 @@ export default function Stock({headerHeight}) {
             />
         </section>
         
-        {articlesByTypes?.map(articlesByType =><>
+        {articlesByTypes?.map((articlesByType,i) =>
+        <div key={i}>
             <h3>{articlesByType[0].type}</h3>
             <section>
             {articlesByType?.map((articleByType, i) =>
-                <article key={i}>
-                    <span />
+                <article className='article' key={articleByType._id} data-id={articleByType._id}>
+                    <img src={articleByType?.images && articleByType.images[0].url} alt={articleByType.label} />
                     <p>{articleByType.label}</p>
                 </article>
             )}
             </section>
-        </>)}
+        </div>
+        )}
     </div>
   )
 }

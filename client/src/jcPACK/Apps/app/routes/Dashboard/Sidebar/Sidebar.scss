@@ -47,6 +47,10 @@
         position: relative;
         margin-bottom: 4px;
         
+        &:last-of-type{
+          margin-top: 2em;
+        }
+  
         span {
             cursor: pointer;
           display: flex;

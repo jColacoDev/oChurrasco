@@ -94,8 +94,11 @@
             align-items: center;
             width: 10em;
             height: 10em;
-            cursor: pointer;
-            
+
+            &.family{
+                cursor: pointer;
+            }
+
             &:hover{
                 background-color: var(--sidebar-hover-link);
             }

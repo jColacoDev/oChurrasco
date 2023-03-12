@@ -77,10 +77,15 @@ export default function FormArticle({
         e?.preventDefault();
 
         let flag = "";
-        if(inputArticle?.type ==="document_blank" && !inputArticle.url)
-            flag= "an url path to the document";
-
+        if(inputArticle?.type === "document_blank"){
+            if(!inputArticle.url)
+                flag= "an url path to the document";
+        }else if(inputArticle?.type === "product"){
+            if(inputArticle.images.length > 0)
+                flag= "an image";
+        }
         setInputError(flag);
+
         if(!flag){
             handleArticleSubmit();
         }
