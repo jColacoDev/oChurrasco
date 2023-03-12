@@ -90,8 +90,8 @@ export default function FileUpload({values, loading, setLoading, setValues}) {
     };
 
   return (
-    <div className='FileUpload'>
-        <section>
+    <div id='FileUpload'>
+        <section className='uploadSection'>
             <label className='uploadButton'>
                 Upload Image
                 <input

@@ -1,0 +1,48 @@
+
+select {
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+    display: flex;
+
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    font-size: 1.2em;
+    line-height: 1.4;
+
+    border: 1px solid var(--ergoface-green);
+    border-radius: 0.25em;
+
+
+    
+    &::before,
+    &::after{
+        padding: 1em;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: #eee;
+        background-image: linear-gradient(to top, #ddd, #eee 33%);
+    }
+
+    option {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        
+        display: flex;
+        color: black;
+        line-height: 1.5;
+        cursor: pointer;
+        padding: 1em;
+
+        &:checked,
+        &::before,
+        &::after{
+            padding: 1em;
+        }
+    }
+}

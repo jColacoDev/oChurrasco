@@ -32,14 +32,6 @@ const allFamilies = async (parent, args, {req}) => {
         .exec();
 }
 const familiesFromFamily = async (parent, args, {req}) => {
-    console.log(args.familyId)
-    console.log(await Family.find({
-        family: args.familyId
-    })
-        .populate('postedBy', 'label _id')
-        .sort({createdAt: -1})
-        .exec())
-
     return await Family.find({
         family: args.familyId
     })
@@ -104,8 +96,8 @@ const familyCreate = async (parent, args, {req, pubsub}) => {
 
     pubsub.publish(FAMILY_CREATED, { familyCreated });
 
-    console.log(args)
-    console.log(args.input.images)
+    // console.log(args)
+    // console.log(args.input.images)
     console.log(familyCreated)
 
     return familyCreated;

@@ -1,26 +1,3 @@
-.FormArticle{
-    display: flex;
-    flex-direction: column;
-    gap: .5em;
-    padding: 1em;
-    
-    > section{
-        display: flex;
-        flex-direction: column;
-        gap: .5em;
-        
-        > section{
-            padding: .5em;
+#FormArticle{
 
-            background-color: var(--app-bg);
-            *{
-                border: none;
-                background-color: transparent;
-            }
-        }
-    }
-    button{
-        margin-top: 1em;
-        background-color: transparent;
-    }
 }

@@ -1,11 +1,11 @@
-.FileUpload{
+#FileUpload{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1em;
     
-    section{
+    section.uploadSection{
         display: flex;
         justify-content: center;
         align-items: center;

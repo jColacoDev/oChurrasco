@@ -207,7 +207,7 @@ const { gDrive_authorize, gDrive_listFiles, getDriveDirectories } = require('./g
     });
     app.post('/uploadimages', authCheckMiddleware, function(req, res) {
         console.log('...UPLOADING ...');
-        console.log(req.body);
+        // console.log(req.body);
         cloudinary.uploader.upload(req.body.image, result => {
             res.send({
                 url: result.secure_url,

@@ -89,6 +89,8 @@ main.appRoutes{
 }
 
 section.welcome{
+    z-index: 999;
+    position: relative;
     background-color: #DBDBDC;
     display: flex;
     flex-wrap: wrap;

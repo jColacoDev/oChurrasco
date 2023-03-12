@@ -15,19 +15,31 @@ export const FAMILY_DATA =`
 `
 export const ARTICLE_DATA =`
     _id
-    ref
+    postedBy {
+        _id
+        username
+    }
     label
-    description
+    type
+    family
+    code
+    url
+    about
+    supplier
+    supplierRef
+    notes
+    price_purchase
+    price_sale
     images {
         url
         label
         description
         public_id
     }
-    postedBy {
-        _id
-        username
-    }
+    services
+    related_codes
+    related_families
+    related_articles
 `
 export const USER_INFO =`
     _id

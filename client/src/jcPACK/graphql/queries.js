@@ -85,6 +85,13 @@ export const GET_PARENTS_FROM_FAMILY = gql`
     }
   }
 `;
+export const GET_ARTICLES_FROM_FAMILY = gql`
+  query articlesFromFamily($familyId: String!) {
+    articlesFromFamily(familyId: $familyId) {
+        ${ARTICLE_DATA}
+    }
+  }
+`;
 export const SINGLE_FAMILY = gql`
   query singleFamily($familyId: String!) {
     singleFamily(familyId: $familyId) {
