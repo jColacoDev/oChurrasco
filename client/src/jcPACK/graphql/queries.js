@@ -79,7 +79,7 @@ export const GET_FAMILIES_FROM_FAMILY = gql`
   }
 `;
 export const GET_FAMILY_ID_FROM_LABELS_PATH = gql`
-  query familyIdFromLabelsPath($labelsPath: [String]!) {
+  query familyIdFromLabelsPath($labelsPath: [String]) {
     familyIdFromLabelsPath(labelsPath: $labelsPath) {
         ${FAMILY_DATA}
     }

@@ -20,7 +20,7 @@ const { useServer } = require('graphql-ws/lib/use/ws');
 const { PubSub } = require('graphql-subscriptions');
 
 // custom middleware
-const { authCheckMiddleware } = require('./helpers/auth');
+const { authCheckMiddleware } = require('./firebase/auth');
 //utils
 require('dotenv').config();
 const cloudinary = require('cloudinary');

@@ -1,4 +1,4 @@
-const {authCheck} = require('../../helpers/auth')
+const {authCheck} = require('../../firebase/auth')
 const Article = require('../models/article')
 const User = require('../models/user')
 

@@ -1,4 +1,5 @@
-const {authCheck} = require('../../helpers/auth')
+const {authCheck} = require('../../firebase/auth');
+const { normalizePathLabel } = require('../../utils/utils');
 const Family = require('../models/family')
 const User = require('../models/user')
 
@@ -39,32 +40,58 @@ const familiesFromFamily = async (parent, args, {req}) => {
         .sort({createdAt: -1})
         .exec();
 }
+
+const familyIdFromLabelsPath = async (parent, args, {req}) => {
+    const rootFamily = await Family.find({
+        family: "root",
+        label:{$regex: normalizePathLabel(args.labelsPath[0])}
+    })
+    .populate('postedBy', 'label _id')
+    .sort({createdAt: -1})
+    .exec();
+
+    let families = rootFamily;
+    for(let index=1; index<args.labelsPath.length; index++){
+        const regex = new RegExp(
+            `^${normalizePathLabel(args.labelsPath[index])}$`, 'i');
+            
+        families = await Family.find({
+            family: families[0]._id,
+            label: regex
+        })
+        .populate('postedBy', 'label _id')
+        .sort({createdAt: -1})
+        .exec();
+        if(!families) break;
+    }
+    return families ? families : rootFamily;
+}
+
 const parentsFromFamily = async (parent, args, {req}) => {
     let parents = [];
+    let parentsFromFamily = [];
 
-    const family = await Family.find({
+    const families = await Family.find({
         _id: args.familyId
     })
     .populate('postedBy', 'label _id')
     .sort({createdAt: -1})
     .exec();
     
-    parents = [...family];
+    parents = [...families];
+    let family = families[0] || [];
+    while(family?.family && family.family !=="root"){
 
-    let familyFamily = family[0].family;
-
-    while(familyFamily && familyFamily !=="root"){
-        const parentFromFamily = await Family.find({
-            _id: familyFamily
+        parentsFromFamily = await Family.find({
+            _id: family.family
         })
         .populate('postedBy', 'label _id')
         .sort({createdAt: -1})
         .exec();
-        parents = [...parentFromFamily, ...parents]
 
-        familyFamily = parentFromFamily[0].family;
+        parents = [...parentsFromFamily, ...parents]
+        family = parentsFromFamily[0] || [];
     }
-
     return parents;
 }
 const familiesByUser = async (parent, args, {req}) => {
@@ -146,6 +173,7 @@ module.exports = {
         totalFamilies,
         allFamilies,
         familiesFromFamily,
+        familyIdFromLabelsPath,
         parentsFromFamily,
         familiesByUser,
         singleFamily,

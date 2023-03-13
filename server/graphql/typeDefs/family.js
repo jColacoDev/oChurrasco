@@ -6,6 +6,7 @@ const queries = `
         allFamilies(page: Int, perPage: Int): [Family!]!
         familiesByUser: [Family!]!
         familiesFromFamily(familyId: String!): [Family!]
+        familyIdFromLabelsPath(labelsPath: [String]): [Family!]
         parentsFromFamily(familyId: String!): [Family!]
         singleFamily(familyId: String!): Family!
         searchFamilies(query: String!): [Family]
