@@ -1,6 +1,7 @@
 export const FAMILY_DATA =`
     _id
     label
+    normalizedLabel
     family
     images {
         url

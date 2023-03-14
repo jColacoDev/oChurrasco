@@ -32,6 +32,7 @@ const types = `
         _id: ID!
         postedBy: User!
         label: String!
+        normalizedLabel: String!
         family: String!
         images: [Image]
     }
@@ -45,6 +46,7 @@ const inputs = `
     input FamilyUpdateInput {
         _id: String! 
         label: String!
+        normalizedLabel: String!
         family: String!
         images: [ImageInput]
     }

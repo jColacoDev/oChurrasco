@@ -16,6 +16,11 @@ const familySchema = new mongoose.Schema({
         required: 'Label is required',
         text: true
     },
+    normalizedLabel: {
+        type: String,
+        text: true,
+        default: 'normalizedLabel',
+    },
     images: {
         type: Array,
         default: [

@@ -1,3 +1,7 @@
+
+ /************************************************** */
+ /* Input Validators ******************************************* */
+
 export function validateEmail(mail){
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(mail))
         return (true)
@@ -12,12 +16,8 @@ export function validatePhone(phone){
     else 
         return (false)
 }
-
-export function returnInitials(name){
-    if(!name || name === "") return "NN"
-
-    return name.getInitials().capitalize();
-}
+ /************************************************** */
+ /* Objects manipulation ******************************************* */
 
 export function groupObjectsArrayByType(arr) {
     if(arr){ 
@@ -32,17 +32,22 @@ export function groupObjectsArrayByType(arr) {
      return Object.values(groups);
      }
  }
+ 
+ /************************************************** */
+ /* String manipulation ********************************* */
+ export function returnInitials(name){
+    if(!name || name === "") return "NN"
+
+    return name.getInitials().capitalize();
+}
 String.prototype.getInitials = function(glue){
     if (typeof glue == "undefined") {
         var glue = true;
     }
-
     var initials = this.replace(/[^a-zA-Z- ]/g, "").match(/\b\w/g);
-    
     if (glue) {
         return initials.join('');
     }
-
     return  initials;
 };
 
@@ -61,3 +66,8 @@ export function stringToUrl(str) {
     if(!str) return "";
     return removeAccents(str.replace(/\s+/g, '-').toLowerCase())
 }
+
+export const normalizePathLabel = label => label?.toLowerCase()
+.normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove accents
+.replace(/[^\w\s]/g, "") // Remove punctuation
+.replace(/\s+/g, "-") || ""; // Replace spaces with dashes

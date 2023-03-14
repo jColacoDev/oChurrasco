@@ -33,6 +33,7 @@ const allFamilies = async (parent, args, {req}) => {
         .exec();
 }
 const familiesFromFamily = async (parent, args, {req}) => {
+    // console.log(args.familyId)
     return await Family.find({
         family: args.familyId
     })
@@ -42,29 +43,33 @@ const familiesFromFamily = async (parent, args, {req}) => {
 }
 
 const familyIdFromLabelsPath = async (parent, args, {req}) => {
+    const rootLabel = normalizePathLabel(args.labelsPath[0]);
     const rootFamily = await Family.find({
         family: "root",
-        label:{$regex: normalizePathLabel(args.labelsPath[0])}
+        normalizedLabel: {$regex: rootLabel, $options: 'i'}
     })
     .populate('postedBy', 'label _id')
     .sort({createdAt: -1})
     .exec();
 
     let families = rootFamily;
-    for(let index=1; index<args.labelsPath.length; index++){
-        const regex = new RegExp(
-            `^${normalizePathLabel(args.labelsPath[index])}$`, 'i');
-            
+    for (let index = 1; index < args.labelsPath.length; index++) {
+        const label = normalizePathLabel(args.labelsPath[index]);
+        const regex = new RegExp(`^${label}$`, 'i');
+
+        console.log(label)
+
         families = await Family.find({
             family: families[0]._id,
-            label: regex
+            normalizedLabel: regex
         })
         .populate('postedBy', 'label _id')
         .sort({createdAt: -1})
         .exec();
-        if(!families) break;
+        if (!families) break;
     }
-    return families ? families : rootFamily;
+
+    return families;
 }
 
 const parentsFromFamily = async (parent, args, {req}) => {
@@ -117,15 +122,14 @@ const familyCreate = async (parent, args, {req, pubsub}) => {
     
     let familyCreated = await new Family({
         ...args.input,
+        normalizedLabel: normalizePathLabel(args.input.label),
         postedBy: currentUserFromDb._id
     }).save()
     .then(family => family.populate('postedBy', '_id username'))
 
     pubsub.publish(FAMILY_CREATED, { familyCreated });
 
-    // console.log(args)
-    // console.log(args.input.images)
-    console.log(familyCreated)
+    console.info(familyCreated)
 
     return familyCreated;
 }
@@ -141,7 +145,9 @@ const familyUpdate = async (parent, args, {req, pubsub}) => {
         throw new Error('Unauthorized action');
 
     let familyUpdated = await Family.findByIdAndUpdate(args.input._id, 
-        {...args.input}, 
+        {...args.input,
+            normalizedLabel: normalizePathLabel(args.input.label)
+        }, 
         {new: true}
     ).exec()
     .then(family => family.populate('postedBy', '_id username'));

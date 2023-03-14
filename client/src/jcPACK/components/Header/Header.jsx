@@ -1,44 +1,55 @@
 import './Header.scss'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { productsData } from '../../Apps/app/Products'
-import { removeAccents } from '../../utils/utils'
+import { normalizePathLabel } from '../../utils/utils'
 import Searchbar from '../Searchbar/Searchbar'
 import { useDispatch } from "react-redux";
 import { setHeaderHeight } from '../../reduxStore/headerHeightSlice'
+import { useLazyQuery, useQuery } from '@apollo/client'
+import { GET_FAMILIES_FROM_FAMILY } from '../../graphql/queries'
+
+const PRODUCTS_ID="640f0fdfeeadf8b0f5d5cf64";
 
 export default function Header() {
+    const dispatch = useDispatch();
+    const [navFamilies, setNavFamilies] = useState([]);
     const [category, setCategory] = useState([]);
     const [navHeight, setNavHeight] = useState(null);
     const navigate = useNavigate();
     const navbarRef = useRef(null);
-
-    const dispatch = useDispatch();
-
+    /* ************************************************************ */
+    /* QUERIES   ************************************************* */
+    const {
+        data: familiesFromFamilyData , 
+        loading: familiesFromFamilyLoading, 
+        error: familiesFromFamilyError
+    } = useQuery(GET_FAMILIES_FROM_FAMILY, {
+        onError: (error) => console.error("family from Family query error: ", error),
+        fetchPolicy: "cache-and-network",
+        variables: {familyId: PRODUCTS_ID}
+    });
+    /* ************************************************************ */
+    /* useEffect   ************************************************* */
+    useEffect(() => {
+        const onResize= ()=> setNavHeight(navbarRef.current.offsetHeight);
+        window.addEventListener('resize', onResize);
+        onResize();
+        return ()=> window.removeEventListener('resize', onResize);
+    }, []);
     useEffect(() => {
         dispatch(setHeaderHeight(navHeight));
     }, [navHeight]);
-
-    useEffect(() => {
-        const onResize = () => {
-            setNavHeight(navbarRef.current.offsetHeight);
-        };
-
-        window.addEventListener('resize', onResize);
-        onResize(); // initialize height
-
-        return () => {
-            window.removeEventListener('resize', onResize);
-        };
-    }, []);
         
-    useEffect(()=>{
-        // console.log(navigate.path)
+    useMemo(()=>{
         const category = `${location.pathname.split('/')[3] || ""}`
-        const final_category = `${location.pathname.split('/')[4] || ""}`
-
         setCategory(category);
     },[navigate])
+
+    useMemo(() => {
+        navFamilies !== familiesFromFamilyData && familiesFromFamilyData && 
+            setNavFamilies(familiesFromFamilyData)
+    }, [familiesFromFamilyData]);
+
     
 
   return (
@@ -57,10 +68,10 @@ export default function Header() {
         </main>
         <hr />
         <nav>
-            {productsData.categories.map((item, i)=>
+            {navFamilies?.familiesFromFamily?.map((item, i)=>
                 <Link key={i} 
-                    to={`/app/produtos/${removeAccents(item.label.replace(/\s+/g, '-').toLowerCase())}`}
-                    className={removeAccents(item.label.replace(/\s+/g, '-').toLowerCase()) === category ? "active" : ""}
+                    to={`/app/produtos/${normalizePathLabel(item.label)}`}
+                    className={normalizePathLabel(item.label) === category ? "active" : ""}
                 >{item.label}</Link>
             )}
         </nav>

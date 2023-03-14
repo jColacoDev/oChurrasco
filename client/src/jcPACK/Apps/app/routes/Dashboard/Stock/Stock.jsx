@@ -21,7 +21,7 @@ export default function Stock({headerHeight}) {
     const [loading, setLoading] = useState(false);
     const [articlesByTypes, setArticlesByTypes] = useState([]);
     const [currentFormInputError, setCurrentFormInputError] = useState("");
-    const [currentFamilyId, setCurrentFamilyId] = useState("root");
+    const [currentFamilyId, setCurrentFamilyId] = useState("640f0fdfeeadf8b0f5d5cf64");
     const [inputFamily, setInputFamily] = useState({
         label: '',
         family: '',
@@ -48,9 +48,9 @@ export default function Stock({headerHeight}) {
     });
 
     const [singleFamily, {
-        data: currentFamilyData, 
-        loading: currentFamilyLoading, 
-        error: currentFamilyError,
+        data: singleFamilyData, 
+        loading: singleFamilyLoading, 
+        error: singleFamilyError,
         refetch: singleFamilyRefetch, 
         called: singleFamilyCalled 
     }] = useLazyQuery(SINGLE_FAMILY,{
@@ -71,7 +71,7 @@ export default function Stock({headerHeight}) {
     })
     /* ************************************************************ */
     /* QUERIES   ************************************************* */
-    const [familiesFromFamilyRefetch, {
+    const [familiesFromFamily, {
         data: familiesFromFamilyData, 
         loading: familiesFromFamilyLoading, 
         error: familiesFromFamilyError
@@ -79,7 +79,7 @@ export default function Stock({headerHeight}) {
         onError: (error) => console.error("family from Family query error: ", error),
         variables: {familyId: currentFamilyId}
     })
-    const [parentsFromFamilyRefetch, {
+    const [parentsFromFamily, {
         data: parentsFromFamilyData, 
         loading: parentsFromFamilyLoading, 
         error: parentsFromFamilyError
@@ -87,7 +87,7 @@ export default function Stock({headerHeight}) {
         onError: (error) => console.error("parents from Family query error: ", error),
         variables: {familyId: currentFamilyId}
     })
-    const [articlesFromFamilyRefetch, {
+    const [articlesFromFamily, {
         data: articlesFromFamilyData, 
         loading: articlesFromFamilyLoading, 
         error: articlesFromFamilyError
@@ -116,15 +116,15 @@ export default function Stock({headerHeight}) {
     }, [articlesFromFamilyData])
 
     useEffect(() => {
-        setInputFamily({...inputFamily, family: currentFamilyData?.singleFamily._id})
-        setInputArticle({...inputArticle, family: currentFamilyData?.singleFamily._id})
-    }, [currentFamilyData])
+        setInputFamily({...inputFamily, family: singleFamilyData?.singleFamily._id})
+        setInputArticle({...inputArticle, family: singleFamilyData?.singleFamily._id})
+    }, [singleFamilyData])
 
     useEffect(() => {
         singleFamilyRefetch({familyId: currentFamilyId});
-        articlesFromFamilyRefetch({familyId: currentFamilyId});
-        familiesFromFamilyRefetch({familyId: currentFamilyId});
-        parentsFromFamilyRefetch({familyId: currentFamilyId});
+        articlesFromFamily({familyId: currentFamilyId});
+        familiesFromFamily({familyId: currentFamilyId});
+        parentsFromFamily({familyId: currentFamilyId});
     }, [currentFamilyId])
     /* ************************************************************ */
     /* ACTION HANDLERS   ***************************************** */
@@ -140,8 +140,8 @@ export default function Stock({headerHeight}) {
         e?.preventDefault();
         setLoading(true);
         const familyToAdd = {...inputFamily, 
-            family: currentFamilyData ? 
-                currentFamilyData.singleFamily._id : "root"
+            family: singleFamilyData ? 
+                singleFamilyData.singleFamily._id : "640f0fdfeeadf8b0f5d5cf64"
         }
         let flag = "";
         if(!familyToAdd.label)
@@ -162,8 +162,8 @@ export default function Stock({headerHeight}) {
         setLoading(true);
         
         const articleToAdd = {...inputArticle, 
-            family: currentFamilyData ? 
-            currentFamilyData.singleFamily._id : "root"
+            family: singleFamilyData ? 
+            singleFamilyData.singleFamily._id : "640f0fdfeeadf8b0f5d5cf64"
         }
         let flag = "";
                 
@@ -249,7 +249,7 @@ export default function Stock({headerHeight}) {
                 
                 setInputFamily={setInputFamily}
                 inputFamily={inputFamily}
-                optionsFamily={{family:currentFamilyData ? currentFamilyData.singleFamily.label : "Início"}}
+                optionsFamily={{family:singleFamilyData ? singleFamilyData.singleFamily.label : "Início"}}
             />
         </section>
         <section>
@@ -284,7 +284,7 @@ export default function Stock({headerHeight}) {
 
                 setInputArticle={setInputArticle}
                 inputArticle={inputArticle}
-                optionsArticle={{family:currentFamilyData ? currentFamilyData.singleFamily.label : "Início"}}
+                optionsArticle={{family:singleFamilyData ? singleFamilyData.singleFamily.label : "Início"}}
             />
         </section>
         
