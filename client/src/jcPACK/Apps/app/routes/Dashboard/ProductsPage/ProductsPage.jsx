@@ -10,26 +10,24 @@ import {
 import { useLazyQuery, useQuery } from '@apollo/client';
 import ProductsGallery from '../../../../../components/ProductsGallery/ProductsGallery';
 import { groupObjectsArrayByType } from '../../../../../utils/utils';
+import FamilyBreadCrumbs from '../../../../../components/FamilyBreadCrumbs/FamilyBreadCrumbs';
 
-const PAGE_BASE_URL="products";
+const PAGE_BASE_URL="produtos";
 const PRODUCTS_ID="640f0fdfeeadf8b0f5d5cf64";
+const REQUEST_DELAY=300;
 
 export default function ProductsPage() {
+    const [loading, setLoading] = useState(false);
+    const [crumbs, setCrumbs] = useState([]);
+    const [families, setFamilies] = useState([]);
     const [currentLabelsPath, setCurrentLabelsPath] = useState([]);
     const [articlesByTypes, setArticlesByTypes] = useState([]);
     const [currentFamilyId, setCurrentFamilyId] = useState(PRODUCTS_ID);
     const navigate = useNavigate();
      /* ************************************************************ */
     /* QUERIES   ************************************************* */
-    // const [familiesFromFamily, {
-    //     data: familiesFromFamilyData, 
-    //     loading: familiesFromFamilyLoading, 
-    //     error: familiesFromFamilyError
-    // }] = useLazyQuery(GET_FAMILIES_FROM_FAMILY, {
-    //     onError: (error) => console.error("family from Family query error: ", error),
-    //     variables: {familyId: currentFamilyId}
-    // })
     const {
+        called: familiesFromFamilyCalled , 
         data: familiesFromFamilyData , 
         loading: familiesFromFamilyLoading, 
         error: familiesFromFamilyError
@@ -38,22 +36,24 @@ export default function ProductsPage() {
         fetchPolicy: "cache-and-network",
         variables: {familyId: currentFamilyId}
     });
-    const [parentsFromFamily, {
-        data: parentsFromFamilyData, 
+    const {
+        data: parentsFromFamilyData , 
         loading: parentsFromFamilyLoading, 
         error: parentsFromFamilyError
-    }] = useLazyQuery(GET_PARENTS_FROM_FAMILY, {
-        onError: (error) => console.error("parents from Family query error: ", error),
+    } = useQuery(GET_PARENTS_FROM_FAMILY, {
+        onError: (error) => console.error("family from Family query error: ", error),
+        fetchPolicy: "cache-and-network",
         variables: {familyId: currentFamilyId}
-    })
-    const [articlesFromFamily, {
-        data: articlesFromFamilyData, 
+    });
+    const {
+        data: articlesFromFamilyData , 
         loading: articlesFromFamilyLoading, 
         error: articlesFromFamilyError
-    }] = useLazyQuery(GET_ARTICLES_FROM_FAMILY, {
-        onError: (error) => console.error("articles from Family query error: ", error),
+    } = useQuery(GET_ARTICLES_FROM_FAMILY, {
+        onError: (error) => console.error("family from Family query error: ", error),
+        fetchPolicy: "cache-and-network",
         variables: {familyId: currentFamilyId}
-    })
+    });
     const [familyIdFromLabelsPath, {
         data: familyIdFromLabelsPathData, 
         loading: familyIdFromLabelsPathLoading,
@@ -67,11 +67,43 @@ export default function ProductsPage() {
     })
     /* ************************************************************ */
     /* useEffect   ************************************************* */
+    useEffect(() => {
+        setLoading(true);
+        const timer = setTimeout(() => {
+          setFamilies(familiesFromFamilyData?.familiesFromFamily);
+          setLoading(false);
+        }, REQUEST_DELAY);
+        return () => clearTimeout(timer);
+      }, [familiesFromFamilyData]);
+
+    useEffect(() => {
+        setLoading(true);
+        const timer = setTimeout(() => {
+            setCrumbs(parentsFromFamilyData?.parentsFromFamily);
+          setLoading(false);
+        }, REQUEST_DELAY);
+        return () => clearTimeout(timer);
+      }, [parentsFromFamilyData]);
+
+      useEffect(() => {
+        if(parentsFromFamilyData?.parentsFromFamily[0]){
+            console.log("parentsFromFamilyData: ", parentsFromFamilyData)
+            setCrumbs(parentsFromFamilyData.parentsFromFamily)
+        }
+    }, [parentsFromFamilyData])
 
     useEffect(() => {
         const path = location.pathname.split('/');
         const productsPath = path.splice(path.findIndex(i=>i==='produtos')+1,path.length);
-        // console.log([PAGE_BASE_URL,...productsPath])
+        
+        let aux = [...currentLabelsPath,...productsPath]
+        let auxBase = [PAGE_BASE_URL,...productsPath]
+        if(productsPath.length>currentLabelsPath.length)
+            console.log(aux)
+        else
+            console.log(auxBase)
+        
+        // console.log(currentLabelsPath)
         setCurrentLabelsPath([PAGE_BASE_URL,...productsPath])
 
     },[location.pathname, navigate])
@@ -85,15 +117,15 @@ export default function ProductsPage() {
 
     useEffect(() => {
         if(familyIdFromLabelsPathData?.familyIdFromLabelsPath[0]){
-            console.log("familyIdFromLabelsPathData: ", familyIdFromLabelsPathData?.familyIdFromLabelsPath[0])
+            // console.log("familyIdFromLabelsPathData: ", familyIdFromLabelsPathData?.familyIdFromLabelsPath[0])
             setCurrentFamilyId(familyIdFromLabelsPathData?.familyIdFromLabelsPath[0]._id)
         }
     },[familyIdFromLabelsPathData])
 
     useEffect(() => {
         // familiesFromFamily({familyId: currentFamilyId});
-        articlesFromFamily({familyId: currentFamilyId});
-        parentsFromFamily({familyId: currentFamilyId});
+        // articlesFromFamily({familyId: currentFamilyId});
+        // parentsFromFamily({familyId: currentFamilyId});
     }, [currentFamilyId])
 
     useEffect(() => {
@@ -106,35 +138,42 @@ export default function ProductsPage() {
     }, [articlesFromFamilyData])
 
     useEffect(() => {
-        if(parentsFromFamilyData?.parentsFromFamily[0]){
-            console.log("parentsFromFamilyData: ", parentsFromFamilyData)
-
-        }
-    }, [parentsFromFamilyData])
-    useEffect(() => {
-        if(familiesFromFamilyData?.familiesFromFamily[0]){
-            console.log("familiesFromFamilyData: ", familiesFromFamilyData)
+        if(familiesFromFamilyData?.familiesFromFamily[0] && familiesFromFamilyCalled){
+            // console.log("familiesFromFamilyData: ", familiesFromFamilyData)
 
         }
     }, [familiesFromFamilyData])
 
+    const handleFamilyClick = (e) =>{
+        e?.preventDefault();
+        setCurrentFamilyId(e.currentTarget.dataset.id)
+    }
+
   return (
     <div className='ProductsPage'>
+    {/* {loading && <p>Loading...</p>} */}
+    <FamilyBreadCrumbs
+        handleFamilyClick={handleFamilyClick}
+        crumbs={crumbs} 
+    />
+    {families?.length > 0 && <>
         <h2>
             {
                 parentsFromFamilyData?.parentsFromFamily[parentsFromFamilyData?.parentsFromFamily?.length]?.label
             }
         </h2>
-        {familiesFromFamilyData?.familiesFromFamily?.length > 0 &&
-        <section>
-            <span className='heading'>
-                <h3>Categorias</h3>
+            <section>
+                <span className='heading'>
+                    <h3>Categorias</h3>
+                    <hr />
+                </span>
+                <ProductsGallery 
+                    families={families}
+                    handleFamilyClick={handleFamilyClick}    
+                />
                 <hr />
-            </span>
-            <ProductsGallery families={familiesFromFamilyData.familiesFromFamily}/>
-            <hr />
-        </section>
-        }
+            </section>
+    </>}
 
         {
             // currentFamily?.catalogs?.length > 0 &&

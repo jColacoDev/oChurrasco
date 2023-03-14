@@ -5,7 +5,6 @@ export default function FamilyBreadCrumbs({
     handleFamilyClick =(f)=>f,
     crumbs=[]
 }) {
-
   return (
     <div className='FamilyBreadCrumbs'>
         {crumbs?.length>0 ?
