@@ -3,15 +3,8 @@
     flex-direction: column;
     gap: 2em;
 
-    .submitForm{
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .FamilyBreadCrumbs{
+        padding: 0 1em;
     }
 
     .familySubName,
@@ -33,6 +26,12 @@
         z-index: 90;
     }
     .submitForm{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         pointer-events: none;
     
         z-index: 100;
@@ -40,13 +39,11 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        justify-content: center;
-        align-items: center;
 
         
         form{
             pointer-events: all;
-            border: 1px solid var(--ergoface-green);
+            border: 1px solid var(--ergoface-green) !important;
 
             &#FormArticle::before,
             &#FormFamily::before{
@@ -82,17 +79,72 @@
             align-items: center;
             width: 10em;
             height: 10em;
+            padding-top: 1em;
 
             &.family{
-                cursor: pointer;
+                figure{
+                    cursor: pointer;
+                }
             }
 
-            &:hover{
-                background-color: var(--sidebar-hover-link);
+            figure{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-self: center;
+                text-align: center;
+                width: 100%;
+                height: 90%;
+
+                &:hover{
+                    background-color: var(--sidebar-hover-link) !important;
+                    border: 1px solid var(--ergoface-green) !important;
+                    
+                    figcaption{
+                        top: 0em;
+                    }
+                }
+
+                img{
+                    object-fit: cover;
+                    max-width: 100%;
+                }
+
+                figcaption{
+                    pointer-events: none;
+                    cursor: default;
+                    position: absolute;
+                    top: -2em;
+                    background-color: #00000060;
+                    padding: 1em;
+                    width: 100%;
+                }
+            }
+            footer.actionButtons{
+                display: flex;
+                width: 100%;
+        
+                button{
+                    padding: .3em .5em;
+                    margin: 0;
+                    width: 100%;
+        
+                    &.update{
+                        &:hover{
+                            background-color: green;
+                        }
+                    }
+                    &.delete{
+                        &:hover{
+                            background-color: red;
+                        }
+            
+                    }
+                }
             }
         }
     }
-
     form{
         display: flex;
         flex-direction: column;

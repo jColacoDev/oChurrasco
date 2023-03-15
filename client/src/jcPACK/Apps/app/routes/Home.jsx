@@ -3,6 +3,7 @@ import Gallery from '../../../components/Gallery/Gallery'
 import { productsData } from '../Products'
 import ContactForm from '../../../components/ContactForm/ContactForm'
 import GalleryCaroussel from '../../../components/GalleryCaroussel/GalleryCaroussel'
+import SubscribeBox from '../../../components/SubscribeBox/SubscribeBox'
 
 export default function Home() {
   const [folders, setFolders] = useState([]);
@@ -25,11 +26,14 @@ export default function Home() {
         </span>
         <GalleryCaroussel url="/app/produtos" data={productsData.categories} />
         
-        <span className='heading'>
-            <h3>Contactos</h3>
-            <hr />
-        </span>
-        <ContactForm />   
+          <span className='heading'>
+              <h3>Contactos</h3>
+              <hr />
+          </span>
+        <section className='homeContacts'>
+          <ContactForm />
+          <SubscribeBox />
+        </section>
     </div>
   )
 }

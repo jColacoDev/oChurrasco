@@ -1,3 +1,8 @@
+export const NEWS_SUBSCRIPTION_DATA =`
+    _id
+    label
+    email
+`
 export const FAMILY_DATA =`
     _id
     label

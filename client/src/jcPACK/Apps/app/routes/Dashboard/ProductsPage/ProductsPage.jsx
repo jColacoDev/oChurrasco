@@ -14,10 +14,11 @@ import FamilyBreadCrumbs from '../../../../../components/FamilyBreadCrumbs/Famil
 
 const PAGE_BASE_URL="produtos";
 const PRODUCTS_ID="640f0fdfeeadf8b0f5d5cf64";
-const REQUEST_DELAY=300;
+const REQUEST_DELAY=500;
 
 export default function ProductsPage() {
     const [loading, setLoading] = useState(false);
+    const [pageTitle, setPageTitle] = useState("");
     const [crumbs, setCrumbs] = useState([]);
     const [families, setFamilies] = useState([]);
     const [currentLabelsPath, setCurrentLabelsPath] = useState([]);
@@ -86,10 +87,15 @@ export default function ProductsPage() {
       }, [parentsFromFamilyData]);
 
       useEffect(() => {
-        if(parentsFromFamilyData?.parentsFromFamily[0]){
-            console.log("parentsFromFamilyData: ", parentsFromFamilyData)
-            setCrumbs(parentsFromFamilyData.parentsFromFamily)
-        }
+        if(parentsFromFamilyData?.parentsFromFamily)
+            if(parentsFromFamilyData.parentsFromFamily[0]){
+                console.log("parentsFromFamilyData: ", parentsFromFamilyData)
+                setCrumbs(parentsFromFamilyData.parentsFromFamily)
+                
+                const pageLabel= parentsFromFamilyData.parentsFromFamily[parentsFromFamilyData.parentsFromFamily.length-1]?.label
+
+                pageLabel && setPageTitle(pageLabel);
+            }
     }, [parentsFromFamilyData])
 
     useEffect(() => {
@@ -116,10 +122,11 @@ export default function ProductsPage() {
     },[currentLabelsPath])
 
     useEffect(() => {
-        if(familyIdFromLabelsPathData?.familyIdFromLabelsPath[0]){
-            // console.log("familyIdFromLabelsPathData: ", familyIdFromLabelsPathData?.familyIdFromLabelsPath[0])
-            setCurrentFamilyId(familyIdFromLabelsPathData?.familyIdFromLabelsPath[0]._id)
-        }
+        if(familyIdFromLabelsPathData?.familyIdFromLabelsPath)
+            if(familyIdFromLabelsPathData.familyIdFromLabelsPath[0]){
+                // console.log("familyIdFromLabelsPathData: ", familyIdFromLabelsPathData?.familyIdFromLabelsPath[0])
+                setCurrentFamilyId(familyIdFromLabelsPathData.familyIdFromLabelsPath[0]._id)
+            }
     },[familyIdFromLabelsPathData])
 
     useEffect(() => {
@@ -130,84 +137,60 @@ export default function ProductsPage() {
 
     useEffect(() => {
         // console.log(groupObjectsArrayByType(articlesFromFamilyData?.articlesFromFamily))
-
-        // if(articlesFromFamilyData?.articlesFromFamily && 
-        //     articlesFromFamilyData.articlesFromFamily) 
-        // setArticlesByTypes(groupObjectsArrayByType(articlesFromFamilyData.articlesFromFamily))
+        console.log(articlesFromFamilyData)
+        
+        if(articlesFromFamilyData?.articlesFromFamily && 
+            articlesFromFamilyData.articlesFromFamily) 
+        setArticlesByTypes(groupObjectsArrayByType(articlesFromFamilyData.articlesFromFamily))
 
     }, [articlesFromFamilyData])
 
     useEffect(() => {
-        if(familiesFromFamilyData?.familiesFromFamily[0] && familiesFromFamilyCalled){
-            // console.log("familiesFromFamilyData: ", familiesFromFamilyData)
+        if(familiesFromFamilyData?.familiesFromFamily)
+            if(familiesFromFamilyData.familiesFromFamily[0] && familiesFromFamilyCalled){
+                // console.log("familiesFromFamilyData: ", familiesFromFamilyData)
 
-        }
+            }
     }, [familiesFromFamilyData])
-
-    const handleFamilyClick = (e) =>{
-        e?.preventDefault();
-        setCurrentFamilyId(e.currentTarget.dataset.id)
-    }
 
   return (
     <div className='ProductsPage'>
     {/* {loading && <p>Loading...</p>} */}
     <FamilyBreadCrumbs
-        handleFamilyClick={handleFamilyClick}
+        baseUrl="/app"
         crumbs={crumbs} 
     />
+    <h2>{pageTitle}</h2>
+            
     {families?.length > 0 && <>
-        <h2>
-            {
-                parentsFromFamilyData?.parentsFromFamily[parentsFromFamilyData?.parentsFromFamily?.length]?.label
-            }
-        </h2>
-            <section>
-                <span className='heading'>
-                    <h3>Categorias</h3>
-                    <hr />
-                </span>
-                <ProductsGallery 
-                    families={families}
-                    handleFamilyClick={handleFamilyClick}    
-                />
+        <section>
+            <span className='heading'>
+                <h3>Categorias</h3>
                 <hr />
-            </section>
+            </span>
+            <ProductsGallery 
+                items={families}
+                loading={loading}
+            />
+            <hr />
+        </section>
     </>}
-
-        {
-            // currentFamily?.catalogs?.length > 0 &&
-            // <section>
-            //     <span className='heading'>
-            //         <h3>Catálogos</h3>
-            //         <hr />
-            //     </span>
-            //     <section className='catalogs'>
-            //         {currentFamily.catalogs.map((catalog, i)=>
-            //         <article key={i}>
-            //             {/* <PdfView file={catalog.catalog} linkPdf={true} /> */}
-            //             <a href={catalog.catalog} target="_blank" rel="noopener noreferrer">
-            //                 {catalog.label}
-            //             </a>
-            //         </article>
-            //         )}
-            //     </section>
-            //     <hr />
-            // </section>
-        }
-        
-        {
-        // currentFamily?.products?.length > 1 &&
-        // <section>
-        //     <span className='heading'>
-        //         <h3>Produtos</h3>
-        //         <hr />
-        //     </span>
-        //     <Gallery url='/app/produto' data={currentFamily.products} />
-        //     <hr />
-        // </section>
-        }
-        
+    {articlesByTypes?.map((articlesByType,i) =>
+        <section key={i}>
+            <span className='heading'>
+                <h3>{articlesByType[0].type === "document_blank" ?
+                    "Catalogos" : articlesByType[0].type === "product" ?
+                        "Produtos" : articlesByType[0].type
+                }</h3>
+                <hr />
+            </span>
+            <ProductsGallery 
+                flex={articlesByType[0]?.type === "document_blank" ? "start":"center"}
+                items={articlesByType}
+                loading={loading}
+            />
+        </section>
+        )}
     </div>
   )
 }

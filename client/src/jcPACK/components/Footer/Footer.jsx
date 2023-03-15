@@ -42,14 +42,14 @@ const logout = (e) => {
                         <Link to={`/app/contactos`}>Contactos</Link>
                         <Link to={`/app/faq`}>FAQ</Link>
                     </article>
-                    <article>
+                    {/* <article>
                         <h3>Account</h3>
                         <Link to={`/app/login`}>Login</Link>
                         <Link
                             onClick={logout}
                             to={"/app/login"}
                         >Log out</Link>
-                    </article>
+                    </article> */}
                 </div>
                 <Link className='logoLink' onClick={handleTopClick}>
                     <figure className='ergologo'/>

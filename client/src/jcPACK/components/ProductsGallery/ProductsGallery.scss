@@ -6,6 +6,15 @@ nav.ProductsGallery{
     gap: 1em;
     margin: 1em auto;
     max-width: 1800px;
+    padding: 0 1em;
+
+    &.flex-start{
+        justify-content: flex-start;
+    }
+    
+    &.flex-end{
+        justify-content: flex-end;
+    }
 
     a{
         display: flex;
@@ -16,6 +25,7 @@ nav.ProductsGallery{
         width: 100%;
         max-width: 45%;
         height: 20vh;
+
         @media (min-width: 700px) {
             max-width: 30%;
         }
@@ -74,6 +84,13 @@ nav.ProductsGallery{
             text-align: center;
             border-bottom-left-radius: 35px;
             box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        }
+        
+        &.document_blank{
+
+            span{
+                border-radius: 0;
+            }
         }
     }
 }

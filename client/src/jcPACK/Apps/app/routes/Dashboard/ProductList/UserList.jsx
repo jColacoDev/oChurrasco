@@ -33,7 +33,7 @@ export default function UserList({
 
     if(usersLoading) return <h4>Loading...</h4>
     return (
-    <div className='ProductList'>
+    <div id='ProductList'>
         <div ref={productsAreaWrapperRef} className="products-area-wrapper tableView">
             <div className="products-header">
 
@@ -56,9 +56,6 @@ export default function UserList({
 
             {usersData.map((product)=>
                 <div key={product.email} className="products-row">
-                    <button className="cell-more-button">
-                        {svg_icons.dotsMoreButton}
-                    </button>
                     <div className="product-cell image">
                         {/* <img src={product?.images[0]?.url} alt="product" /> */}
                         <Badge1 

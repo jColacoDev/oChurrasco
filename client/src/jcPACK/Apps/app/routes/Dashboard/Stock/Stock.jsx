@@ -19,6 +19,7 @@ import { groupObjectsArrayByType } from '../../../../../utils/utils';
 export default function Stock({headerHeight}) {
     const stockRef = useRef();
     const [loading, setLoading] = useState(false);
+    const [formOperation, setFormOperation] = useState("");
     const [articlesByTypes, setArticlesByTypes] = useState([]);
     const [currentFormInputError, setCurrentFormInputError] = useState("");
     const [currentFamilyId, setCurrentFamilyId] = useState("640f0fdfeeadf8b0f5d5cf64");
@@ -107,8 +108,6 @@ export default function Stock({headerHeight}) {
       },[headerHeight])
 
     useEffect(() => {
-        console.log(groupObjectsArrayByType(articlesFromFamilyData?.articlesFromFamily))
-
         if(articlesFromFamilyData?.articlesFromFamily && 
             articlesFromFamilyData.articlesFromFamily) 
         setArticlesByTypes(groupObjectsArrayByType(articlesFromFamilyData.articlesFromFamily))
@@ -157,6 +156,32 @@ export default function Stock({headerHeight}) {
         }
         setLoading(false);
     };
+    const clearForms = () => {
+        setInputFamily({
+            label: '',
+            family: '',
+            images: []
+        });
+        setInputArticle({
+            code: '',
+            label: '',
+            type: '',
+            family: '',
+            about: '',
+            abbr: '',
+            brand: '',
+            supplier: '',
+            supplierRef: '',
+            notes: '',
+            images: [],
+            services: [],
+            price_purchase: '',
+            price_sale: '',
+            related_codes: [],
+            related_families: [],
+            related_articles: []
+        })
+    }
     const handleArticleSubmit = (e) => {
         e?.preventDefault();
         setLoading(true);
@@ -190,30 +215,8 @@ export default function Stock({headerHeight}) {
         e?.preventDefault();
         let form = stockRef.current.querySelector(`#${e.currentTarget.dataset.formId}`)
         form.classList.toggle('displayNone')
-        setInputFamily({
-            label: '',
-            family: '',
-            images: []
-        });
-        setInputArticle({
-            code: '',
-            label: '',
-            type: '',
-            family: '',
-            about: '',
-            abbr: '',
-            brand: '',
-            supplier: '',
-            supplierRef: '',
-            notes: '',
-            images: [],
-            services: [],
-            price_purchase: '',
-            price_sale: '',
-            related_codes: [],
-            related_families: [],
-            related_articles: []
-        })
+        clearForms();
+        setFormOperation(e.currentTarget.dataset.operation || "")
         setCurrentFormInputError("");
     }
     /* family routes handlers   ********************** */
@@ -224,21 +227,23 @@ export default function Stock({headerHeight}) {
 
     return (
       <div ref={stockRef} id='Stock'>
-        <h2 className='familyName'>Familia de artigos: 
-        <span>
+        <h2 className='familyName'>
             <FamilyBreadCrumbs 
+                startPath={"/dashboard"}
                 handleFamilyClick={handleFamilyClick}
                 crumbs={parentsFromFamilyData?.parentsFromFamily} 
             />
-        </span>
         </h2>
-            <button data-form-id="FormFamily" onClick={handleFormDisplayToggle}>
-                <span />
+            <button 
+                data-form-id="FormFamily" 
+                data-operation="add" 
+                onClick={handleFormDisplayToggle}
+            ><span />
                 <p>Add Family</p>
             </button>
         <section className='submitForm'>
             <FormFamily
-                operation='Add'
+                operation={formOperation}
                 inputError={currentFormInputError}
                 loading={loading}
                 setLoading={setLoading}
@@ -253,14 +258,33 @@ export default function Stock({headerHeight}) {
             />
         </section>
         <section>
-            <h3 className='familySubName'>subFamilias de artigos: </h3>
+            <h3 className='familySubName'>Familias de artigos: </h3>
             {familiesFromFamilyData?.familiesFromFamily && 
                 familiesFromFamilyData.familiesFromFamily.map(family=>
-                    <article className='family' key={family._id} data-id={family._id}
-                    onClick={handleFamilyClick}
+                <article key={family._id} 
+                    className='family' 
                     >
-                    <img src={family?.images && family?.images[0]?.url} alt={family.label} />
-                    <p>{family.label}</p>
+                    <figure
+                        data-id={family._id}
+                        onClick={handleFamilyClick}
+                    >
+                       <img src={family?.images && family?.images[0]?.url} alt={family.label} />
+                        <figcaption>{family.label}</figcaption>
+                    </figure>
+                    <footer className='actionButtons'>
+                        <button 
+                            data-operation="update"
+                            data-form-id="FormFamily" 
+                            onClick={handleFormDisplayToggle} 
+                            className='update'
+                        >Update</button>
+                        <button 
+                            data-operation="delete"
+                            data-form-id="FormFamily"
+                            onClick={handleFormDisplayToggle} 
+                            className='delete'
+                        >Delete</button>
+                    </footer>
                 </article>
             )}
         </section>
@@ -272,7 +296,7 @@ export default function Stock({headerHeight}) {
             </button>
         <section className='submitForm'>
             <FormArticle
-                operation='Add'
+                operation={formOperation}
                 inputError={currentFormInputError}
                 setInputError={setCurrentFormInputError}
                 loading={loading}
@@ -290,7 +314,10 @@ export default function Stock({headerHeight}) {
         
         {articlesByTypes?.map((articlesByType,i) =>
         <div key={i}>
-            <h3>{articlesByType[0].type}</h3>
+            <h3>{articlesByType[0].type === "document_blank" ?
+                    "Catalogos" : articlesByType[0].type === "product" ?
+                        "Produtos" : articlesByType[0].type
+            }</h3>
             <section>
             {articlesByType?.map((articleByType, i) =>
                 <article className='article' key={articleByType._id} data-id={articleByType._id}>

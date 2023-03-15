@@ -267,7 +267,7 @@ export default function FormArticle({
         </span>
         <button type="submit"
             disabled={loading}
-        >Submit</button>
+        >{operation} article</button>
     </form>
   )
 }

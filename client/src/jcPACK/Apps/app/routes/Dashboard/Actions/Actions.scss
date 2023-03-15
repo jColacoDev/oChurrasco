@@ -68,7 +68,6 @@
         border-radius: 4px;
         height: 32px;
         background-color: var(--app-content-secondary-color);
-        border: 1px solid var(--app-content-secondary-color);
         display: flex;
         align-items: center;
         color: var(--app-content-main-color);
@@ -81,9 +80,12 @@
         }
         
         &:hover {
-        border-color: var(--action-color-hover);
+            border-color: var(--action-color-hover);
         }
         
+        &:not(.active){
+            border: none !important;
+        }
         &:focus, &.active {
             outline: none;
             color: var(--action-color);

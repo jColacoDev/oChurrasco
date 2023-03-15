@@ -152,7 +152,7 @@ export default function ProductList({
     }
 
     return (
-    <div className='ProductList'>
+    <div id='ProductList'>
         <div ref={productsAreaWrapperRef} className="products-area-wrapper tableView">
             <div className="products-header">
 
@@ -195,9 +195,6 @@ export default function ProductList({
 
             {productsList.map((product)=>
                 <div key={product.label} className="products-row">
-                    <button className="cell-more-button">
-                        {svg_icons.dotsMoreButton}
-                    </button>
                     <div className="product-cell image">
                         <img src={product.images[0].src} alt="product" />
                         <span>{product.label}</span>

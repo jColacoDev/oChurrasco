@@ -59,10 +59,10 @@ export default function Header() {
                 <figure className='logo'></figure>
             </Link>
             <section className="right">
-                <Searchbar />
-                <Link className='account' to="/app/login">
+                {/* <Searchbar /> */}
+                {/* <Link className='account' to="/app/login">
                     <figure />
-                </Link>
+                </Link> */}
             </section>
 
         </main>

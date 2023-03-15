@@ -56,9 +56,7 @@ const familyIdFromLabelsPath = async (parent, args, {req}) => {
     for (let index = 1; index < args.labelsPath.length; index++) {
         const label = normalizePathLabel(args.labelsPath[index]);
         const regex = new RegExp(`^${label}$`, 'i');
-
-        console.log(label)
-
+        // console.log(label)
         families = await Family.find({
             family: families[0]._id,
             normalizedLabel: regex

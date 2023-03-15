@@ -64,7 +64,7 @@ export default function FormFamily({
         </span>
         <button type="submit"
             disabled={loading}
-        >Submit</button>
+        >{operation} family</button>
     </form>
   )
 }

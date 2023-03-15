@@ -6,12 +6,15 @@ import logoutIcon from '../../../../../../assets/images/icons/logout.png'
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../../../firebase/firebase';
 import { AuthContext } from '../../../../../context/authContext';
+import { useSelector } from 'react-redux';
 
 export default function Sidebar({
     setPageIndex = (f)=>f, 
     pageIndex=0,
     accountPages = []
   }) {
+    const headerHeight = useSelector((state) => state.headerHeight);
+
     const { dispatch } = useContext(AuthContext);
     const ulRef = useRef();
     let navigate = useNavigate();
@@ -19,6 +22,11 @@ export default function Sidebar({
     useEffect(()=>{
       setPageIndex(0)
     }, []);
+
+    useEffect(()=>{
+		console.log(headerHeight)
+		ulRef.current.style.top= headerHeight
+    }, [headerHeight]);
 
     useEffect(()=>{
       const itemList = ulRef.current.querySelectorAll(".sidebar-list-item");

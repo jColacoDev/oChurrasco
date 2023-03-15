@@ -21,7 +21,6 @@ header.Header{
         }
         &.active,
         &:active{
-            font-weight: bold;
             text-decoration: underline;
         }
     }
@@ -104,5 +103,6 @@ header.Header{
         align-items: center;
         gap: 1em;
         padding: 0.1em 0.5em;
+        font-size: 1.2em;
     }
 }

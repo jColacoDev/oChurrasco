@@ -1,6 +1,9 @@
 import { gql } from '@apollo/client';
-import { USER_INFO, ARTICLE_DATA, FAMILY_DATA } from "./fragments"
+import { USER_INFO, ARTICLE_DATA, FAMILY_DATA, NEWS_SUBSCRIPTION_DATA } from "./fragments"
 
+
+/***************************************************************** */
+/*** USER **************************************************** */
 export const GET_ALL_USERS = gql`
   query {
     allUsers {
@@ -24,6 +27,8 @@ export const PROFILE = gql`
   }
 `
 
+/***************************************************************** */
+/*** ARTICLE **************************************************** */
 export const SEARCH = gql`
     query search($query: String!){
         search(query: $query) {
@@ -31,7 +36,6 @@ export const SEARCH = gql`
         }
     }
 `
-
 export const TOTAL_ARTICLES = gql`
   query {
     totalArticles
@@ -59,11 +63,14 @@ export const ARTICLES_BY_USER = gql`
   }
 `;
 
+/***************************************************************** */
+/*** FAMILY **************************************************** */
 export const TOTAL_FAMILIES = gql`
   query {
     totalFamilies
   }
 `;
+
 export const GET_ALL_FAMILIES = gql`
   query allFamilies {
     allFamilies {
@@ -104,5 +111,27 @@ export const SINGLE_FAMILY = gql`
     singleFamily(familyId: $familyId) {
         ${FAMILY_DATA}
     }
+  }
+`;
+
+/***************************************************************** */
+/*** SUBSCRIPTION **************************************************** */
+export const SINGLE_SUBSCRIPTION = gql`
+  query singleNewsSubscription($newsSubscriptionId: String!) {
+    singleNewsSubscription(newsSubscriptionId: $newsSubscriptionId) {
+        ${NEWS_SUBSCRIPTION_DATA}
+    }
+  }
+`;
+export const GET_ALL_NEWS_SUBSCRIPTIONS = gql`
+  query allNewsSubscriptions {
+    allNewsSubscriptions {
+        ${NEWS_SUBSCRIPTION_DATA}
+    }
+  }
+`;
+export const TOTAL_NEWS_SUBSCRIPTIONS = gql`
+  query {
+    totalNewsSubscriptions
   }
 `;

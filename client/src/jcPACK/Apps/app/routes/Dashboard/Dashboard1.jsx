@@ -89,7 +89,7 @@ export default function Dashboard1({
 	}
 
   return (
-    <div className='Dashboard1'>
+    <div id='Dashboard1'>
         <div  ref={appRef} className="app-container">
           <Sidebar 
             pageIndex={pageIndex} 

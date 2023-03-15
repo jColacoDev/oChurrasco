@@ -1,7 +1,7 @@
 import './Gallery.scss'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { normalizePathLabel, removeAccents } from '../../utils/utils'
+import { normalizePathLabel } from '../../utils/utils'
 
 export default function Gallery({url = "", data}) {
 
