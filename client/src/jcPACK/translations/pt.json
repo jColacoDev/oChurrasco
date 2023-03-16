@@ -1,0 +1,101 @@
+{
+    
+    "lang": {
+        "label": "portuguese",
+        "code": "PT"
+    },
+    "products": "products",
+    "categories": "categorias",
+    "catalogs": "catalogos",
+    "highlights": "destaques",
+    "greeting": "Bem-vindo à",
+    "theCompany": "A empresa",
+    
+    "actions": {
+        "submit": "enviar",
+        "subscribe": "subscrever",
+        "send": "enviar"
+    },
+    
+    "contacts": {
+        "label": "contactos",
+        "title": "contacte-nos",
+        "name": "nome",
+        "email": "email",
+        "subject": "assunto",
+        "telephone": "telefone",
+        "company": "empresa",
+        "message": "mensagem"
+    },
+
+    "badges": {
+        "support":{
+            "title": "Suporte Especializado",
+            "message": "Comerciais experientes para ajudar"
+        },
+        "price":{
+            "title": "O melhor preço",
+            "message": "Garantia do melhor preço"
+        },
+        "budget":{
+            "title": "Orçamentos Grátis",
+            "message": "Consulte-nos sem compromisso"
+        },
+        "deliver":{
+            "title": "Entregas em todo o país",
+            "message": "Dispomos de viaturas próprias"
+        },
+        "assembly":{
+            "title": "Montagem",
+            "message": "Equipas especializadas"
+        },
+        "quality":{
+            "title": "Garantia de Qualidade",
+            "message": "2 anos de garantia"
+        }
+    },
+
+    "newsletter": {
+        "title": "SUBSCREVA A NOSSA NEWSLETTER",
+        "message": ""
+    },
+
+    "aboutUs": {
+        "title": "sobre nós",
+        "messageWithTags": "<p>A <strong><em>Ergoface Mobiliário de Escritório, Lda</em></strong> é uma empresa em Portugal que se dedica à venda de mobiliário de escritório e prestação de serviços para empresas. O seu principal objetivo é fornecer soluções que promovam o bem-estar e a produtividade dos seus clientes.</p><p>A <strong><em>Ergoface</em></strong> destaca-se pela sua preocupação com a ergonomia, ou seja, a adaptação do mobiliário e equipamento de escritório às necessidades e características individuais de cada pessoa. A empresa oferece uma vasta gama de produtos, desde cadeiras ergonómicas a secretárias ajustáveis em altura, que permitem a correção da postura e redução do desconforto físico, prevenindo assim lesões e doenças profissionais.</p><p>Mas a <strong><em>Ergoface</em></strong> não se limita a vender mobiliário de qualidade, a empresa está empenhada em melhorar a qualidade de vida dos trabalhadores, promovendo a felicidade no trabalho e o aumento da produtividade.</p><p>Em resumo, a <strong><em>Ergoface Mobiliário de Escritório, Lda</em></strong> é uma empresa que se preocupa com o bem-estar e a saúde dos seus clientes, oferecendo soluções personalizadas e inovadoras em mobiliário de escritório com ergonomia e segurança no trabalho. Com a <strong><em>Ergoface</em></strong>, os clientes podem contar com um ambiente de trabalho mais confortável, saudável e feliz.</p></div>"
+
+    },
+    "faq": {
+        "title": "Questões frequentes",
+        "options": {
+            "a": {
+                "title": "O que é a Ergoface mobiliário de escritório, lda?",
+                "message": "A Ergoface mobiliário de escritório, lda é uma empresa que vende mobiliário de escritório e presta serviços para negócios em Portugal. A empresa oferece uma vasta gama de produtos, incluindo cadeiras, mesas, armários, estantes, entre outros itens."
+            },
+            "b": {
+                "title": "A Ergoface mobiliário de escritório, lda oferece serviços de instalação?",
+                "message": "Sim, a Ergoface mobiliário de escritório, lda oferece serviços de instalação para os seus produtos, garantindo assim que tudo fica devidamente montado e funcional."
+            },
+            "c": {
+                "title": "A Ergoface mobiliário de escritório, lda oferece garantia nos seus produtos?",
+                "message": "Sim, a Ergoface mobiliário de escritório, lda oferece garantia nos seus produtos, que varia consoante o tipo de produto e as suas características."
+            },
+            "d": {
+                "title": "A Ergoface mobiliário de escritório, lda faz entregas em todo o país?",
+                "message": "Sim, a Ergoface mobiliário de escritório, lda faz entregas em todo o país, garantindo assim que os seus clientes têm acesso aos seus produtos e serviços em qualquer parte de Portugal."
+            },
+            "e": {
+                "title": "A Ergoface mobiliário de escritório, lda oferece serviços personalizados?",
+                "message": "Sim, a Ergoface mobiliário de escritório, lda oferece serviços personalizados, adaptando-se assim às necessidades específicas dos seus clientes."
+            },
+            "f": {
+                "title": "A Ergoface mobiliário de escritório, lda tem loja física onde os clientes podem visitar?",
+                "message": "Sim, a Ergoface mobiliário de escritório, lda tem loja física onde os clientes podem visitar, experimentar os produtos e receber aconselhamento especializado."
+            },
+            "g": {
+                "title": "Qual é o processo de encomenda na Ergoface mobiliário de escritório, lda?",
+                "message": "O processo de encomenda na Ergoface mobiliário de escritório, lda é simples. Os clientes podem encomendar através do website da empresa, loja física ou através de um representante comercial. Após a encomenda, a Ergoface mobiliário de escritório, lda fará a entrega e, se necessário, a instalação do produto."
+            }
+        }
+    }
+  }

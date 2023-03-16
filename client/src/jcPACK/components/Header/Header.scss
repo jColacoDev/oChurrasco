@@ -3,7 +3,7 @@ header.Header{
     display: flex;
     flex-direction: column;
     background-color: white;
-    gap: 0.5em;
+    gap: 0.2em;
 
     position: -webkit-sticky;
     position: sticky;
@@ -28,22 +28,54 @@ header.Header{
     main{
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding: 1em 0.5em;
+        padding-bottom: 0;
         flex-wrap: wrap;
-        gap: 1em;
+        gap: .8em;
         width: 100%;
-    
-        section{
+        
+        @media (min-width: 700px) {
+            justify-content: flex-start;
+        }
+
+        > section{
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             
-            &.right{
-                gap: 1em;
+            nav{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.2em;
                 
+                ul{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-wrap: wrap;
+
+                    li{
+
+                        &.active{
+                            color: var(--ergoface-green);
+                        }
+                    }
+
+                }
+                a{
+                    padding: .5em ;
+                    
+                    &::before,
+                    &::after{
+                        content: "|";
+                        
+                    }
+                }
             }
         }
+
         .account{
             
             figure{
@@ -73,36 +105,66 @@ header.Header{
                 }
             }
         }
-        figure{
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
+        .logoLink{
+            figure{
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                position: relative;
 
-            &.logo{
-                font-size: .8em;
-                background-image: url('../../../assets/images/ergofaceLogo.png');
-                height: 4em;
-                width: 22em;
+                &.logo{
+                    font-size: .8em;
+                    background-image: url('../../../assets/images/ergofaceLogo.png');
+                    height: 4em;
+                    width: 22em;
 
-                &::after{
-                    content: "Mobiliário de Escritório e projectos, lda";
-                    position: absolute;
-                    bottom: 0em;
-                    left: 6em;
-                    font-size: .85em;
+                    &::after{
+                        content: "Mobiliário de Escritório e projectos, lda";
+                        position: absolute;
+                        bottom: 0em;
+                        left: 6em;
+                        font-size: .85em;
+                    }
                 }
             }
         }
     }
 
-    nav{
+    div.families{
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
         gap: 1em;
-        padding: 0.1em 0.5em;
-        font-size: 1.2em;
+        
+        button{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4em;
+            background-color: transparent;            
+            
+        @media (min-width: 700px) {
+            display: none;
+        }
+
+        }
+        nav.products{
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+            padding: 0.1em 0.5em;
+            font-size: 1.2em;
+
+            &.closed{
+                height: 0;
+            }
+            @media (min-width: 700px) {
+                height: 100% !important;
+            }
+        }
     }
 }

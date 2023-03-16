@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { AuthContext } from '../../../context/authContext';
+import { AuthContext } from '../../../../context/authContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { googleAuthProvider, auth } from '../../../firebase/firebase';
+import { googleAuthProvider, auth } from '../../../../firebase/firebase';
 import { useMutation } from '@apollo/client';
-import { USER_CREATE } from '../../../graphql/mutations';
+import { USER_CREATE } from '../../../../graphql/mutations';
 
-import SignInUp from '../../../components/SignInUp/SignInUp';
-import { appData } from './../App';
+import SignInUp from '../../../../components/SignInUp/SignInUp';
+import { appData } from '../../App';
 
 const Login = () => {
     const { dispatch } = useContext(AuthContext);

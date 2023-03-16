@@ -20,16 +20,13 @@
             background-position: center;
             background-size: contain;
             filter: grayscale(1);
-
-            &:hover{
-                filter: hue-rotate(110deg);
-            }
         }
 
         p{
             font-size: .8em;
             margin-top: .2em;
             color: #4e4e4e;
+            text-align: center;
         }
     }
 }

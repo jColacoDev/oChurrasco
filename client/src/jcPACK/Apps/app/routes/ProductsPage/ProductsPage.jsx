@@ -1,4 +1,4 @@
-import '../../../App.scss'
+import '../../../../Apps/Apps.scss'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -6,11 +6,11 @@ import {
     GET_FAMILIES_FROM_FAMILY, 
     GET_PARENTS_FROM_FAMILY,
     GET_FAMILY_ID_FROM_LABELS_PATH 
-} from '../../../../../graphql/queries';
+} from '../../../../graphql/queries';
 import { useLazyQuery, useQuery } from '@apollo/client';
-import ProductsGallery from '../../../../../components/ProductsGallery/ProductsGallery';
-import { groupObjectsArrayByType } from '../../../../../utils/utils';
-import FamilyBreadCrumbs from '../../../../../components/FamilyBreadCrumbs/FamilyBreadCrumbs';
+import ProductsGallery from '../../../../components/ProductsGallery/ProductsGallery';
+import { groupObjectsArrayByType } from '../../../../utils/utils';
+import FamilyBreadCrumbs from '../../../../components/FamilyBreadCrumbs/FamilyBreadCrumbs';
 
 const PAGE_BASE_URL="produtos";
 const PRODUCTS_ID="640f0fdfeeadf8b0f5d5cf64";

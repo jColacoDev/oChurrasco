@@ -1,6 +1,6 @@
 import React from 'react'
-import ContactForm from '../../../components/ContactForm/ContactForm'
-import ContactsSection from '../../../components/ContactsSection/ContactsSection'
+import ContactForm from '../../../../components/ContactForm/ContactForm'
+import ContactsSection from '../../../../components/ContactsSection/ContactsSection'
 
 export default function Contacts() {
   return (

@@ -1,0 +1,17 @@
+.Home{
+    
+    .landingGreeting{
+        text-align: justify;
+
+        p{
+            padding: 1em;
+            text-indent: 1.5em;
+            line-height: 1.4;
+            margin: 0 auto;
+            
+            @media (min-width: 700px) {
+                font-size: 1.1em;
+            }
+        }
+    }
+}

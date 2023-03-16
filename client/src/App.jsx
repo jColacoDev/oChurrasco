@@ -17,6 +17,23 @@ import LoadingToRedirect from './jcPACK/components/LoadingToRedirect';
 import Header from './jcPACK/components/Header/Header';
 import QualityBadges from './jcPACK/components/QualityBadges/QualityBadges';
 
+// Translations
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import enTranslation from './jcPACK/translations/en.json';
+import ptTranslation from './jcPACK/translations/pt.json';
+i18n.use(initReactI18next).init({
+  lng: 'en',
+  resources: {
+    en: {
+      translation: enTranslation,
+    },
+    pt: {
+      translation: ptTranslation,
+    },
+  },
+});
+
 export const AppsData = [
   appData,
 ]
@@ -81,7 +98,7 @@ const App = () => {
       <ScrollToTop />
       <span ref={topRef} id="top" />
 
-      <section className='welcome'>
+      <section className='welcomeTop'>
             <article>
                 <p>Bem-vindo à <strong>Ergoface</strong></p>
                 <a href="tel:+351919224090"><figure className='mobile'/>91 922 40 90</a>

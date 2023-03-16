@@ -1,5 +1,6 @@
 import React from 'react'
-import PhotoGallery from '../../../components/PhotoGallery/PhotoGallery'
+import PhotoGallery from '../../../../components/PhotoGallery/PhotoGallery'
+import { useTranslation, Trans } from 'react-i18next';
 
 export default function AboutUs() {
   return (

@@ -19,6 +19,9 @@ html {
     display: flex;
 }
 
+.grecaptcha-badge{
+    display: none !important;
+}
 figure{
     background-size: contain;
     background-repeat: no-repeat;
