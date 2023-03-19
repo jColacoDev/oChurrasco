@@ -11,12 +11,12 @@ import { appData } from '../../App';
 
 const Login = () => {
     const { dispatch } = useContext(AuthContext);
-    const [nameInput, setNameInput] = useState('');
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
-    const [loading, setLoading] = useState(false);
-
     const [loggedUser, setLoggedUser] = useState();
+    const [nameInput, setNameInput] = useState('');
+    const [loading, setLoading] = useState(false);
+    
 
     const [userCreate] = useMutation(USER_CREATE, {
 

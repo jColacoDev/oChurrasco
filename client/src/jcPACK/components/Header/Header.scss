@@ -2,22 +2,26 @@ header.Header{
     font-size: .9em;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    color: white;
     gap: 0.2em;
+    overflow: hidden;
 
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
     z-index: 9999;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-
+    border-bottom: 2px solid black;
+    // background: linear-gradient(117deg, #ff7373e3 0%, #772f1a 34%, #772f1aeb 64%);
+    background-color: var(--primary-color);
+    padding: 0 3em;
     a{
         text-underline-offset: .3em;
 
         &.active,
         &:active,
         &:hover{
-            color: var(--ergoface-green);
+            color: var(--primary-color);
         }
         &.active,
         &:active{
@@ -28,16 +32,16 @@ header.Header{
     main{
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         padding: 1em 0.5em;
         padding-bottom: 0;
         flex-wrap: wrap;
         gap: .8em;
         width: 100%;
         
-        @media (min-width: 700px) {
-            justify-content: flex-start;
-        }
+        // @media (min-width: 700px) {
+        //     justify-content: flex-start;
+        // }
 
         > section{
             display: flex;
@@ -59,7 +63,7 @@ header.Header{
                     li{
 
                         &.active{
-                            color: var(--ergoface-green);
+                            color: var(--primary-color);
                         }
                     }
 
@@ -105,30 +109,7 @@ header.Header{
                 }
             }
         }
-        .logoLink{
-            figure{
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-                position: relative;
 
-                &.logo{
-                    font-size: .8em;
-                    background-image: url('../../../assets/images/ergofaceLogo.png');
-                    height: 4em;
-                    width: 22em;
-
-                    &::after{
-                        content: "Mobiliário de Escritório e projectos, lda";
-                        position: absolute;
-                        bottom: 0em;
-                        left: 6em;
-                        font-size: .85em;
-                    }
-                }
-            }
-        }
-    }
 
     div.families{
         display: flex;
@@ -143,8 +124,9 @@ header.Header{
             font-size: 1.4em;
             background-color: transparent;            
             
-        @media (min-width: 700px) {
-            display: none;
+            @media (min-width: 700px) {
+                display: none;
+            }
         }
 
         }

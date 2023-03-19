@@ -1,51 +1,58 @@
 import './Home.scss'
-import React, { useEffect, useState } from 'react'
-import Gallery from '../../../../components/Gallery/Gallery'
-import { productsData } from '../../Products'
-import ContactForm from '../../../../components/ContactForm/ContactForm'
-import GalleryCaroussel from '../../../../components/GalleryCaroussel/GalleryCaroussel'
-import SubscribeBox from '../../../../components/SubscribeBox/SubscribeBox'
-import { useTranslation } from 'react-i18next';
+import React from 'react'
+import ChurrascoLogo from '../../../../components/ChurrascoLogo/ChurrascoLogo'
+import Opinions from '../../../../components/Opinions/Opinions'
+import PhotoGallery from '../../../../components/PhotoGallery/PhotoGallery'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
-  const { t, i18n } = useTranslation();
-
-  const handleLanguageChange = (lang) => {
-    console.log(lang)
-    i18n.changeLanguage(lang);
-  };
 
   return (
     <div className='Home'>
-    {/* <button onClick={() => handleLanguageChange('pt')}>Português</button>
-    <button onClick={() => handleLanguageChange('en')}>English</button> */}
+      <div className="parallax">
+        <figure />
+        <figcaption>
+          <ChurrascoLogo flames={false} />
+        </figcaption>
+      </div>
 
-        <span className='heading'>
-            {/* <h3>{t('products')}</h3> */}
-            <h3>Produtos</h3>
-            <hr />
-        </span>
-        <Gallery url="/app/produtos" data={productsData.categories} />
-        
-        <span className='heading'>
-            <h3>Destaques</h3>
-            <hr />
-        </span>
-        <GalleryCaroussel url="/app/produtos" data={productsData.categories} />
-        
-        <section className="landingGreeting">
-          <p>
-          Bem-vindo à Ergoface mobiliário de escritório! Temos o compromisso de fornecer produtos de alta qualidade e acreditamos que a nossa dedicação à excelência nos destaca da concorrência. A nossa equipa de entregas irá entregar diretamente na sua empresa com a nossa viatura, e os nossos instaladores especializados irão garantir que o mobiliário seja montado corretamente. Oferecemos uma garantia em todos os nossos produtos e a nossa equipa de suporte está sempre disponível para ajudar com quaisquer dúvidas ou problemas. Contacte-nos hoje para um orçamento gratuito e subscreva a nossa newsletter para se manter atualizado sobre os nossos últimos produtos e promoções.
-          </p>
-        </section>
-        <span className='heading'>
-            <h3>Contactos</h3>
-            <hr />
-        </span>
-        <section className='homeContacts'>
-          <ContactForm />
-          <SubscribeBox />
-        </section>
+      <h2>
+      Savor the Art of Charcoal-Grilled Chicken at Our Elegant Downtown Lisbon Restaurant
+      </h2>
+
+      <main>
+        <section className="menus">
+          <article>
+            <h3>Menu</h3>
+            <div>
+              <p>
+              Experience charcoal-grilled perfection and indulge in our delicious chicken specialty at our downtown Lisbon restaurant. From succulent pork medallions to must-try seafood dishes like grilled octopus and Portuguese-style "Bacalhau," our menu offers a variety of flavors to satisfy your cravings. Don't forget to pair your meal with our house wine, available in various sizes. Click below to see our full menu and savor the taste of our expertly crafted dishes.
+              </p>
+              <Link to={`/app/menu`}>Menu</Link>
+            </div>
+          </article>
+          <article>
+            <figure></figure>
+          </article>
+          </section>
+  
+          <section className='reservations'>
+            <article>
+              <figure></figure>
+            </article>
+            <article>
+              <h3>Reservations</h3>
+              <div>
+                <p>
+                Come experience the mouthwatering aromas of our specialty dishes at our cozy downtown Lisbon restaurant. Our outdoor terrace, nestled in an original old-fashioned building, provides the perfect atmosphere for a delightful dining experience. Savor our expertly crafted charcoal-grilled chicken, seafood dishes, and cooked meats, and immerse yourself in a charming and peaceful environment. Book your reservations now and join us for an unforgettable culinary journey.
+                </p>
+                <Link to={`/app/reservation`}>Reserve a table</Link>
+              </div>
+            </article>
+          </section>
+      </main>
+      <Opinions />
+      <PhotoGallery />
     </div>
   )
 }

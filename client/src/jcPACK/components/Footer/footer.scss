@@ -7,9 +7,10 @@
     align-items: flex-start;
     gap: 2em;
     padding: 2.5em 2em;
-    background-color: var(--footer-bg-color);
+    background-color: black;
     z-index: 9999;
     position: relative;
+
     
     color: whitesmoke;
     *{
@@ -19,18 +20,16 @@
     figure{
         filter: invert(1);
     }
-
+    
     h3{
+        font-family: 'Merienda', cursive;
         margin-bottom: .8em;
-        font-size: 1.4em;
-    }
-    a:hover,
-    a:hover *{
-        color: var(--ergoface-green);
+        font-size: 2em;
     }
     
     .logoSection{
         display: flex;
+     
         flex-direction: column;
         width: 100%;
         max-width: 35em;

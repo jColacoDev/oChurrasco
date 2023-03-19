@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setHeaderHeight } from '../../reduxStore/headerHeightSlice'
 import { useLazyQuery, useQuery } from '@apollo/client'
 import { GET_FAMILIES_FROM_FAMILY } from '../../graphql/queries'
+import FireFlame from '../FireFlame/FireFlame'
 
 const PRODUCTS_ID="640f0fdfeeadf8b0f5d5cf64";
 
@@ -69,19 +70,32 @@ export default function Header() {
     <header ref={navbarRef} className='Header'>
         <main>
             <Link className='logoLink' to="/app">
-                <figure className='logo'></figure>
+                <p>
+                    O&nbsp;
+                    <span>C</span>
+                    <span>H</span>
+                    <span>U</span>
+                    <span>R</span>
+                    <span>R</span>A
+                    <span>S</span>CO
+                </p>
+                <FireFlame /><FireFlame /><FireFlame />
+                <FireFlame /><FireFlame /><FireFlame />
+                <FireFlame /><FireFlame /><FireFlame />
+                <FireFlame /><FireFlame /><FireFlame />
             </Link>
+            
             <section>
                 <nav>
                     <ul>
-                        <li className={location.pathname === `/app/sobre-nos` ? 'active' : ''}>
-                        <Link to={`/app/sobre-nos`}>&nbsp;&nbsp;Sobre nós&nbsp;&nbsp;</Link>
+                        <li className={location.pathname === `/app/about-us` ? 'active' : ''}>
+                        <Link to={`/app/about-us`}>&nbsp;&nbsp;About us&nbsp;&nbsp;</Link>
                         </li>
                         <li className={location.pathname === '/app/faq' ? 'active' : ''}>
                         <Link to={`/app/faq`}>&nbsp;&nbsp;FAQ&nbsp;&nbsp;</Link>
                         </li>
-                        <li className={location.pathname === '/app/contactos' ? 'active' : ''}>
-                        <Link to={`/app/contactos`}>&nbsp;&nbsp;Contactos&nbsp;&nbsp;</Link>
+                        <li className={location.pathname === '/app/contacts' ? 'active' : ''}>
+                        <Link to={`/app/contacts`}>&nbsp;&nbsp;Contacts&nbsp;&nbsp;</Link>
                         </li>
                     </ul>
                 </nav>

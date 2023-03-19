@@ -22,6 +22,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import enTranslation from './jcPACK/translations/en.json';
 import ptTranslation from './jcPACK/translations/pt.json';
+import TopNotes from './jcPACK/components/TopNotes/TopNotes';
+import SideNav from './jcPACK/components/SideNav/SideNav';
 i18n.use(initReactI18next).init({
   lng: 'en',
   resources: {
@@ -96,21 +98,10 @@ const App = () => {
       <Theme />
       <ToastContainer />
       <ScrollToTop />
-      <span ref={topRef} id="top" />
-
-      <section className='welcomeTop'>
-            <article>
-                <p>Bem-vindo à <strong>Ergoface</strong></p>
-                <a href="tel:+351919224090"><figure className='mobile'/>91 922 40 90</a>
-            </article>
-            <article>
-                <a href="tel:+351217540421"><figure className='phone'/>21 754 04 21</a>
-                <a href = "mailto:geral@ergoface-lda.com?subject = webMail&body = Message"><figure className='email'/>geral@ergoface-lda.com
-                </a>
-            </article>
-        </section>
-      <Header />
-      <div id="appContainer" ref={topAppRef}>
+      <TopNotes ref={topRef} id="top"/>
+      {/* <Header /> */}
+      <div id="appContainer" ref={topAppRef} className='font_Merienda'>
+          <SideNav />
           <main className='appRoutes'>
             <Routes>
               {AppsData.map((appData)=>routerSetup(appData))}

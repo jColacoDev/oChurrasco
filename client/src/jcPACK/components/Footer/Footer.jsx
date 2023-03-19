@@ -6,6 +6,7 @@ import { appData } from "../../Apps/app/App";
 import ContactsSection from '../ContactsSection/ContactsSection';
 import { auth } from '../../firebase/firebase';
 import { AuthContext } from '../../context/authContext';
+import ChurrascoLogo from '../ChurrascoLogo/ChurrascoLogo';
 
 export default function Footer() {
     const portfolioData = appData.routesData[0];
@@ -37,26 +38,14 @@ const logout = (e) => {
             <section className="logoSection">
                 <div className="articles">
                     <article>
-                        <h3>A empresa</h3>
-                        <Link to={`/app/sobre-nos`}>Sobre Nós</Link>
-                        <Link to={`/app/contactos`}>Contactos</Link>
-                        <Link to={`/app/faq`}>FAQ</Link>
+                        <h3>The Restaurant</h3>
+                        <Link to={`/app/about-us`}>About us</Link>
+                        <Link to={`/app/contacts`}>Contacts</Link>
+                        <Link to={`/app/community`}>Community</Link>
                     </article>
-                    {/* <article>
-                        <h3>Account</h3>
-                        <Link to={`/app/login`}>Login</Link>
-                        <Link
-                            onClick={logout}
-                            to={"/app/login"}
-                        >Log out</Link>
-                    </article> */}
                 </div>
-                <Link className='logoLink' onClick={handleTopClick}>
-                    <figure className='ergologo'/>
-                    <figcaption>
-                        All Rights Reserved <br/>
-                        © {new Date().getFullYear()} ergoface-lda.com<br/>
-                    </figcaption>
+                <Link to="/app">
+                    <ChurrascoLogo white={true} flames={true} />
                 </Link>
             </section>
         </footer>

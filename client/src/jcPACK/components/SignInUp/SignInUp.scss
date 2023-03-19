@@ -64,7 +64,7 @@
     button {
         border: 1px solid #786c12;
         border-radius: 40px;
-        background-color: var(--ergoface-green);
+        background-color: var(--primary-color);
         color: #FFFFFF;
         font-size: 0.8em;
         font-weight: bold;
@@ -185,8 +185,8 @@
     }
 
     .overlay {
-        background: var(--ergoface-green);
-        background: linear-gradient(to right, var(--ergoface-green), #786c12);
+        background: var(--primary-color);
+        background: linear-gradient(to right, var(--primary-color), #786c12);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 0 0;
@@ -258,7 +258,7 @@
 
         button {
             border-left: none;
-            background-color: var(--ergoface-green);
+            background-color: var(--primary-color);
             background-size: contain;
             background-repeat: no-repeat;
             background-position: left;

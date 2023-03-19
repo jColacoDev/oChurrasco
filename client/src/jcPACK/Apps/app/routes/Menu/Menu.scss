@@ -1,0 +1,86 @@
+.Menu{
+
+    main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 3em;
+        padding: 0 2em;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        span{
+            cursor: default;
+        }
+
+        section{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+
+            @media (min-width: 700px) {
+                max-width: 46%;
+            }
+            
+            article{
+                display: flex;
+                flex-direction: column;
+                gap: .5em;
+
+                &:hover{
+                    color: var(--primary-color--lighter);
+
+                    div::before{
+                        color: white;
+                        background-color: var(--primary-color--lighter);
+                    }
+                }
+
+                > span{
+                    font-size: .8em;
+                }
+
+                > div{
+                    display: flex;
+                    justify-content: space-between;
+
+                    &::before{
+                        color: var(--primary-color);
+                        text-align: center;
+                        content: '+';
+                        width: 1.5em;
+                        margin: 0 auto;
+                        cursor: pointer;
+                        border: 1px solid var(--primary-color);
+                        border-radius: 50%;
+                        margin-right: .5em;
+                    }
+
+                    span{
+                        display: flex;
+                        align-items: flex-end;                        
+
+                        &:first-of-type {
+                            flex-grow: 1;
+                            font-weight: bold;
+
+                            &::after {
+                                content: "";
+                                flex-grow: 999;
+                                height: 1px;
+                                background-image: linear-gradient(to right, transparent, #000 50%, transparent);
+                                background-size: 10px 1px;
+                            }
+                        }
+                        &:last-of-type {
+                            &::after{
+                                content: '€';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

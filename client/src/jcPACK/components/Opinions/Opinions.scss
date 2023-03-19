@@ -1,0 +1,39 @@
+.Opinions{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: white;
+    gap: 1em;
+    border-bottom-left-radius: 5%;
+    border-top-left-radius: 5%;
+
+    section{
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 100%;
+        justify-content: space-evenly;
+        align-items: center;
+
+        figure{
+            height: 8em;
+            width: 100%;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    
+            @media (min-width: 800px) {
+                width: 45%;
+            }
+    
+            &:first-of-type{
+                background-image: url('././../../../assets/images/opinion1.jpg');
+            }
+    
+            &:last-of-type{
+                background-image: url('././../../../assets/images/opinion2.jpg');
+            }
+        }
+    }
+}

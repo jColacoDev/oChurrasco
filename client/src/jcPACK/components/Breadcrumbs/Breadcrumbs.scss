@@ -18,14 +18,14 @@
 
     a{
         &:hover{
-            color: var(--ergoface-green);
+            color: var(--primary-color);
         }
     }
 
     span{
         &:last-child{
             font-weight: bold;
-            color: var(--ergoface-green);
+            color: var(--primary-color);
         }
     }
 }

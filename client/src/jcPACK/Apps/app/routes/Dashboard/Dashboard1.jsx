@@ -1,4 +1,4 @@
-import './Dashboard1.scss'
+import './Dashboard.scss'
 import React, { useEffect, useRef, useState } from 'react'
 import Sidebar from './Sidebar/Sidebar';
 import Header from './Header/Header';
@@ -94,10 +94,9 @@ export default function Dashboard1({
           <Sidebar 
             pageIndex={pageIndex} 
             setPageIndex={setPageIndex} 
-            accountPages={ isAdmin() ?
-				accountPages :
-				accountPages.filter(accountPage => accountPage.type === "public")
-			}
+            accountPages={ isAdmin() ? accountPages :
+              accountPages.filter(accountPage => accountPage.type === "public")
+            }
           />
           <div className="app-content">
             <Header 
@@ -105,9 +104,6 @@ export default function Dashboard1({
                 darkMode={darkMode} 
                 setDarkMode={setDarkMode}
             />
-			{
-			
-			}
 
             {accountPages[pageIndex]?.label === "Users" &&
               <Actions 

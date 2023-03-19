@@ -44,9 +44,8 @@
         width: 100%;
         text-align: center;
 
-        &:hover,
         &:hover figcaption{
-            color: var(--ergoface-green);
+            color: var(--primary-color--lighter);
         }
     }
 }

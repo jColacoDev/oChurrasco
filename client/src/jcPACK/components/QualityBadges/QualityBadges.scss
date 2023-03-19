@@ -1,6 +1,7 @@
 .QualityBadges{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 2em;
     padding: 1em;
     gap: 1em;
     justify-content: space-around;
@@ -19,7 +20,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            filter: grayscale(1);
+            filter: grayscale(.2);
         }
 
         p{

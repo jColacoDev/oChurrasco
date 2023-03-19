@@ -23,7 +23,7 @@
         text-align: center;
 
         span{
-            color: var(--ergoface-green);
+            color: var(--primary-color);
         }
     }
     .form{
@@ -36,7 +36,7 @@
 
     .errorInput{
         content: "";
-        color: var(--ergoface-green);
+        color: var(--primary-color);
         font-weight: bold;
         font-style: italic;
         text-decoration: underline;
@@ -57,7 +57,7 @@
         justify-content: space-around;
         align-items: center;
         gap: .5em;
-        background-color: var(--ergoface-green);
+        background-color: var(--primary-color);
 
         @media (max-width: 450px) {
             right: 1em;

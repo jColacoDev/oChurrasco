@@ -1,7 +1,7 @@
 import './Settings.scss'
 import React from 'react'
-import PasswordForgot from '../../PasswordForgot'
-import PasswordUpdate from '../../PasswordUpdate'
+// import PasswordForgot from '../../PasswordForgot'
+// import PasswordUpdate from '../../PasswordUpdate'
 import FileUpload from '../../../../../components/FileUpload/FileUpload'
 import UserProfileForm from '../UserProfileForm/UserProfileForm'
 
@@ -14,7 +14,6 @@ export default function Settings({
     userUpdate = (f)=>f,
 }) {
 
-    
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);

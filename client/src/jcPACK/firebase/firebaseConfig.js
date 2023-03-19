@@ -1,9 +1,9 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyCoBoMYj6QyPUeIFbUqINPpItH7Kl-tYgc",
-  authDomain: "ergoface-379714.firebaseapp.com",
-  projectId: "ergoface-379714",
-  storageBucket: "ergoface-379714.appspot.com",
-  messagingSenderId: "525831025383",
-  appId: "1:525831025383:web:e0d27047be45852616e842",
-  measurementId: "G-RPSVDB14K4"
+  apiKey: "AIzaSyC7df4AV5wSGFYNaCf5zKD0bWHB2soBzME",
+  authDomain: "o-churrasco-e4e99.firebaseapp.com",
+  projectId: "o-churrasco-e4e99",
+  storageBucket: "o-churrasco-e4e99.appspot.com",
+  messagingSenderId: "77605742025",
+  appId: "1:77605742025:web:6fef65bcf497c6d469f418",
+  measurementId: "G-HYJN6X0TW2"
 };

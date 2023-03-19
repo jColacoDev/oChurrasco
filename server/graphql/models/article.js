@@ -51,22 +51,12 @@ const articleSchema = new mongoose.Schema({
         text: true,
         default: ""
     },
-    supplierRef: {
-        type: String,
-        text: true,
-        default: ""
-    },
     notes: {
         type: String,
         text: true,
         default: ""
     },
-    price_purchase: {
-        type: String,
-        text: true,
-        default: ""
-    },
-    price_sale: {
+    price: {
         type: String,
         text: true,
         default: ""
@@ -81,25 +71,7 @@ const articleSchema = new mongoose.Schema({
                 public_id: Date.now()
             }
         ]
-    },
-    services: {
-        type: Array,
-        default: []
-    },
-    related_codes: {
-        type: Array,
-        default: []
-    },
-    related_families: {
-        type: Array,
-        default: []
-    },
-    related_articles: {
-        type: Array,
-        default: []
-    },
-    
-
+    }
 }, {timestamps: true});
 
 module.exports = mongoose.model('Article', articleSchema)

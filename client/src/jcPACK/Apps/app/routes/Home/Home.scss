@@ -1,17 +1,160 @@
 .Home{
-    
-    .landingGreeting{
-        text-align: justify;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 
-        p{
-            padding: 1em;
-            text-indent: 1.5em;
-            line-height: 1.4;
-            margin: 0 auto;
+    h2{
+        padding: 0 1em;
+    }
+    p{
+        max-width: 1600px;
+        line-height: 1.2;
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 0 2em;
+        
+        section{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            justify-content: space-evenly;
+
+            article{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                min-height: 40vh;
+
+                p{
+                    line-height: 1.4;
+                }
+
+                @media (min-width: 800px) {
+                    width: 45%;
+                }
+                a{
+                    color: var(--primary-color);
+                    border: 1px solid var(--primary-color);
+                    padding: .5em 2em;
+                    background-color: transparent;
+                    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+
+                    &:hover{
+                        box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 0px;
+                        transform: translateY(3px);
+                        color: white;
+                        background-color: var(--primary-color);
+                    }
+                }
+
+                div{
+                    font-size: 1.1em;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    height: 100%;  
+                    gap: 2em;              
+                }
+
+                figure{
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+       
+            &.menus figure{
+                background-image: url('./../../../../../assets/images/oChurrasco1.jpg');
+            }
+            &.reservations figure{
+                background-image: url('./../../../../../assets/images/oChurrasco2.jpg');
+            }
+        }
+
+    }
+
+    .parallax{
+        position: relative;
+        z-index: 0;
+
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #000000b0;
+        }
+        
+        figure{
+            height: 100vh;
+            width: 100%;
+            background-position: center right;
+            background-size: cover;
+            background-attachment: fixed;
+            overflow: hidden;
+            background-image: url('./../../../../../assets/images/churrasco.jpg');
             
-            @media (min-width: 700px) {
-                font-size: 1.1em;
+        }
+        figcaption{
+            z-index: 3;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            text-align: center;
+            width: 100%;
+            color: white;
+        }
+
+        .ChurrascoLogo{
+            font-size: 18px;
+            margin: 0 auto;
+
+            @media (min-width: 520px) {
+                font-size: 26px;
+            }
+            @media (min-width: 720px) {
+                font-size: 36px;
+            }
+
+            *::before,
+            *::after,
+            *{
+                color: white;
+                border-color: white;
             }
         }
     }
 }
+    
+    // figure.heroLanding{
+    //     position: relative;
+    //     height: 100vh;
+    //     width: 100%;
+
+    //     background-image: url('./../../../../../assets/images/churrasco.jpg');
+    //     background-size: cover;
+    //     background-position: bottom;
+    //     overflow: hidden;
+
+    //     &::before{
+    //         content: '';
+    //         position: absolute;
+    //         top: 0;
+    //         left: 0;
+    //         height: 100%;
+    //         width: 100%;
+
+    //         background-color: #000000b0;
+    //     }
+    // }

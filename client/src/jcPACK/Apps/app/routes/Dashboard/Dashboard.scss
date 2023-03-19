@@ -8,7 +8,7 @@
   --sidebar-link: #fff;
   --sidebar-active-link: #aea03330;
   --sidebar-hover-link: #aea03320;
-  --action-color: var(--ergoface-green);
+  --action-color: var(--primary-color);
   --action-color-hover: #aea03380;
   --app-content-secondary-color: #1d283c;
   --filter-reset: #2c394f;
@@ -28,7 +28,7 @@
   display: none !important;
 }
 
-#Dashboard1{
+#Dashboard{
 
 *{
   font-family: 'Product Sans', sans-serif;
@@ -75,7 +75,7 @@ $font-large: 24px;
 .uploadButton,
 button{
     padding: .5em 2em;
-    border: 1px solid var(--ergoface-green);
+    border: 1px solid var(--primary-color);
     background-color: var(--app-content-secondary-color);
     color: var(--app-content-main-color);
 

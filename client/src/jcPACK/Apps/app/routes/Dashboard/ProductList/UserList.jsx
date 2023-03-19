@@ -53,8 +53,7 @@ export default function UserList({
                 <button className="sort-button">{svg_icons.sort}</button>
               </div>
             </div>
-
-            {usersData.map((product)=>
+            {usersData?.allUsers?.map((product)=>
                 <div key={product.email} className="products-row">
                     <div className="product-cell image">
                         {/* <img src={product?.images[0]?.url} alt="product" /> */}

@@ -1,0 +1,26 @@
+.Contacts{
+    main{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3em;
+        justify-content: space-around;
+        align-items: center;
+
+        > div{
+            display: flex;
+            width: 100%;
+            max-width: 35em;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .ContactForm{
+        margin: 0;
+    }
+
+    .ContactsSection{
+        padding: 0 1em;
+    }
+}

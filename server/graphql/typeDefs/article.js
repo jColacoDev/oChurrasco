@@ -3,7 +3,7 @@ const {gql} = require('graphql-tag')
 const queries = `
     type Query {
         totalArticles: Int!
-        allArticles(page: Int, perPage: Int): [Article!]!
+        allArticles: [Article!]!
         articlesFromFamily(familyId: String!): [Article!]
         singleArticle(articleId: String!): Article!
         searchArticles(query: String!): [Article]
@@ -37,15 +37,9 @@ const types = `
         abbr: String
         brand: String
         supplier: String
-        supplierRef: String
         notes: String
-        price_purchase: String
-        price_sale: String
+        price: String
         images: [Image]
-        services: [String]
-        related_codes: [String]
-        related_families: [String]
-        related_articles: [String]
     }
 `
 const inputs = `
@@ -59,15 +53,9 @@ const inputs = `
         abbr: String
         brand: String
         supplier: String
-        supplierRef: String
         notes: String
-        price_purchase: String
-        price_sale: String
+        price: String
         images: [ImageInput]
-        services: [String]
-        related_codes: [String]
-        related_families: [String]
-        related_articles: [String]
     }
     input ArticleUpdateInput {
         _id: String! 
@@ -80,15 +68,9 @@ const inputs = `
         abbr: String
         brand: String
         supplier: String
-        supplierRef: String
         notes: String
-        price_purchase: String
-        price_sale: String
+        price: String
         images: [ImageInput]
-        services: [String]
-        related_codes: [String]
-        related_families: [String]
-        related_articles: [String]
     }
 `
 module.exports = gql`${queries}${mutations}${subscriptions}${types}${inputs}`;
