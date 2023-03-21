@@ -11,6 +11,7 @@ import { useLazyQuery, useQuery } from '@apollo/client';
 import ProductsGallery from '../../../../components/ProductsGallery/ProductsGallery';
 import { groupObjectsArrayByType } from '../../../../utils/utils';
 import FamilyBreadCrumbs from '../../../../components/FamilyBreadCrumbs/FamilyBreadCrumbs';
+import { appData } from '../../App';
 
 const PAGE_BASE_URL="produtos";
 const PRODUCTS_ID="640f0fdfeeadf8b0f5d5cf64";
@@ -157,7 +158,7 @@ export default function ProductsPage() {
     <div className='ProductsPage'>
     {/* {loading && <p>Loading...</p>} */}
     <FamilyBreadCrumbs
-        baseUrl="/app"
+        baseUrl={`${appData.path}`}
         crumbs={crumbs} 
     />
     <h2>{pageTitle}</h2>

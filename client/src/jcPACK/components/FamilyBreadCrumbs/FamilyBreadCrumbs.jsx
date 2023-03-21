@@ -2,13 +2,14 @@ import './FamilyBreadCrumbs.scss'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { normalizePathLabel } from '../../utils/utils'
+import { appData } from '../../Apps/app/App';
 
 const PRODUCTS_ID="640f0fdfeeadf8b0f5d5cf64";
 
 export default function FamilyBreadCrumbs({
     handleFamilyClick =(f)=>f,
     crumbs=[],
-    baseUrl= "/app",
+    baseUrl= `${appData.path}`,
     startPath=""
 }) {
   return (

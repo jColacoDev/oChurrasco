@@ -31,16 +31,27 @@ const logout = (e) => {
     return (
         <footer className="appFooter">
             <ContactsSection />
+            <section>
+                <div className="articles">
+                    <article>
+                        <h3>my Table</h3>
+                        <Link to={`${appData.path}/menu`}>Menu</Link>
+                        <Link to={`${appData.path}/reservation`}>Reservation</Link>
+                        <Link to={`${appData.path}/orders`}>Orders</Link>
+                    </article>
+                </div>
+            </section>
             <section className="logoSection">
                 <div className="articles">
                     <article>
                         <h3>The Restaurant</h3>
-                        <Link to={`/app/about-us`}>About us</Link>
-                        <Link to={`/app/contacts`}>Contacts</Link>
-                        <Link to={`/app/community`}>Community</Link>
+                        <Link to={`${appData.path}/home`}>Entrance</Link>
+                        <Link to={`${appData.path}/about-us`}>About us</Link>
+                        <Link to={`${appData.path}/contacts`}>Contacts</Link>
+                        <Link to={`${appData.path}/community`}>Community</Link>
                     </article>
                 </div>
-                <Link to="/app">
+                <Link to={`${appData.path}`}>
                     <ChurrascoLogo white={true} flames={true} />
                 </Link>
             </section>

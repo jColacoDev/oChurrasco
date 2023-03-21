@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/authContext';
 import { validateEmail } from '../../utils/utils';
 import { useMutation } from '@apollo/client';
 import { USER_CREATE } from '../../graphql/mutations';
+import { appData } from '../../Apps/app/App';
 // import googleButton from './../../../assets/images/login/googleButton.png'
 const googleButton = "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
 
@@ -51,7 +52,7 @@ export default function SignInUp() {
                     }]
                 }
             }});
-            navigate("/app/dashboard");
+            navigate(`${appData.path}/dashboard`);
         }
     },[loggedUser])
 
@@ -168,7 +169,7 @@ export default function SignInUp() {
                         password: passwordInput
                     }
                 }});
-                navigate("/app/dashboard");
+                navigate(`${appData.path}/dashboard`);
             });
         } catch (error) {
             console.error('login error', error);

@@ -41,7 +41,7 @@ const Login = () => {
                     }]
                 }
             }});
-            navigate("/app/dashboard");
+            navigate(`${appData.path}/dashboard`);
         }
     },[loggedUser])
 
@@ -165,7 +165,7 @@ const Login = () => {
                         password: passwordInput
                     }
                 }});
-                navigate("/app/dashboard");
+                navigate(`${appData.path}/dashboard`);
             });
         } catch (error) {
             console.log('login error', error);

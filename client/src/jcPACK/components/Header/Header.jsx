@@ -8,6 +8,7 @@ import { setHeaderHeight } from '../../reduxStore/headerHeightSlice'
 import { useLazyQuery, useQuery } from '@apollo/client'
 import { GET_FAMILIES_FROM_FAMILY } from '../../graphql/queries'
 import FireFlame from '../FireFlame/FireFlame'
+import { appData } from '../../Apps/app/App'
 
 const PRODUCTS_ID="640f0fdfeeadf8b0f5d5cf64";
 
@@ -69,7 +70,7 @@ export default function Header() {
   return (
     <header ref={navbarRef} className='Header'>
         <main>
-            <Link className='logoLink' to="/app">
+            <Link className='logoLink' to={`${appData.path}`}>
                 <p>
                     O&nbsp;
                     <span>C</span>

@@ -13,7 +13,7 @@ import Community from './routes/Community/Community'
 
 export const appData = {
     id: "App",
-    path: "/app",
+    path: "/o-churrasco",
     label: "app",
 
     data:{
