@@ -8,6 +8,8 @@ import Login from './routes/Login/Login'
 import Dashboard from './routes/Dashboard/Dashboard'
 import Menu from './routes/Menu/Menu'
 import Reservation from './routes/Reservation/Reservation'
+import Orders from './routes/Orders/Orders'
+import Community from './routes/Community/Community'
 
 export const appData = {
     id: "App",
@@ -36,6 +38,12 @@ export const appData = {
             element: <Menu />,            
         },
         {
+            path: "/orders/",
+            type: "",
+            title: "Orders",
+            element: <Orders />,            
+        },
+        {
             path: "/reservation/",
             type: "",
             title: "reservation",
@@ -57,7 +65,7 @@ export const appData = {
             path: "/community/",
             type: "",
             title: "Community",
-            element: <h2>community</h2> ,            
+            element: <Community /> ,            
         },
         {
             path: "/dashboard/",

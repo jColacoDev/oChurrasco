@@ -26,6 +26,9 @@
         margin-bottom: .8em;
         font-size: 2em;
     }
+    a:hover{
+        color: var(--primary-color) !important;
+    }
     
     .logoSection{
         display: flex;
@@ -53,22 +56,6 @@
         gap: .6em;
         margin: .6em 0;
     }
-    figure.ergologo{
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-image: url('../../../assets/images/ergofaceLogo.png');
-        width: 100%;
-        height: 4em;
-        margin: 0 auto;
-        margin-bottom: 0.4em;
-        filter: brightness(2) invert(1) hue-rotate(180deg);
-        
-    }
-    a:hover .ergologo{
-        filter: brightness(.7) invert(1) hue-rotate(180deg);
-    }
-    
     
     figcaption{
         text-align: center;

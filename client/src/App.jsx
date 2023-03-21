@@ -14,7 +14,6 @@ import { appData } from './jcPACK/Apps/app/App';
 
 import Footer from './jcPACK/components/footer/footer';
 import LoadingToRedirect from './jcPACK/components/LoadingToRedirect';
-import Header from './jcPACK/components/Header/Header';
 import QualityBadges from './jcPACK/components/QualityBadges/QualityBadges';
 
 // Translations
@@ -98,7 +97,8 @@ const App = () => {
       <Theme />
       <ToastContainer />
       <ScrollToTop />
-      <TopNotes ref={topRef} id="top"/>
+      <div id="top" ref={topRef} />
+      <TopNotes />
       {/* <Header /> */}
       <div id="appContainer" ref={topAppRef} className='font_Merienda'>
           <SideNav />

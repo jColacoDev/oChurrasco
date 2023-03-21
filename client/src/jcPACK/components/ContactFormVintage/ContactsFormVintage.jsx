@@ -1,11 +1,11 @@
-import './ReservationFormVintage.scss'
+import './ContactsFormVintage.scss'
 import React, { useRef, useState } from 'react'
 import { validateEmail, validatePhone } from '../../utils/utils';
 import emailjs from 'emailjs-com';
 
 // select needs control
 
-export default function ReservationFormVintage() {
+export default function ContactsFormVintage() {
     const [sentForm, setSentForm] = useState(false);
     const [phoneInput, setPhoneInput] = useState("");
     const [seatsInput, setSeatsInput] = useState("");
@@ -27,7 +27,7 @@ export default function ReservationFormVintage() {
             flag="o telefone";
         else if(subjectInput.trim() === "")
             flag="o assunto";
-        else if(seatsInput.trim() === "")
+        else if(subjectInput==="booking" && seatsInput.trim() === "")
             flag="os lugares";
         else if(nameInput.trim() === "")
             flag="o nome";
@@ -112,9 +112,9 @@ export default function ReservationFormVintage() {
     }
 
   return (
-    <div className='ReservationFormVintage'>
+    <div className='ContactsFormVintage'>
 <div id="container">
-  <h1>&bull; Book a reservation &bull;</h1>
+  <h1>&bull; Keep in Touch &bull;</h1>
   <div className="underline">
   </div>
   <div className="icon_wrapper">
@@ -168,7 +168,7 @@ export default function ReservationFormVintage() {
             value={phoneInput} 
         />
     </div>
-    <div className="seats">
+    {subjectInput==="booking" && <div className="seats">
       <input type="number" 
             placeholder="seats..." 
             name="seats" 
@@ -177,14 +177,19 @@ export default function ReservationFormVintage() {
             onChange={handleSeatsChange}
             value={seatsInput} 
         />
-    </div>
+    </div>}
     <div className="subject">
       <label htmlFor="subject"></label>
-        <select value={subjectInput} 
-            onChange={e => setSubjectInput(e.target.value)} 
+        <select 
+            value={subjectInput}
+            onChange={(e) => setSubjectInput(e.target.value)}
             name="subject" 
             id="subject_input"
-        ><option value="reservation">I'd like to make a reservation</option>
+        >
+    <option value="booking">I'd like to book a reservation</option>
+    <option value="experience">I'd like to share my experience</option>
+    <option value="proposal">I'd like to make a proposal</option>
+    <option value="question">I'd like to ask</option>
         </select>
     </div>
     <div className="message">

@@ -1,0 +1,196 @@
+section.OrderInfo{
+    z-index: 99999;
+    flex-direction: column;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 30em;
+    
+    h3{
+        margin: 0 !important;
+        padding: 1em;
+        position: sticky;
+        top: -1em;
+        background-color: #F3EFE0;
+        box-shadow: var(--primary-color-transparent) 0px 10px 10px -10px;
+    }
+
+    article{
+        overflow-y: scroll;
+        
+        > div{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 1.5em;
+        }
+    } 
+
+    &.open{
+        border: 1px solid var(--primary-color);
+        width: calc(100% - 2em);
+        min-height: 50vh;
+        max-height: 80vh;
+        background-color: #F3EFE0;
+        
+        figure{
+            margin: 0 auto;
+            border-bottom: 1px solid var(--primary-color);
+            box-shadow: none;
+            width: 100%;
+
+            &:hover{
+                background-color: var(--primary-color--transparent);
+            }
+        }
+        article{
+            display: flex;
+            gap: 1.5em;
+        }
+    }
+    &:not(.open){
+        
+        figure:hover{
+            transform: translateY(1px);
+            border-bottom: 2px solid var(--action-color);
+            box-shadow: 
+                #70151527 0px -23px 25px 0px inset, 
+                #70151530 0px -36px 30px 0px inset, 
+                #70151510 0px -79px 40px 0px inset, 
+                #70151510 0px 4px 2px, 
+        }
+
+    } 
+    figure{
+        --size: 2em;
+        margin: 0 auto;
+        border-bottom: 4px solid var(--action-color);
+        padding: var(--size);
+        cursor: pointer;
+        background-color: #F3EFE0;
+        width: var(--size);
+        height: var(--size);
+        background-image: url('./../../../assets/images/icons/restaurantIcons/bill.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        border-radius: 50%;
+
+        box-shadow: 
+            #70151527 0px -23px 25px 0px inset, 
+            #70151530 0px -36px 30px 0px inset, 
+            #70151510 0px -79px 40px 0px inset, 
+            #70151515 0px 2px 1px, 
+            #70151510 0px 4px 2px, 
+            #70151510 0px 8px 4px, 
+            #70151510 0px 16px 8px, 
+            #70151510 0px 32px 16px;
+    }
+
+    article{
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+
+        ul{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+            width: 100%;
+            
+            li{
+                &.totalPrice{
+                    margin-top: 3em;
+                }
+            }
+        }
+    }
+
+    .menuTab{
+        display: flex;
+        justify-content: space-between;
+
+        .bold{
+            margin: auto;
+            min-width: 1.5em;
+        }
+
+        button{
+            background-color: transparent;
+            color: var(--primary-color);
+            text-align: center;
+            height: 1.5em;
+            width: 1.5em;
+            margin: auto;
+            cursor: pointer;
+            border: 1px solid var(--primary-color);
+            border-radius: 50%;
+            margin-right: .5em;
+
+            &:first-of-type{
+                margin-right: .5em;
+            }
+            &:last-of-type{
+                margin-left: .5em;
+            }
+        }
+
+        span{
+            display: flex;
+            align-items: flex-end;                        
+
+            &:first-of-type {
+                flex-grow: 1;
+                font-weight: bold;
+
+                &::after {
+                    margin-left: .5em;
+                    content: "";
+                    flex-grow: 999;
+                    height: 1px;
+                    background-image: linear-gradient(to right, transparent, #000 50%, transparent);
+                    background-size: 10px 1px;
+                }
+            }
+            &:last-of-type {
+                margin-left: .5em;
+                &::after{
+                    content: '€';
+                }
+            }
+        }
+    }
+    .dateStamp{
+        margin: 0.5em;
+    }
+    button.rectangleButton{
+        margin-right: 1em;
+        min-width: 10em;
+        border-radius: 0;
+        padding: 0.5em 1.5em;
+        height: auto;
+
+        &:hover{
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        &.deleteButton{
+            margin-top: 2em;
+        }
+
+        &:disabled{
+            background-color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            filter: grayscale(.5);
+            color: whitesmoke;
+            cursor: not-allowed;
+        }
+    }
+}

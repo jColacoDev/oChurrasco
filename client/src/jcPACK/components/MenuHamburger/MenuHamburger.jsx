@@ -14,10 +14,10 @@ export default function MenuHamburger({
   return (
     <div className='MenuHamburger'>
         <input onChange={f=>f} checked={open} type="checkbox" id="hi" />
-        <label  onClick={handleOpen} class="menu" for="hi">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <label  onClick={handleOpen} className="menu" htmlFor="hi">
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
         </label>
     </div>
   )

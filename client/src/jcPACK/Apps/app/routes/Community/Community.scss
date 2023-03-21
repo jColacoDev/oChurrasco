@@ -1,0 +1,116 @@
+.Community{
+
+    section{
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1400px;
+
+        figure{
+            background-image: url("./../../../../../assets/images/churrascoPics/restaurante-churrasco_tvi.jpg");
+            background-position: center;
+            background-size: contain;
+            height: 100%;
+            height: 16em;
+            width: 100%;
+            
+            @media (min-width:720px) {
+                width: 46%;
+            }    
+        }
+
+        p{
+            padding: 0 1em;
+            line-height: 1.4;
+        }
+
+        &.messageInit{
+            justify-content: center;
+            gap: 1em;
+            
+            @media (min-width:1200px) {
+                figure, p{
+                    width: 46%;
+                }
+            }    
+        }
+        &.figures{
+            justify-content: space-evenly;
+
+            figure{
+                position: relative;
+                margin-bottom: 3em;
+
+                figcaption{
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background-color: #00000060;
+                    color: white;
+
+                    a{
+                        padding: .5em;
+                        width: 100%;
+                        height: 100%;
+                        &:hover{
+                            background-color: var(--primary-color);
+                        }
+                    }
+                }
+            }
+
+            div.avals{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                width: 100%;
+                margin: 2em 0;
+
+                figure{
+                    margin: 0;
+                    height: 8em;   
+                    
+                    &.moreAval{
+                        height: 13em;   
+                    }
+                }
+            }
+        }
+    }
+
+    figure{
+
+        &.avaliations{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/avaliations.jpg');
+        }
+        &.backstreets{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/backstreets.jpg');
+        }
+        &.comercioComHistoria{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/comercioComHistoria.jpg');
+        }
+        &.foursquare{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/foursquare.jpg');
+        }
+        &.lifecooler{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/lifecooler.jpg');
+        }
+        &.moreAval{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/moreAval.jpg');
+        }
+        &.restaurantGuru{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/restaurantGuru.jpg');
+        }
+        &.timeOut{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/timeOut.jpg');
+        }
+        &.tripAdvisor{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/tripAdvisor.jpg');
+        }
+        &.VNG{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/VNG.jpg');
+        }
+        &.yelp{
+            background-image: url('./../../../../../assets/images/churrascoPics/community/yelp.jpg');
+        }
+    }
+}

@@ -1,4 +1,8 @@
 
+export function scrollToTopClick(){
+    window.scrollTo(0,0);
+}
+
  /************************************************** */
  /* Input Validators ******************************************* */
 
@@ -24,8 +28,8 @@ export function groupObjectsArrayByType(arr) {
      const groups = {};
      for (let i = 0; i < arr.length; i++) {
          const type = arr[i].type;
-         if (!groups[type]) {
-         groups[type] = [];
+         if(!groups[type]) {
+            groups[type] = [];
          }
          groups[type].push(arr[i]);
      }

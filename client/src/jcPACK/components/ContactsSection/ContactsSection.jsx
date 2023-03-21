@@ -22,9 +22,8 @@ export default function ContactsSection() {
         </span>
         <span>
             <figure className="calendar" />
-            <p>
-                Segunda a Sexta: 08:00h-19:00h <br />        
-                Sábados: 09:00h-13:00h 
+            <p>Todos os dias <br />
+                12:00–16:30h, 18:30–23:30h
             </p>
         </span>
     </div>

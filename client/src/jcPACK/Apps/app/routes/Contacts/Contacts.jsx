@@ -1,15 +1,14 @@
 import './Contacts.scss'
 import React from 'react'
-import ContactForm from '../../../../components/ContactForm/ContactForm'
 import ContactsSection from '../../../../components/ContactsSection/ContactsSection'
-import ContactFormVintage from '../../../../components/ContactFormVintage/ContactFormVintage'
+import ContactsFormVintage from '../../../../components/ContactFormVintage/ContactsFormVintage'
 
 export default function Contacts() {
   return (
     <div className='Contacts'>
         <h2>Contacts</h2>
         <main>
-            <ContactFormVintage />   
+            <ContactsFormVintage />   
             <div>
                 <ContactsSection />
                 {/* <div className="map-responsive">

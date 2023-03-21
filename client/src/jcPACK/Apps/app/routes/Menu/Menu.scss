@@ -1,15 +1,120 @@
 .Menu{
 
+    section.OrderInfo{
+        position: fixed;
+        bottom: 1em;
+        right: 1em;     
+    }
+
+    .menuTab{
+        display: flex;
+        justify-content: space-between;
+
+        .bold{
+            margin: auto;
+            min-width: 1.5em;
+        }
+
+        button{
+            background-color: transparent;
+            color: var(--primary-color);
+            text-align: center;
+            height: 1.5em;
+            width: 1.5em;
+            margin: auto;
+            cursor: pointer;
+            border: 1px solid var(--primary-color);
+            border-radius: 50%;
+            margin-right: .5em;
+
+            &:first-of-type{
+                margin-right: .5em;
+            }
+            &:last-of-type{
+                margin-left: .5em;
+            }
+        }
+
+        span{
+            display: flex;
+            align-items: flex-end;                        
+
+            &:first-of-type {
+                flex-grow: 1;
+                font-weight: bold;
+
+                &::after {
+                    margin-left: .5em;
+                    content: "";
+                    flex-grow: 999;
+                    height: 1px;
+                    background-image: linear-gradient(to right, transparent, #000 50%, transparent);
+                    background-size: 10px 1px;
+                }
+            }
+            &:last-of-type {
+                margin-left: .5em;
+                &::after{
+                    content: '€';
+                }
+            }
+        }
+    }
+
+    section.menuSelect{
+        position: sticky;
+        top: 70px;
+        background-color: #F3EFE0;
+        padding: 1em 0;
+        box-shadow: var(--primary-color) 0px 8px 5px -6px;
+        z-index: 1;
+
+        @media (min-width: 1100px) {
+            top: 0;
+        }
+
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            padding: 0 1em;
+
+            li{
+                border: 1px solid var(--primary-color);
+                padding: .5em;
+                cursor: pointer;
+                min-width: 8em;
+
+                &.active,
+                &:hover{
+                    background-color: var(--primary-color);
+                    color: white;
+                }
+            }
+        }
+    }
+
     main{
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: space-evenly;
         align-items: flex-start;
-        gap: 3em;
-        padding: 0 2em;
         max-width: 1200px;
         margin: 0 auto;
-
+        
+        @media (min-width: 375px) {
+            padding: 0 .5em;
+        }
+        @media (min-width: 420px) {
+            padding: 0 1em;
+        }
+        @media (min-width: 520px) {
+            padding: 0 2em;
+        }
+        @media (min-width: 700px) {
+            padding: 0 1em;
+        }
+        
         span{
             cursor: default;
         }
@@ -17,23 +122,31 @@
         section{
             display: flex;
             flex-direction: column;
-            gap: 1em;
+            gap: .5em;
+            width: 100%;
 
             @media (min-width: 700px) {
                 max-width: 46%;
             }
             
+            h3{
+                margin: .5em !important;
+                margin-top: 1em !important;
+            }
             article{
                 display: flex;
                 flex-direction: column;
                 gap: .5em;
 
-                &:hover{
-                    color: var(--primary-color--lighter);
+                &.active{
+                    color: var(--primary-color);
+                }
 
-                    div::before{
-                        color: white;
-                        background-color: var(--primary-color--lighter);
+                &:hover{
+                    color: var(--primary-color);
+
+                    button{
+                        background-color: var(--primary-color--transparent);
                     }
                 }
 
@@ -41,45 +154,6 @@
                     font-size: .8em;
                 }
 
-                > div{
-                    display: flex;
-                    justify-content: space-between;
-
-                    &::before{
-                        color: var(--primary-color);
-                        text-align: center;
-                        content: '+';
-                        width: 1.5em;
-                        margin: 0 auto;
-                        cursor: pointer;
-                        border: 1px solid var(--primary-color);
-                        border-radius: 50%;
-                        margin-right: .5em;
-                    }
-
-                    span{
-                        display: flex;
-                        align-items: flex-end;                        
-
-                        &:first-of-type {
-                            flex-grow: 1;
-                            font-weight: bold;
-
-                            &::after {
-                                content: "";
-                                flex-grow: 999;
-                                height: 1px;
-                                background-image: linear-gradient(to right, transparent, #000 50%, transparent);
-                                background-size: 10px 1px;
-                            }
-                        }
-                        &:last-of-type {
-                            &::after{
-                                content: '€';
-                            }
-                        }
-                    }
-                }
             }
         }
     }

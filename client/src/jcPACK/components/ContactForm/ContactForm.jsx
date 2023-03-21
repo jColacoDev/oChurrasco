@@ -13,7 +13,7 @@ export default function ContactForm() {
     const [emailInput, setEmailInput] = useState("");
     const [errorInput, setErrorInput] = useState("");
     
-    const form = useRef();
+    const formRef = useRef();
     const errorSpanRef = useRef();
     
     useEffect(() => {
@@ -56,11 +56,9 @@ export default function ContactForm() {
     const sendEmail = (e) => {
         e.preventDefault();
         if(!checkInputs()) return;
-    
         setSentForm(true);
+        // console.log(form.current)
     
-        console.log(form.current)
-        console.log(form)
         emailjs
         .sendForm(
             'service_rctrx0r',
@@ -138,7 +136,7 @@ export default function ContactForm() {
             </section>
         }
         {!sentForm &&
-            <form ref={form} className="form">
+            <form ref={formRef} className="form">
                 <p type="*Nome:">
                     <input autoComplete="off"
                         required 

@@ -14,10 +14,6 @@ export default function Footer() {
     const {state, dispatch} = useContext(AuthContext)
     let navigate = useNavigate();
 
-    function handleTopClick(){
-        window.scrollTo(0,0);
-    }
-
     const linksFromRouteData = (routeData) => routeData?.navLinks.map((link)=>
     <Link key={link.ref} to={{
         pathname:`${appData.path}${routeData.path}`,

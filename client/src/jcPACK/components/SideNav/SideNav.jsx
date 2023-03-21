@@ -20,6 +20,9 @@ export default function SideNav() {
     return ()=> window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    setNavOpen(false);
+  }, [location]);
   
   return (
     <nav id='SideNav'>
@@ -37,6 +40,9 @@ export default function SideNav() {
           <li><Link to={"/app/reservation"}
             className={location.pathname === "/app/reservation" ? "active" : ""}
           >Reservation</Link></li>
+          <li><Link to={"/app/orders"}
+            className={location.pathname === "/app/orders" ? "active" : ""}
+          >Orders</Link></li>
           <li><Link to={"/app/contacts"}
             className={location.pathname === "/app/contacts" ? "active" : ""}
           >Contacts</Link></li>

@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import cn from "classnames";
-
 import styles from "./index.module.scss";
 
 export default function Theme({ className }) {

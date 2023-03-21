@@ -1,8 +1,7 @@
 :root {
-    // --topNav-height: 0px;
     --primary-color: #701515;
+    --primary-color-lighter: #b85b5b;
     --primary-color-transparent: #70151523;
-    --primary-color--lighter: #c58c8c;
 }
 
 :root[data-theme="lightTheme"] {
@@ -10,6 +9,5 @@
 }
 
 :root[data-theme="darkTheme"] {
-
     --footer-bg-color: #000000;
 }
