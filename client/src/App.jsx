@@ -16,24 +16,9 @@ import Footer from './jcPACK/components/footer/footer';
 import LoadingToRedirect from './jcPACK/components/LoadingToRedirect';
 import QualityBadges from './jcPACK/components/QualityBadges/QualityBadges';
 
-// Translations
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import enTranslation from './jcPACK/translations/en.json';
-import ptTranslation from './jcPACK/translations/pt.json';
+// Components
 import TopNotes from './jcPACK/components/TopNotes/TopNotes';
 import SideNav from './jcPACK/components/SideNav/SideNav';
-i18n.use(initReactI18next).init({
-  lng: 'en',
-  resources: {
-    en: {
-      translation: enTranslation,
-    },
-    pt: {
-      translation: ptTranslation,
-    },
-  },
-});
 
 export const AppsData = [
   appData,

@@ -13,7 +13,7 @@ section.OrderInfo{
         padding: 1em;
         position: sticky;
         top: -1em;
-        background-color: #F3EFE0;
+        background-color: var(--primary-background) !important;
         box-shadow: var(--primary-color-transparent) 0px 10px 10px -10px;
     }
 
@@ -34,7 +34,7 @@ section.OrderInfo{
         width: calc(100% - 2em);
         min-height: 50vh;
         max-height: 80vh;
-        background-color: #F3EFE0;
+        background-color: var(--primary-background) !important;
         
         figure{
             margin: 0 auto;
@@ -70,7 +70,7 @@ section.OrderInfo{
         border-bottom: 4px solid var(--action-color);
         padding: var(--size);
         cursor: pointer;
-        background-color: #F3EFE0;
+        background-color: var(--primary-background) !important;
         width: var(--size);
         height: var(--size);
         background-image: url('./../../../assets/images/icons/restaurantIcons/bill.png');

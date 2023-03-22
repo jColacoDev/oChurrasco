@@ -1,3 +1,9 @@
+import i18n from "../translations/translations";
+
+////// TRANSLATIONS
+export const handleLanguageChange = (language) => {
+    i18n.changeLanguage(language);
+};
 
 export function scrollToTopClick(){
     window.scrollTo(0,0);
@@ -61,6 +67,11 @@ String.prototype.capitalize = function(){
     });
 };
 
+export function capitalizeString(str) {
+    return str.toLowerCase().replace( /\b\w/g, function (m) {
+        return m.toUpperCase();
+    });
+}
 export function removeAccents(str) {
     if(!str) return "";
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -69,6 +80,11 @@ export function removeAccents(str) {
 export function stringToUrl(str) {
     if(!str) return "";
     return removeAccents(str.replace(/\s+/g, '-').toLowerCase())
+}
+
+export function stringRemoveSpaces(str) {
+    if(!str) return "";
+    return str.trim().replace(/\s+/g, '');
 }
 
 export const normalizePathLabel = label => label?.toLowerCase()

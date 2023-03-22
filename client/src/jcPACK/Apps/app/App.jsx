@@ -16,65 +16,69 @@ export const appData = {
     path: "/o-churrasco",
     label: "app",
 
-    data:{
+
+    contactsData:{
         name: "O Churrasco",
         email: "geral@o-churrasco.pt",
-        tel: "21 342 30 59",
+        phone: "21 342 30 59",
+        mobile: "21 342 30 59",
         address: "R. das Portas de Santo Antão 85",
-        pCode: "1150-266 Lisboa"
+        pCode: "1150-266 Lisboa",
+        country: "Portugal",
+        web: "https://jcolaco.dev/o-churrasco/",
     },
 
     routesData: [
         {
-            path: "/home/",
+            path: "/home",
             type: "",
             title: "Home",
             element:  <Home /> ,
         },
         {
-            path: "/menu/",
+            path: "/menu",
             type: "",
             title: "Menu",
             element: <Menu />,            
         },
         {
-            path: "/orders/",
+            path: "/orders",
             type: "",
             title: "Orders",
             element: <Orders />,            
         },
         {
-            path: "/reservation/",
+            path: "/reservation",
             type: "",
             title: "reservation",
             element: <Reservation /> ,            
         },
         {
-            path: "/contacts/",
+            path: "/contacts",
             type: "",
             title: "Contacts",
             element: <Contacts /> ,            
         },
         {
-            path: "/about-us/",
+            path: "/about-us",
             type: "",
             title: "About us",
             element: <AboutUs /> ,            
         },
         {
-            path: "/community/",
+            path: "/community",
             type: "",
             title: "Community",
             element: <Community /> ,            
         },
         {
-            path: "/dashboard/",
+            path: "/dashboard",
             type: "private",
             element: <Dashboard />,
             title: "Dashboard",
         },
         {
-            path: "/login/",
+            path: "/login",
             type: "public",
             element: <Login />,
             title: "Login",

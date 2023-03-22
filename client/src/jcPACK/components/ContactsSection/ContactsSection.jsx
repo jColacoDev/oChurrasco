@@ -1,23 +1,32 @@
 import './ContactsSection.scss'
 import React from 'react'
 import { appData } from '../../Apps/app/App'
+import { stringRemoveSpaces } from '../../utils/utils'
 
 export default function ContactsSection() {
   return (
     <div className='ContactsSection'>
         <h3>Contacts</h3>
         <section className='links'>
-            <a href="tel:+351217540421"><figure className='phone'/>Tel: {appData.data.tel}</a>
-            <a href="tel:+351919224090"><figure className='mobile'/>Tlm: {appData.data.tel}</a>
-            <a href = "mailto:online@ergoface-lda.com?subject=consulta_online"><figure className='email' />E-mail: {appData.data.email}
-            </a>
-            <a href="https://ergoface-lda.com"><figure className='web'/>https://o-churrasco.pt</a>
+            {appData.contactsData.phone &&
+                <a href={`tel:+351${stringRemoveSpaces(appData.contactsData.phone)}`}><figure className='phone'/>Tel: {appData.contactsData.phone}</a>
+            }
+            {appData.contactsData.mobile &&
+                <a href={`tel:+351${stringRemoveSpaces(appData.contactsData.mobile)}`}><figure className='mobile'/>Tlm: {appData.contactsData.mobile}</a>
+            }
+            {appData.contactsData.email &&
+                <a href = {`mailto:${appData.contactsData.email}?subject=consulta_online`} ><figure className='email' />E-mail: {appData.contactsData.email}
+                </a>
+            }
+            {appData.contactsData.web &&
+                <a href={`${appData.contactsData.web}`}><figure className='web'/>{appData.contactsData.web}</a>
+            }
         </section>    
         <span>
             <figure className="location" />
             <p>
-            {appData.data.address}, <br />
-            {appData.data.pCode}, Portugal <br />
+            {appData.contactsData.address}, <br />
+            {appData.contactsData.pCode}, {appData.contactsData.country} <br />
             </p>
         </span>
         <span>

@@ -2,11 +2,15 @@ import './Contacts.scss'
 import React from 'react'
 import ContactsSection from '../../../../components/ContactsSection/ContactsSection'
 import ContactsFormVintage from '../../../../components/ContactFormVintage/ContactsFormVintage'
+import { useTranslation } from 'react-i18next';
 
 export default function Contacts() {
+  const { t } = useTranslation();
+  const routesData = t("routesData", { returnObjects: true });
+
   return (
-    <div className='Contacts'>
-        <h2>Contacts</h2>
+    <div className='Contacts backgroundFixed chickenChicks'>
+        <h2>{routesData.contacts}</h2>
         <main>
             <ContactsFormVintage />   
             <div>

@@ -1,5 +1,10 @@
 .Menu{
 
+    h2{
+        background-color: var(--primary-background);
+        z-index: 1;
+        position: relative;
+    }
     section.OrderInfo{
         position: fixed;
         bottom: 1em;
@@ -64,7 +69,7 @@
     section.menuSelect{
         position: sticky;
         top: 70px;
-        background-color: #F3EFE0;
+        background-color: var(--primary-background);
         padding: 1em 0;
         box-shadow: var(--primary-color) 0px 8px 5px -6px;
         z-index: 1;
@@ -78,12 +83,18 @@
             flex-wrap: wrap;
             gap: 1em;
             padding: 0 1em;
-
+            justify-content: space-evenly;
+            max-width: 60em;
+            
             li{
                 border: 1px solid var(--primary-color);
                 padding: .5em;
                 cursor: pointer;
-                min-width: 8em;
+                // min-width: 6em;
+        
+                @media (min-width: 460px) {
+                    min-width: 8em;
+                }
 
                 &.active,
                 &:hover{
@@ -101,7 +112,7 @@
         align-items: flex-start;
         max-width: 1200px;
         margin: 0 auto;
-        
+
         @media (min-width: 375px) {
             padding: 0 .5em;
         }
@@ -115,20 +126,38 @@
             padding: 0 1em;
         }
         
+        &::before{
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            background-image: url('./../../../../../assets/images/churrascoPics/cheffPng.png');
+            background-position: bottom;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: .05;
+            filter: grayscale(1);
+        }
+
         span{
             cursor: default;
         }
 
         section{
+            position: relative;
             display: flex;
             flex-direction: column;
             gap: .5em;
             width: 100%;
-
+            margin-bottom: 2em;
+            
             @media (min-width: 700px) {
                 max-width: 46%;
             }
-            
+
             h3{
                 margin: .5em !important;
                 margin-top: 1em !important;
@@ -154,6 +183,23 @@
                     font-size: .8em;
                 }
 
+                &:last-of-type{
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        top: 101%;
+                        left: 0;
+                        width: 100%;
+                        height: 2em;
+                        
+                        background-image: url('./../../../../../assets/images/churrascoPics/frontier.png');
+                        background-position: bottom;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        opacity: .6;
+                        filter: grayscale(.2);
+                    }
+                }
             }
         }
     }

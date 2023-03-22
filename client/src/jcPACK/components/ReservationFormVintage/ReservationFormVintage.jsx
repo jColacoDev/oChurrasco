@@ -2,10 +2,16 @@ import './ReservationFormVintage.scss'
 import React, { useRef, useState } from 'react'
 import { validateEmail, validatePhone } from '../../utils/utils';
 import emailjs from 'emailjs-com';
+import { useTranslation } from 'react-i18next';
 
 // select needs control
 
 export default function ReservationFormVintage() {
+    const { t } = useTranslation();
+    const reservationsData = t("reservationsData", { returnObjects: true });
+    const formsData = t("formsData", { returnObjects: true });
+    const actions = t("actions", { returnObjects: true });
+
     const [sentForm, setSentForm] = useState(false);
     const [phoneInput, setPhoneInput] = useState("");
     const [seatsInput, setSeatsInput] = useState("");
@@ -114,7 +120,7 @@ export default function ReservationFormVintage() {
   return (
     <div className='ReservationFormVintage'>
 <div id="container">
-  <h1>&bull; Book a reservation &bull;</h1>
+  <h1>&bull; {reservationsData.title} &bull;</h1>
   <div className="underline">
   </div>
   <div className="icon_wrapper">
@@ -138,7 +144,7 @@ export default function ReservationFormVintage() {
     <div className="name">
       <label htmlFor="name"></label>
       <input type="text" 
-        placeholder="My name is" 
+        placeholder={`${formsData.name}...`} 
         name="name" 
         id="name_input" 
         onBlur={e=>setNameInput(e.target.value.trim())}
@@ -149,7 +155,7 @@ export default function ReservationFormVintage() {
     <div className="email">
       <label htmlFor="email"></label>
       <input type="email" 
-            placeholder="My e-mail is" 
+            placeholder="e-mail..." 
             name="email" 
             id="email_input"
             onBlur={e=>setEmailInput(e.target.value.trim())}
@@ -160,7 +166,7 @@ export default function ReservationFormVintage() {
     <div className="telephone">
       <label htmlFor="name"></label>
       <input type="number" 
-            placeholder="My telephone is" 
+            placeholder={`${formsData.phone}...`} 
             name="telephone" 
             id="telephone_input"
             onBlur={e=>setPhoneInput(e.target.value.trim())}
@@ -170,7 +176,7 @@ export default function ReservationFormVintage() {
     </div>
     <div className="seats">
       <input type="number" 
-            placeholder="seats..." 
+            placeholder={`${formsData.seats}...`}
             name="seats" 
             id="seats_input"
             onBlur={e=>setSeatsInput(e.target.value.trim())}
@@ -184,13 +190,13 @@ export default function ReservationFormVintage() {
             onChange={e => setSubjectInput(e.target.value)} 
             name="subject" 
             id="subject_input"
-        ><option value="reservation">I'd like to make a reservation</option>
+        ><option value="reservation">{reservationsData.options[0]}</option>
         </select>
     </div>
     <div className="message">
       <label htmlFor="message"></label>
       <textarea name="message" 
-        placeholder="I'd like to..." 
+        placeholder={`${formsData.message}...`} 
         id="message_input" 
         cols="30" rows="5"
         onBlur={e=>setMessageInput(e.target.value.trim())}
@@ -203,7 +209,7 @@ export default function ReservationFormVintage() {
             `Escreva ${errorInput}` : ""}
         </span>
         <button type="submit" onClick={sendEmail} id="sendLetter">
-            Enviar
+            {actions.send}
         </button>
     </footer>
   </form>}

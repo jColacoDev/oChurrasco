@@ -1,4 +1,7 @@
 .ContactsFormVintage{
+    background-color: var(--primary-background);
+    z-index: 1;
+
     #container {
         border: solid 3px var(--primary-color);
         max-width: 50em;

@@ -2,8 +2,12 @@ import './Orders.scss'
 import React, { useEffect, useState } from 'react'
 import OrderInfo from '../../../../components/OrderInfo/OrderInfo';
 import { useIndexedDB } from '../../../../hooks/useIndexedDB';
+import { useTranslation } from 'react-i18next';
 
 export default function Orders() {
+    const { t } = useTranslation();
+    const routesData = t("routesData", { returnObjects: true });
+
     const [addOrder, updateOrder, deleteOrder, getOrders] = useIndexedDB();
     const [orders, setOrders] = useState([]);
   
@@ -43,8 +47,8 @@ export default function Orders() {
       };
 
   return (
-    <div className='Orders'>
-        <h2>Orders</h2>
+    <div className='Orders backgroundFixed'>
+        <h2>{routesData.orders}</h2>
         <section className='orders'>
             {orders?.map((order,i)=>
                 <OrderInfo

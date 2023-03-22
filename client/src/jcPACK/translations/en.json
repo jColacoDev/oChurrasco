@@ -1,4 +1,116 @@
 {
     "greeting": "Hello",
-    "products": "products"
+    
+    "words":{
+        "order": "order"
+    },
+    
+    "actions":{
+        "add": "add",
+        "delete": "delete",
+        "send": "send",
+        "save": "save",
+        "do": "make",
+        "update": "update",
+        "create": "create",
+        "delete": "delete"
+    },
+
+    "menuData":{
+        "types":{
+            "starters": "Starters",
+            "mainDishes": "Main dishes",
+            "desserts": "Desserts",
+            "beverages": "Beverages",
+            "wines": "Wines"
+        }
+    },
+
+    "footerData": {
+        "myTable": "my Table",
+        "theRestaurant": "The Restaurant"
+    },
+
+    "routesData": {
+        "entrance": "Entrance",
+        "menu":"Menu",
+        "reservation":"Book table",
+        "orders":"Orders",
+        "contacts":"Contacts",
+        "aboutUs":"About Us",
+        "community":"Community",
+        "login":"login"
+    },
+    "formsData": {
+        "name": "name",
+        "subject": "subject",
+        "phone": "telephone",
+        "mobile": "mobile",
+        "message": "message",
+        "seats": "seats"
+    },
+    "contactsData": {
+        "title": "Keep in touch",
+        "options": [
+            "I'd like to make a reservation",
+            "I'd like share my experience",
+            "I'd like to make a proposal",
+            "I'd like to ask"
+        ],
+        "feedback":{
+            "thankYou":"Thank you for choosing to dine with us!",
+            "message":"We have received your request and will do our best to accommodate your desired date and time. We will contact you shortly to confirm your booking. If you have any questions or concerns, please feel free to contact us at any time.",
+            "finalNotes": "We look forward to welcoming you and hope to see you soon!"
+        }
+    },
+    "reservationsData": {
+        "title": "Book a reservation",
+        "options": [
+            "I'd like to make a reservation"
+        ]
+    },
+    "communityData": {
+        "communityParagraphs": [
+            "O Churrasco, our restaurant located in the heart of Lisbon, has been making waves in the local food scene since its opening. But don't just take our word for it - we're honored to be featured in several well-respected publications and websites, including TimeOut and various food evaluation sites. Customers have praised our mouth-watering dishes, cozy atmosphere, and top-notch service.",
+            "We invite you to read what they say about us and come experience it for yourself!"
+        ]
+    },
+    "aboutUsData": {
+        "aboutParagraphs": [
+            "Welcome to our classic restaurant in Lisbon, where our specialty is the delicious charcoal-grilled chicken barbecue. Our restaurant is steeped in history and offers top-notch service with experienced staff who have been with us for years. Our magnificent outdoor terrace is the perfect place to enjoy your meal while taking in the vibrant energy of Lisbon.",
+            "Specializing in grilled dishes from Rua das Portas de Santo Antão, we pride ourselves on serving some of the best roasted and spit-roasted chicken in Lisbon. Our attentive staff dressed in traditional attire will ensure you receive your desired portion and keep the rest warm for you to enjoy. You can choose between thinly sliced or round-cut potatoes and select from a variety of dishes such as Indian-style curry or Viana-style cod, both of which are award-winning. We are the perfect choice for those looking for an authentic dining experience in Portas de Santo Antão.",
+            "At our restaurant, we aim to provide our customers with a warm and intimate dining experience while maintaining a professional standard. Whether you're a local or a tourist, we guarantee that you'll have an unforgettable meal with us. So come and join us, and taste the best grilled chicken in Lisbon!"
+        ]
+    },
+    "homeData": {
+        "firstTitle": "Savor The Art Of Charcoal-Grilled Chicken At Our Elegant Downtown Lisbon Restaurant",
+        "menuText":"Experience charcoal-grilled perfection and indulge in our delicious chicken specialty at our downtown Lisbon restaurant. From succulent pork medallions to must-try seafood dishes like grilled octopus and Portuguese-style Bacalhau, our menu offers a variety of flavors to satisfy your cravings. Don't forget to pair your meal with our house wine, available in various sizes. Click below to see our full menu and savor the taste of our expertly crafted dishes.",
+        "reservationsText": "Come experience the mouthwatering aromas of our specialty dishes at our cozy downtown Lisbon restaurant. Our outdoor terrace, nestled in an original old-fashioned building, provides the perfect atmosphere for a delightful dining experience. Savor our expertly crafted charcoal-grilled chicken, seafood dishes, and cooked meats, and immerse yourself in a charming and peaceful environment. Book your reservations now and join us for an unforgettable culinary journey."
+    },
+    "qualityBadgesData": [
+        {
+            "title": "Excellent cuisine",
+            "text": "Our menu features exquisite cuisine crafted with the finest ingredients, ensuring a dining experience that is second to none"
+        },
+        {
+            "title": "Delicious grilled chicken",
+            "text": "Our succulent, charcoal-grilled chicken is a true culinary masterpiece, and has become synonymous with excellence"
+        },
+        {
+            "title": "Refined wine selection",
+            "text": "Experience our carefully curated wine list, featuring the very best vintages from around the world"
+        },
+        {
+            "title": "Impeccable service",
+            "text": "Let our friendly and knowledgeable staff provide you with an unforgettable dining experience, characterized by attentive and personalized service"
+        },
+        {
+            "title": "Enchanting terrace space",
+            "text": "Relax and unwind in our charming outdoor seating area, a serene and picturesque oasis"
+        },
+        {
+            "title": "Exceptional quality",
+            "text": "Discover our commitment to uncompromising quality, reflected in every dish we prepare and every ingredient we use"
+        }
+    ]
 }

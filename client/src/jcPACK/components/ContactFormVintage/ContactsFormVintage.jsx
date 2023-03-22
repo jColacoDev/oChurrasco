@@ -2,10 +2,15 @@ import './ContactsFormVintage.scss'
 import React, { useRef, useState } from 'react'
 import { validateEmail, validatePhone } from '../../utils/utils';
 import emailjs from 'emailjs-com';
+import { useTranslation } from 'react-i18next';
 
 // select needs control
 
 export default function ContactsFormVintage() {
+    const { t } = useTranslation();
+    const actions = t("actions", { returnObjects: true });
+    const contactsData = t("contactsData", { returnObjects: true });
+    const formsData = t("formsData", { returnObjects: true });
     const [sentForm, setSentForm] = useState(false);
     const [phoneInput, setPhoneInput] = useState("");
     const [seatsInput, setSeatsInput] = useState("");
@@ -114,7 +119,7 @@ export default function ContactsFormVintage() {
   return (
     <div className='ContactsFormVintage'>
 <div id="container">
-  <h1>&bull; Keep in Touch &bull;</h1>
+  <h1>&bull; {contactsData.title} &bull;</h1>
   <div className="underline">
   </div>
   <div className="icon_wrapper">
@@ -125,12 +130,12 @@ export default function ContactsFormVintage() {
   </div>
   {sentForm && 
     <section className='feedback'>
-        <p>
-            Thank you for choosing to dine with us! <span>{nameInput}</span>. 
+        <p>{contactsData.feedback.thankYou}<span>{nameInput}</span>. 
             <br />
             <br />
-            We have received your request and will do our best to accommodate your desired date and time. We will contact you shortly to confirm your booking. If you have any questions or concerns, please feel free to contact us at any time.
-            <br /> We look forward to welcoming you and hope to see you soon!
+            {contactsData.feedback.message}
+            <br /> 
+            {contactsData.feedback.finalNotes}
         </p>
     </section>
   }
@@ -138,7 +143,7 @@ export default function ContactsFormVintage() {
     <div className="name">
       <label htmlFor="name"></label>
       <input type="text" 
-        placeholder="My name is" 
+        placeholder={`${formsData.name}...`}
         name="name" 
         id="name_input" 
         onBlur={e=>setNameInput(e.target.value.trim())}
@@ -149,7 +154,7 @@ export default function ContactsFormVintage() {
     <div className="email">
       <label htmlFor="email"></label>
       <input type="email" 
-            placeholder="My e-mail is" 
+            placeholder="e-mail..." 
             name="email" 
             id="email_input"
             onBlur={e=>setEmailInput(e.target.value.trim())}
@@ -160,7 +165,7 @@ export default function ContactsFormVintage() {
     <div className="telephone">
       <label htmlFor="name"></label>
       <input type="number" 
-            placeholder="My telephone is" 
+            placeholder={`${formsData.phone}...`}
             name="telephone" 
             id="telephone_input"
             onBlur={e=>setPhoneInput(e.target.value.trim())}
@@ -170,7 +175,7 @@ export default function ContactsFormVintage() {
     </div>
     {subjectInput==="booking" && <div className="seats">
       <input type="number" 
-            placeholder="seats..." 
+            placeholder={`${formsData.seats}...`} 
             name="seats" 
             id="seats_input"
             onBlur={e=>setSeatsInput(e.target.value.trim())}
@@ -186,16 +191,16 @@ export default function ContactsFormVintage() {
             name="subject" 
             id="subject_input"
         >
-    <option value="booking">I'd like to book a reservation</option>
-    <option value="experience">I'd like to share my experience</option>
-    <option value="proposal">I'd like to make a proposal</option>
-    <option value="question">I'd like to ask</option>
+    <option value="booking">{contactsData.options[0]}</option>
+    <option value="experience">{contactsData.options[1]}</option>
+    <option value="proposal">{contactsData.options[2]}</option>
+    <option value="question">{contactsData.options[3]}</option>
         </select>
     </div>
     <div className="message">
       <label htmlFor="message"></label>
       <textarea name="message" 
-        placeholder="I'd like to..." 
+        placeholder={`${formsData.message}...`} 
         id="message_input" 
         cols="30" rows="5"
         onBlur={e=>setMessageInput(e.target.value.trim())}
@@ -208,7 +213,7 @@ export default function ContactsFormVintage() {
             `Escreva ${errorInput}` : ""}
         </span>
         <button type="submit" onClick={sendEmail} id="sendLetter">
-            Enviar
+            {actions.send}
         </button>
     </footer>
   </form>}

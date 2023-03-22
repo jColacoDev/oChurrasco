@@ -1,5 +1,7 @@
 import './OrderInfo.scss'
 import React, { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next';
+import { capitalizeString } from '../../utils/utils';
 
 export default function OrderInfo({
     handleOrderSubmit,
@@ -8,6 +10,9 @@ export default function OrderInfo({
     dateStamp,
     opened=false,
 }) {
+    const { t } = useTranslation();
+    const words = t("words", { returnObjects: true });
+    const actions = t("actions", { returnObjects: true });
     const [totalPrice, setTotalPrice] = useState("0");
     const [loading, setLoading] = useState(false);
 
@@ -60,7 +65,7 @@ function sumNumbers(strings) {
             {formatted_date(dateStamp)}
         </span>}
         <article>
-            <h3>Order info</h3>
+            <h3>{capitalizeString(words.order)} info</h3>
             <div>
                 {menuOrders?.map((order, i)=>order?.length > 0 &&
                 <ul key={i}>
@@ -82,11 +87,11 @@ function sumNumbers(strings) {
                                 disabled={parseInt(totalPrice) <= 0}
                                 className='rectangleButton' 
                                 onClick={handleOrderSubmit}
-                                >Save Order</button>
+                                >{capitalizeString(actions.do)} {capitalizeString(words.order)}</button>
                         )}
                     </li>
                     {typeof handleDeleteOrder === 'function' && <li className='menuTab'>
-                            <button disabled={loading} onClick={handleDeleteOrderMiddleware} className='rectangleButton deleteButton'>Delete</button>
+                            <button disabled={loading} onClick={handleDeleteOrderMiddleware} className='rectangleButton deleteButton'>{capitalizeString(actions.delete)}</button>
                     </li>
 
                     }

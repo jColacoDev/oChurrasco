@@ -1,16 +1,25 @@
 import './Community.scss'
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
 export default function Community() {
+    const { t } = useTranslation();
+    const routesData = t("routesData", { returnObjects: true });
+    const communityData = t("communityData", { returnObjects: true });
+
   return (
-    <div className='Community'>
-        <h2>Community</h2>
+    <div className='Community backgroundFixed chickenChicks'>
+        <h2>{routesData.community}</h2>
 
         <section className='messageInit'>
             <figure />
             <p>
-            O Churrasco, our restaurant located in the heart of Lisbon, has been making waves in the local food scene since its opening. But don't just take our word for it - we're honored to be featured in several well-respected publications and websites, including TimeOut and various food evaluation sites. Customers have praised our mouth-watering dishes, cozy atmosphere, and top-notch service. 
-            <br /> We invite you to read what they say about us and come experience it for yourself!
+            {communityData.communityParagraphs?.map((p,i)=>
+                <>
+                    <br />
+                    <span key={i}>{p}</span>
+                </>
+            )}
             </p>
         </section>
         <section className='figures'>

@@ -1,101 +1,115 @@
 {
+    "greeting": "Hello",
     
-    "lang": {
-        "label": "portuguese",
-        "code": "PT"
+    "words":{
+        "order": "pedido"
     },
-    "products": "products",
-    "categories": "categorias",
-    "catalogs": "catalogos",
-    "highlights": "destaques",
-    "greeting": "Bem-vindo à",
-    "theCompany": "A empresa",
-    
-    "actions": {
-        "submit": "enviar",
-        "subscribe": "subscrever",
-        "send": "enviar"
+    "actions":{
+        "add": "add",
+        "delete": "eliminar",
+        "save": "gravar",
+        "do": "fazer",
+        "send": "enviar",
+        "update": "actualizar",
+        "create": "criar",
+        "delete": "eliminar"
     },
     
-    "contacts": {
-        "label": "contactos",
-        "title": "contacte-nos",
+    "menuData":{
+        "types":{
+            "starters": "Entradas",
+            "mainDishes": "Pratos principais",
+            "desserts": "Sobremesas",
+            "beverages": "Bebidas",
+            "wines": "Vinhos"
+        }
+    },
+
+    "footerData": {
+        "myTable": "A minha Mesa",
+        "theRestaurant": "O Restaurante"
+    },
+
+    "routesData": {
+        "entrance": "Entrada",
+        "menu":"Ementa",
+        "reservation":"Reservar Mesa",
+        "orders":"Pedidos",
+        "contacts":"Contactos",
+        "aboutUs":"Sobre Nós",
+        "community":"Comunidade",
+        "login":"Iniciar sessão"
+    },
+    "formsData": {
         "name": "nome",
-        "email": "email",
         "subject": "assunto",
-        "telephone": "telefone",
-        "company": "empresa",
-        "message": "mensagem"
+        "phone": "telefone",
+        "mobile": "telemóvel",
+        "message": "menssagem",
+        "seats": "lugares"
     },
-
-    "badges": {
-        "support":{
-            "title": "Suporte Especializado",
-            "message": "Comerciais experientes para ajudar"
+    "contactsData": {
+        "title": "Contacte-nos",
+        "feedback":{
+            "thankYou":"Obrigado por escolher jantar connosco!",
+            "message":"Agradecemos o seu pedido e faremos tudo ao nosso alcance para acomodar a data e hora pretendidas. Em breve, entraremos em contacto consigo para confirmar a reserva. Caso tenha alguma dúvida ou preocupação, não hesite em contactar-nos a qualquer momento.",
+            "finalNotes": "Estamos ansiosos por recebê-lo e esperamos vê-lo em breve!"
+            },
+        "options": [
+            "Eu gostaria de fazer uma reserva",
+            "Eu gostaria de partilhar a minha experiência",
+            "Eu gostaria de fazer uma proposta",
+            "Eu gostaria de perguntar"
+        ]
+    },
+    "reservationsData": {
+        "title": "Faça uma reserva",
+        "options": [
+            "Eu gostaria de fazer uma reserva"
+        ]
+    },
+    "communityData": {
+        "communityParagraphs": [
+            "O Churrasco, o nosso restaurante localizado no coração de Lisboa, tem causado sensação na cena gastronómica local desde a sua abertura. Mas não acredite apenas em nós - estamos honrados por sermos mencionados em várias publicações e websites respeitados, incluindo o TimeOut e vários sites de avaliação de comida. Os clientes elogiaram os nossos pratos deliciosos, ambiente acolhedor e serviço de primeira qualidade.",
+            "Convidamo-lo a ler o que eles dizem sobre nós e a experimentar por si mesmo!"
+        ]
+    },
+    "aboutUsData": {
+        "aboutParagraphs": [
+        "Bem-vindo ao nosso restaurante clássico em Lisboa, onde a nossa especialidade é o delicioso churrasco de frango grelhado em carvão. O nosso restaurante tem uma história rica e oferece um serviço de excelência com funcionários experientes que trabalham conosco há anos. A nossa magnífica esplanada é o local perfeito para desfrutar da sua refeição enquanto absorve a energia vibrante de Lisboa.",
+        "Especializados em pratos grelhados da Rua das Portas de Santo Antão, orgulhamo-nos de servir um dos melhores frangos assados e no espeto de Lisboa. Os nossos funcionários atentos, vestidos com trajes tradicionais, garantirão que receba a porção desejada e mantêm o restante quente para que possa saborear. Pode escolher entre batatas finamente fatiadas ou em cubos e selecionar entre uma variedade de pratos, como o caril indiano ou o bacalhau à moda de Viana, ambos premiados. Somos a escolha perfeita para quem procura uma experiência autêntica de refeição em Portas de Santo Antão.",
+        "No nosso restaurante, pretendemos proporcionar aos nossos clientes uma experiência calorosa e acolhedora, mantendo um padrão profissional. Quer seja um residente local ou um turista, garantimos que terá uma refeição inesquecível conosco. Por isso, venha juntar-se a nós e provar o melhor frango grelhado de Lisboa!"
+        ]
+    },
+    "homeData": {
+        "firstTitle": "Venha provar a nossa deliciosa especialidade de frango grelhado em carvão no nosso restaurante no coração de Lisboa!",
+        "menuText": "Experimente a perfeição do grelhado em carvão e deleite-se com a nossa especialidade de frango no nosso restaurante no centro de Lisboa. Desde suculentos frangos assados até pratos de marisco que deve experimentar, como o polvo grelhado e o bacalhau à portuguesa, o nosso menu oferece uma variedade de sabores para satisfazer as suas vontades. Não se esqueça de acompanhar a sua refeição com o nosso vinho da casa, disponível em vários tamanhos. Clique abaixo para ver o nosso menu completo e saborear o gosto dos nossos pratos habilmente elaborados.",
+        "reservationsText": "Venha experimentar os aromas deliciosos dos nossos pratos especiais no nosso acolhedor restaurante no centro de Lisboa. O nosso terraço ao ar livre, inserido num edifício histórico original, proporciona o ambiente perfeito para uma experiência gastronómica encantadora. Saboreie o nosso frango grelhado em carvão habilmente elaborado, pratos de marisco e carnes cozinhadas e mergulhe num ambiente charmoso e tranquilo. Faça a sua reserva agora e junte-se a nós numa viagem culinária inesquecível."
+    },
+    "qualityBadgesData": [
+        {
+        "title": "Cozinha excelente",
+        "text": "O nosso menu apresenta uma cozinha requintada, criada com os melhores ingredientes, garantindo uma experiência gastronómica de excelência."
         },
-        "price":{
-            "title": "O melhor preço",
-            "message": "Garantia do melhor preço"
+        {
+        "title": "Frango grelhado delicioso",
+        "text": "O nosso frango suculento e grelhado no carvão é uma verdadeira obra-prima culinária e tornou-se sinónimo de excelência."
         },
-        "budget":{
-            "title": "Orçamentos Grátis",
-            "message": "Consulte-nos sem compromisso"
+        {
+        "title": "Seleção requintada de vinhos",
+        "text": "Experimente a nossa cuidadosamente selecionada lista de vinhos, com os melhores vintages de todo o mundo."
         },
-        "deliver":{
-            "title": "Entregas em todo o país",
-            "message": "Dispomos de viaturas próprias"
+        {
+        "title": "Serviço impecável",
+        "text": "Deixe a nossa equipa simpática e experiente proporcionar-lhe uma experiência gastronómica inesquecível, caracterizada por um serviço atento e personalizado."
         },
-        "assembly":{
-            "title": "Montagem",
-            "message": "Equipas especializadas"
+        {
+        "title": "Espaço encantador no terraço",
+        "text": "Relaxe e desfrute do nosso encantador espaço ao ar livre, um oásis sereno e pitoresco."
         },
-        "quality":{
-            "title": "Garantia de Qualidade",
-            "message": "2 anos de garantia"
+        {
+        "title": "Qualidade excepcional",
+        "text": "Descubra o nosso compromisso com a qualidade incomparável, refletido em cada prato que preparamos e em cada ingrediente que utilizamos."
         }
-    },
-
-    "newsletter": {
-        "title": "SUBSCREVA A NOSSA NEWSLETTER",
-        "message": ""
-    },
-
-    "aboutUs": {
-        "title": "sobre nós",
-        "messageWithTags": "<p>A <strong><em>Ergoface Mobiliário de Escritório, Lda</em></strong> é uma empresa em Portugal que se dedica à venda de mobiliário de escritório e prestação de serviços para empresas. O seu principal objetivo é fornecer soluções que promovam o bem-estar e a produtividade dos seus clientes.</p><p>A <strong><em>Ergoface</em></strong> destaca-se pela sua preocupação com a ergonomia, ou seja, a adaptação do mobiliário e equipamento de escritório às necessidades e características individuais de cada pessoa. A empresa oferece uma vasta gama de produtos, desde cadeiras ergonómicas a secretárias ajustáveis em altura, que permitem a correção da postura e redução do desconforto físico, prevenindo assim lesões e doenças profissionais.</p><p>Mas a <strong><em>Ergoface</em></strong> não se limita a vender mobiliário de qualidade, a empresa está empenhada em melhorar a qualidade de vida dos trabalhadores, promovendo a felicidade no trabalho e o aumento da produtividade.</p><p>Em resumo, a <strong><em>Ergoface Mobiliário de Escritório, Lda</em></strong> é uma empresa que se preocupa com o bem-estar e a saúde dos seus clientes, oferecendo soluções personalizadas e inovadoras em mobiliário de escritório com ergonomia e segurança no trabalho. Com a <strong><em>Ergoface</em></strong>, os clientes podem contar com um ambiente de trabalho mais confortável, saudável e feliz.</p></div>"
-
-    },
-    "faq": {
-        "title": "Questões frequentes",
-        "options": {
-            "a": {
-                "title": "O que é a Ergoface mobiliário de escritório, lda?",
-                "message": "A Ergoface mobiliário de escritório, lda é uma empresa que vende mobiliário de escritório e presta serviços para negócios em Portugal. A empresa oferece uma vasta gama de produtos, incluindo cadeiras, mesas, armários, estantes, entre outros itens."
-            },
-            "b": {
-                "title": "A Ergoface mobiliário de escritório, lda oferece serviços de instalação?",
-                "message": "Sim, a Ergoface mobiliário de escritório, lda oferece serviços de instalação para os seus produtos, garantindo assim que tudo fica devidamente montado e funcional."
-            },
-            "c": {
-                "title": "A Ergoface mobiliário de escritório, lda oferece garantia nos seus produtos?",
-                "message": "Sim, a Ergoface mobiliário de escritório, lda oferece garantia nos seus produtos, que varia consoante o tipo de produto e as suas características."
-            },
-            "d": {
-                "title": "A Ergoface mobiliário de escritório, lda faz entregas em todo o país?",
-                "message": "Sim, a Ergoface mobiliário de escritório, lda faz entregas em todo o país, garantindo assim que os seus clientes têm acesso aos seus produtos e serviços em qualquer parte de Portugal."
-            },
-            "e": {
-                "title": "A Ergoface mobiliário de escritório, lda oferece serviços personalizados?",
-                "message": "Sim, a Ergoface mobiliário de escritório, lda oferece serviços personalizados, adaptando-se assim às necessidades específicas dos seus clientes."
-            },
-            "f": {
-                "title": "A Ergoface mobiliário de escritório, lda tem loja física onde os clientes podem visitar?",
-                "message": "Sim, a Ergoface mobiliário de escritório, lda tem loja física onde os clientes podem visitar, experimentar os produtos e receber aconselhamento especializado."
-            },
-            "g": {
-                "title": "Qual é o processo de encomenda na Ergoface mobiliário de escritório, lda?",
-                "message": "O processo de encomenda na Ergoface mobiliário de escritório, lda é simples. Os clientes podem encomendar através do website da empresa, loja física ou através de um representante comercial. Após a encomenda, a Ergoface mobiliário de escritório, lda fará a entrega e, se necessário, a instalação do produto."
-            }
-        }
-    }
-  }
+        ]
+}

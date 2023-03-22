@@ -1,20 +1,36 @@
 import './Menu.scss'
 import React, { useEffect, useState } from 'react'
 
-import { menuSelection as menuSelectionInput } from './menuData'
+import { menuSelection as menuDataEn } from './menuDataEn'
+import { menuSelection as menuDataPT } from './menuDataPT'
+
+
 import { useIndexedDB } from '../../../../hooks/useIndexedDB';
 import OrderInfo from '../../../../components/OrderInfo/OrderInfo';
-import { scrollToTopClick } from '../../../../utils/utils';
+import { capitalizeString, scrollToTopClick } from '../../../../utils/utils';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../../../translations/translations';
 
 export default function Menu() {
+    const { t } = useTranslation();
+    const routesData = t("routesData", { returnObjects: true });
+    const menuData = t("menuData", { returnObjects: true });
     
     const [addOrder] = useIndexedDB();
     const [menuSelect, setMenuSelect] = useState("0");
     const [menuOrders, setMenuOrders] = useState([]);
-    const [menuSelections, setMenuSelections] = useState(menuSelectionInput);
-    // const [menuSelection, setMenuSelection] = useState(menuSelectionInput[0]);
+    const [menuSelections, setMenuSelections] = useState(menuDataPT);
 
-    
+    useEffect(()=>{
+        const onLanguageChange = (lng) => {
+            setMenuSelections(lng==="pt" ? menuDataPT : menuDataEn)
+          };
+          i18n.on('languageChanged', onLanguageChange);
+          return () => {
+            i18n.off('languageChanged', onLanguageChange);
+          };
+    },[]);
+
     const handleArticleClick = (e)=>{
         e.preventDefault();
 
@@ -68,12 +84,12 @@ export default function Menu() {
                 menuOrders={menuOrders}
             />
         }
-        <h2>Menu</h2>
+        <h2>{routesData.menu}</h2>
         <section className='menuSelect'>
             <ul>
             {menuSelections?.map((selection, i)=>
                 <li key={i} className={`${menuSelect===selection.type ? "active":""}`} data-selection={selection.type} onClick={handleMenuSelect}>
-                    {selection.label}
+                    {capitalizeString(selection.label)}
                 </li>
             )}
             </ul>

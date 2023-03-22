@@ -7,19 +7,16 @@ import ContactsSection from '../ContactsSection/ContactsSection';
 import { auth } from '../../firebase/firebase';
 import { AuthContext } from '../../context/authContext';
 import ChurrascoLogo from '../ChurrascoLogo/ChurrascoLogo';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
-    const portfolioData = appData.routesData[0];
-    const cvData = appData.routesData[1];
+    const { t } = useTranslation();
+    const routesData = t("routesData", { returnObjects: true });
+    const footerData = t("footerData", { returnObjects: true });
+
     const {state, dispatch} = useContext(AuthContext)
     let navigate = useNavigate();
 
-    const linksFromRouteData = (routeData) => routeData?.navLinks.map((link)=>
-    <Link key={link.ref} to={{
-        pathname:`${appData.path}${routeData.path}`,
-        hash:link.ref
-    }}>{link.label}</Link>
-)
 const logout = (e) => {
     auth.signOut();
     dispatch({
@@ -34,21 +31,21 @@ const logout = (e) => {
             <section>
                 <div className="articles">
                     <article>
-                        <h3>my Table</h3>
-                        <Link to={`${appData.path}/menu`}>Menu</Link>
-                        <Link to={`${appData.path}/reservation`}>Reservation</Link>
-                        <Link to={`${appData.path}/orders`}>Orders</Link>
+                        <h3>{footerData.myTable}</h3>
+                        <Link to={`${appData.path}/menu`}>{routesData.menu}</Link>
+                        <Link to={`${appData.path}/reservation`}>{routesData.reservation}</Link>
+                        <Link to={`${appData.path}/orders`}>{routesData.orders}</Link>
                     </article>
                 </div>
             </section>
             <section className="logoSection">
                 <div className="articles">
                     <article>
-                        <h3>The Restaurant</h3>
-                        <Link to={`${appData.path}/home`}>Entrance</Link>
-                        <Link to={`${appData.path}/about-us`}>About us</Link>
-                        <Link to={`${appData.path}/contacts`}>Contacts</Link>
-                        <Link to={`${appData.path}/community`}>Community</Link>
+                        <h3>{footerData.theRestaurant}</h3>
+                        <Link to={`${appData.path}/home`}>{routesData.entrance}</Link>
+                        <Link to={`${appData.path}/about-us`}>{routesData.aboutUs}</Link>
+                        <Link to={`${appData.path}/contacts`}>{routesData.contacts}</Link>
+                        <Link to={`${appData.path}/community`}>{routesData.community}</Link>
                     </article>
                 </div>
                 <Link to={`${appData.path}`}>
