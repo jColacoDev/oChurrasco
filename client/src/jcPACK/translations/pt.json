@@ -1,5 +1,7 @@
 {
-    "greeting": "Hello",
+    "greetings":{
+        "welcomeToChurrasco": "Bem-vindo(a)s aO Churrasco"
+    },
     
     "words":{
         "order": "pedido"
@@ -76,7 +78,7 @@
     },
     "aboutUsData": {
         "aboutParagraphs": [
-        "Bem-vindo ao nosso restaurante clássico em Lisboa, onde a nossa especialidade é o delicioso churrasco de frango grelhado em carvão. O nosso restaurante tem uma história rica e oferece um serviço de excelência com funcionários experientes que trabalham conosco há anos. A nossa magnífica esplanada é o local perfeito para desfrutar da sua refeição enquanto absorve a energia vibrante de Lisboa.",
+        "Bem-vindo ao nosso histórico restaurante em Lisboa, onde a nossa especialidade é o delicioso churrasco de frango grelhado em carvão. O nosso restaurante tem uma história rica e oferece um serviço de excelência com funcionários experientes que trabalham conosco há anos. A nossa magnífica esplanada é o local perfeito para desfrutar da sua refeição enquanto absorve a energia vibrante de Lisboa.",
         "Especializados em pratos grelhados da Rua das Portas de Santo Antão, orgulhamo-nos de servir um dos melhores frangos assados e no espeto de Lisboa. Os nossos funcionários atentos, vestidos com trajes tradicionais, garantirão que receba a porção desejada e mantêm o restante quente para que possa saborear. Pode escolher entre batatas finamente fatiadas ou em cubos e selecionar entre uma variedade de pratos, como o caril indiano ou o bacalhau à moda de Viana, ambos premiados. Somos a escolha perfeita para quem procura uma experiência autêntica de refeição em Portas de Santo Antão.",
         "No nosso restaurante, pretendemos proporcionar aos nossos clientes uma experiência calorosa e acolhedora, mantendo um padrão profissional. Quer seja um residente local ou um turista, garantimos que terá uma refeição inesquecível conosco. Por isso, venha juntar-se a nós e provar o melhor frango grelhado de Lisboa!"
         ]

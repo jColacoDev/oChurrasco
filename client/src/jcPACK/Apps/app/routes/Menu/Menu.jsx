@@ -14,7 +14,6 @@ import i18n from '../../../../translations/translations';
 export default function Menu() {
     const { t } = useTranslation();
     const routesData = t("routesData", { returnObjects: true });
-    const menuData = t("menuData", { returnObjects: true });
     
     const [addOrder] = useIndexedDB();
     const [menuSelect, setMenuSelect] = useState("0");

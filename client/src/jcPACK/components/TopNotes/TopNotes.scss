@@ -11,6 +11,12 @@ section.TopNotes{
     padding: 0.5em 1em;
     font-size: .9em;
 
+    p{
+        display: flex;
+        align-items: center;
+        font-size: 1.2em;
+    }
+
     figure{
         filter: invert(1);
     }

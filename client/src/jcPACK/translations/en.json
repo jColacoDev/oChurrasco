@@ -1,10 +1,12 @@
 {
-    "greeting": "Hello",
+    "greetings":{
+        "welcomeToChurrasco": "Welcome tO Churrasco"
+    },
     
     "words":{
         "order": "order"
     },
-    
+
     "actions":{
         "add": "add",
         "delete": "delete",

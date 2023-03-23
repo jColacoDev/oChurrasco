@@ -1,13 +1,17 @@
 import './TopNotes.scss'
 import React from 'react'
 import { appData } from '../../Apps/app/App'
-import { stringRemoveSpaces } from '../../utils/utils'
+import { crossOutOChurrasco, stringRemoveSpaces } from '../../utils/utils'
+import { useTranslation } from 'react-i18next';
 
 export default function TopNotes() {
+  const { t } = useTranslation();
+  const greetings = t("greetings", { returnObjects: true });
+
   return (
     <section className='TopNotes'>
     <article>
-        <p>Bem-vindo ao <strong>Churrasco</strong></p>
+        <p dangerouslySetInnerHTML={{ __html: crossOutOChurrasco(greetings.welcomeToChurrasco) }} />
         <a href={`tel:+351${stringRemoveSpaces(appData.contactsData.mobile)}`}><figure className='mobile'/>{appData.contactsData.mobile}</a>
     </article>
     <article>

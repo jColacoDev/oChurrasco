@@ -45,6 +45,12 @@ export function groupObjectsArrayByType(arr) {
  
  /************************************************** */
  /* String manipulation ********************************* */
+ export function crossOutOChurrasco(str) {
+    const regex = /o churrasco/i;
+    return str.replace(regex, function (match) {
+      return '<span style="text-decoration: line-through;">' + match + '</span>';
+    });
+  }
  export function returnInitials(name){
     if(!name || name === "") return "NN"
 
