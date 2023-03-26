@@ -33,15 +33,15 @@
     
     a:not(.logo){
         text-transform: uppercase;
-        box-shadow: var(--primary-color-transparent) 0px 10px 10px -10px;
+        box-shadow: var(--primary-color-shadow) 0px 10px 10px -10px;
         
         &.active{
             font-weight: bold;
-            box-shadow: var(--primary-color--lighter) 0px 10px 10px -10px;
+            box-shadow: var(--primary-color-shadow) 0px 10px 10px -10px;
         }
         &:hover{
             color: var(--primary-color);
-            box-shadow: var(--primary-color--lighter) 0px 10px 10px -10px;
+            box-shadow: var(--primary-color-lighter) 0px 10px 10px -10px;
             // text-decoration: underline;
             // text-underline-offset: .2em;
         }

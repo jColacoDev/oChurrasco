@@ -18,7 +18,7 @@ export default function Menu() {
     const [addOrder] = useIndexedDB();
     const [menuSelect, setMenuSelect] = useState("0");
     const [menuOrders, setMenuOrders] = useState([]);
-    const [menuSelections, setMenuSelections] = useState(menuDataPT);
+    const [menuSelections, setMenuSelections] = useState(i18n.language==="pt" ?menuDataPT : menuDataEn);
 
     useEffect(()=>{
         const onLanguageChange = (lng) => {

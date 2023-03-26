@@ -71,7 +71,7 @@
         top: 70px;
         background-color: var(--primary-background);
         padding: 1em 0;
-        box-shadow: var(--primary-color) 0px 8px 5px -6px;
+        box-shadow: var(--primary-color-shadow) 0px 8px 5px -6px;
         z-index: 1;
 
         @media (min-width: 1100px) {
@@ -175,7 +175,7 @@
                     color: var(--primary-color);
 
                     button{
-                        background-color: var(--primary-color--transparent);
+                        background-color: var(--primary-color-transparent);
                     }
                 }
 

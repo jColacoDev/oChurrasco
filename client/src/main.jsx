@@ -1,4 +1,4 @@
-import "./jcPACK/index.scss";
+import "./jcPACK/styles/index.scss";
 import 'react-toastify/dist/ReactToastify.css';
 
 import ReactDOM from 'react-dom/client'

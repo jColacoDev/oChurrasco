@@ -1,3 +1,4 @@
+import './AboutUs.scss'
 import React from 'react'
 import PhotoGallery from '../../../../components/PhotoGallery/PhotoGallery'
 import { useTranslation } from 'react-i18next';

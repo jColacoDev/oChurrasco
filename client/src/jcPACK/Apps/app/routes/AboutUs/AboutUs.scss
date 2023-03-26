@@ -1,0 +1,55 @@
+.AboutUs{
+    p{
+        text-align: justify;
+    }
+    .PhotoGallery{
+        margin-top: 3em;
+    }
+
+    section{
+        display: flex;
+        gap: 4em;
+        flex-wrap: wrap;
+
+        figure{
+            width: 100%;
+            min-height: 50vh;
+            
+            &::before{
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-image: url('./../../../../../assets/images/churrascoPics/oChurrascoView.jpg');
+            }
+        }
+
+        div{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            width: 100%;
+
+            @media (min-width: 1400px) {
+                &:first-child{
+                    width: 50%;
+
+                    figure{
+                        background-position: bottom -160px right 450px;
+                    }
+                }
+                &:last-child{
+                    width: 35%;
+                }
+            }
+
+            p{
+                line-height: 1.3;
+                padding: 0 1em;
+
+                strong{
+                    color: var(--primary-color);
+                    filter: grayscale(.3);
+                }
+            }
+        }
+    }
+}

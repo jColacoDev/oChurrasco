@@ -12,6 +12,7 @@ i18n
       en: { translation: enTranslation },
       pt: { translation: ptTranslation }
     },
+    lng: navigator.language,
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false

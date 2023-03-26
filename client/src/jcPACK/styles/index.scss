@@ -5,6 +5,14 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script:400,700');
 @import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 
+
+:root {
+    --primary-color: #701515;
+    --primary-color-lighter: #b85b5b;
+    --primary-color-shadow: #70151530;
+    --primary-background: #f3efe0;
+}
+
 .font_Merienda * > *{
     font-family: 'Merienda', cursive;
 }
@@ -42,22 +50,22 @@ figure{
     max-height: 100%;
 
     &.mobile{
-        background-image: url('./../assets/images/icons/mobile.png');
+        background-image: url('./../../assets/images/icons/mobile.png');
     }
     &.calendar{
-        background-image: url('./../assets/images/icons/calendar.png');
+        background-image: url('./../../assets/images/icons/calendar.png');
     }
     &.email{
-        background-image: url('./../assets/images/icons/email.png');
+        background-image: url('./../../assets/images/icons/email.png');
     }
     &.location{
-        background-image: url('./../assets/images/icons/location.png');
+        background-image: url('./../../assets/images/icons/location.png');
     }
     &.phone{
-        background-image: url('./../assets/images/icons/phone.png');
+        background-image: url('./../../assets/images/icons/phone.png');
     }
     &.web{
-        background-image: url('./../assets/images/icons/web.png');
+        background-image: url('./../../assets/images/icons/web.png');
     }
 }
 

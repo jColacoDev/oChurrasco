@@ -14,7 +14,7 @@ section.OrderInfo{
         position: sticky;
         top: -1em;
         background-color: var(--primary-background) !important;
-        box-shadow: var(--primary-color-transparent) 0px 10px 10px -10px;
+        box-shadow: var(--primary-color-lighter) 0px 10px 10px -10px;
     }
 
     article{
@@ -43,7 +43,7 @@ section.OrderInfo{
             width: 100%;
 
             &:hover{
-                background-color: var(--primary-color--transparent);
+                background-color: var(--primary-color-transparent);
             }
         }
         article{
