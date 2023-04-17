@@ -1,9 +1,10 @@
-# secret
-# .env
-# .env.production
-# config
-# firebaseConfig.js
-# fbServiceAccountKey.json
+secret
+.env
+.env.dev
+.env.production
+config
+firebaseConfig.js
+fbServiceAccountKey.json
 
 # Logs
 logs
