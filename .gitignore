@@ -5,6 +5,7 @@ secret
 config
 firebaseConfig.js
 fbServiceAccountKey.json
+googleServiceAccount.json
 token.json
 
 # Logs
